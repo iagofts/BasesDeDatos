@@ -10,7 +10,7 @@ package aplicacion;
  * @author alumnogreibd
  */
 public class FachadaAplicacion {
-    gui.FachadaGUI fgui;
+    gui.FachadaGui fgui;
     baseDatos.FachadaBaseDatos fbd;
     
     public FachadaAplicacion(){
