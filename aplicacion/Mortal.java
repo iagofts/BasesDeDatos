@@ -17,11 +17,7 @@ public class Mortal extends Usuario{
     private TipoLugar lugar;
     
     public Mortal(int id_usuario, String nombre_usuario, String nombre, String clave, TipoUsuario tipo, Date fecha_nacimiento, Date fecha_muerte, TipoLugar lugar){
-    super.setIdUsuario(id_usuario);
-    super.setNombreUsuario(nombre_usuario);
-    super.setNombre(nombre);
-    super.setClave(clave);
-    super.setTipoUsuario(tipo);
+    super(id_usuario, nombre_usuario, nombre, clave, tipo);
     this.fecha_nacimiento=fecha_nacimiento;
     this.fecha_muerte=fecha_muerte;
     this.lugar=lugar;
