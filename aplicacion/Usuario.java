@@ -16,6 +16,14 @@ public abstract class Usuario {
     private String clave;
     private TipoUsuario tipo;
     
+    public Usuario(int id_usuario, String nombre_usuario, String nombre, String clave, TipoUsuario tipo){
+        this.id_usuario=id_usuario;
+        this.nombre_usuario=nombre_usuario;
+        this.nombre=nombre;
+        this.clave=clave;
+        this.tipo=tipo;
+    }
+    
     public int getIdUsuario(){
         return this.id_usuario;
     }
