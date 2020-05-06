@@ -9,8 +9,10 @@ package aplicacion;
  *
  * @author alumnogreibd
  */
-public enum TipoUsuario {
-    Mortal,
-    Dios
+public enum TipoLugar {
+    Tierra,
+    Cielo,
+    Infierno,
+    Limbo
     
 }
