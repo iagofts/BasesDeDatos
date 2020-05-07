@@ -31,7 +31,7 @@ class DAOUsuarios extends AbstractDAO{
 	            stmUsuario.setString(2, clave);
 	            rsUsuario = stmUsuario.executeQuery();
 	            if (rsUsuario.next()) {
-	                resultado = new Usuario(rsUsuario.getString("id_usuario"),
+	                resultado = new Usuario(rsUsuario.getInt("id_usuario"),
 	                        rsUsuario.getString("nombre_usuario"), rsUsuario.getString("nombre"),
 	                        rsUsuario.getString("clave"), TipoUsuario.valueOf(rsUsuario.getString("tipo")));
 

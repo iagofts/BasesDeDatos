@@ -1,11 +1,26 @@
 
 package gui;
 
-public class VAviso extends javax.swing.JFrame {
+public class VAviso extends javax.swing.JDialog {
 
   
-    public VAviso(java.awt.Frame parent, boolean modal, String txtExcepcion) {
+    public VAviso(String txtExcepcion) {
         initComponents();
+        this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
+        textoExcepcion.setText(txtExcepcion);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+    }
+    
+    public VAviso(java.awt.Frame parent, boolean modal, String txtExcepcion) {
+        super(parent, modal);
+        initComponents();
+        this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
         textoExcepcion.setText(txtExcepcion);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
 
@@ -48,6 +63,7 @@ public class VAviso extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("ERROR");
         setBackground(new java.awt.Color(51, 51, 51));
 
         btnCerrar.setText("Cerrar");

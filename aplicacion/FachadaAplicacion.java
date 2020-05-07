@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacion;
 
-/**
- *
- * @author alumnogreibd
- */
+
 public class FachadaAplicacion {
     gui.FachadaGui fgui;
     baseDatos.FachadaBaseDatos fbd;
@@ -25,11 +17,22 @@ public class FachadaAplicacion {
         fa.iniciaInterfazUsuario();
     }
     
-    private void iniciaInterfazUsuario(){
+    public void iniciaInterfazUsuario(){
         fgui.iniciaVista();
     }
     
-    private void muestraExcepcion(String e){
+    public void muestraExcepcion(String e){
         fgui.muestraExcepcion(e);
+    }
+    public void muestraExcepcion(java.awt.Frame parent, boolean modal, String txtExcepcion){
+        fgui.muestraExcepcion(parent,modal,txtExcepcion);
+    }
+    
+    public Usuario comprobarAutentificacion(String user,String key){
+        return fbd.validarUsuario(user, key);
+    }
+    
+    public void muestraVPrincipal(Usuario user){
+        fgui.muestraVPrincipal(user);
     }
 }

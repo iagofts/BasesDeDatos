@@ -49,8 +49,9 @@ public class FachadaBaseDatos {
         }
 		
 	}
-		public Usuario validarUsuario(String idUsuario, String clave) {
-	        return daoUsuarios.validarUsuario(idUsuario, clave);
-	    }
+                
+	public Usuario validarUsuario(String idUsuario, String clave) {
+               return daoUsuarios.validarUsuario(idUsuario, clave);
+	}
 	
 }

@@ -1,6 +1,6 @@
 package gui;
 
-import java.awt.event.KeyEvent;
+import aplicacion.Usuario;
 
 public class VAutentificacion extends javax.swing.JFrame {
 
@@ -10,6 +10,7 @@ public class VAutentificacion extends javax.swing.JFrame {
     public VAutentificacion(aplicacion.FachadaAplicacion fa) {
         this.fa=fa;
         initComponents();
+        this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
         textoClave.setEchoChar('*');
         etiquetaFallo.setVisible(false);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -26,7 +27,6 @@ public class VAutentificacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         textoUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -34,7 +34,7 @@ public class VAutentificacion extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         etiquetaFallo = new javax.swing.JLabel();
         textoClave = new javax.swing.JPasswordField();
-        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -47,8 +47,6 @@ public class VAutentificacion extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        jButton1.setText("jButton1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Autentificación de usuarios");
         setName("VAutentificacion"); // NOI18N
@@ -59,11 +57,6 @@ public class VAutentificacion extends javax.swing.JFrame {
         textoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textoUsuarioActionPerformed(evt);
-            }
-        });
-        textoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                textoUsuarioKeyPressed(evt);
             }
         });
 
@@ -86,21 +79,10 @@ public class VAutentificacion extends javax.swing.JFrame {
         etiquetaFallo.setForeground(new java.awt.Color(255, 51, 51));
         etiquetaFallo.setText("Autentificación incorrecta!");
 
-        textoClave.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/ojo.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoClaveActionPerformed(evt);
-            }
-        });
-        textoClave.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                textoClaveKeyPressed(evt);
-            }
-        });
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/ojo.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -110,7 +92,7 @@ public class VAutentificacion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -118,12 +100,12 @@ public class VAutentificacion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(etiquetaFallo)
-                            .addComponent(textoClave, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(textoClave, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                             .addComponent(textoUsuario))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 14, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnAceptar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCancelar)))
@@ -137,12 +119,12 @@ public class VAutentificacion extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(textoClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(etiquetaFallo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -160,52 +142,35 @@ public class VAutentificacion extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         etiquetaFallo.setVisible(false);
-     //   if (fa.comprobarAutentificacion(textoUsuario.getText(), textoClave.getText()))
-           this.dispose();
-     //   else etiquetaFallo.setVisible(true);
+        if(!(textoUsuario.getText().isEmpty() && textoClave.getText().isEmpty())){
+            Usuario user=fa.comprobarAutentificacion(textoUsuario.getText(), textoClave.getText());
+            if (user!=null){
+               this.dispose();
+               fa.muestraVPrincipal(user);
+            }else{ etiquetaFallo.setVisible(true);}
+        }else{
+            fa.muestraExcepcion(this,true,"Rellene todos los campos, por favor");
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
      System.exit(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void textoClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoClaveKeyPressed
-    if(evt.getKeyCode()==KeyEvent.VK_ENTER){ //Si presionamos la tecla ENTER, será como puslar ACEPTAR
-        etiquetaFallo.setVisible(false);
-     //   if (fa.comprobarAutentificacion(textoUsuario.getText(), textoClave.getText()))
-           this.dispose();
-      //  else etiquetaFallo.setVisible(true);
-    }     
-    }//GEN-LAST:event_textoClaveKeyPressed
-
-    private void textoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textoUsuarioKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        etiquetaFallo.setVisible(false);
-      // if (fa.comprobarAutentificacion(textoUsuario.getText(), textoClave.getText()))
-           this.dispose();
-      //  else etiquetaFallo.setVisible(true);
-    }     
-    }//GEN-LAST:event_textoUsuarioKeyPressed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(textoClave.getEchoChar()!='*'){
-            textoClave.setEchoChar('*');
-        }else{
-            textoClave.setEchoChar((char)0);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void textoClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoClaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoClaveActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       if(textoClave.getEchoChar()!='*'){
+           textoClave.setEchoChar('*');
+       }else{
+       textoClave.setEchoChar((char) 0);
+       }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel etiquetaFallo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
