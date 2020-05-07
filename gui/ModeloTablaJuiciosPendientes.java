@@ -7,7 +7,7 @@ public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
  private java.util.List<Vivo> usuarios;
  
     public ModeloTablaJuiciosPendientes(){
-        this.usuarios=new java.util.ArrayList<Vivo>();
+        this.usuarios=new java.util.ArrayList<>();
     }
 
     @Override

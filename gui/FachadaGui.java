@@ -27,11 +27,11 @@ public class FachadaGui {
        va.setVisible(true);
     }
     public void muestraVPrincipal(Usuario user){
-        if(user.getTipoUsuario().equals(TipoUsuario.Dios)){
+        if(user.getTipoUsuario().equals(TipoUsuario.Dios)){ //Ventana principal Dios
             VDios vD;
             vD=new VDios(fa);
             vD.setVisible(true);
-        }else{
+        }else{ //Ventana principal Usuario Vivo
             VUsuarioVivo vUV;
             vUV=new VUsuarioVivo(fa);
             vUV.setVisible(true);

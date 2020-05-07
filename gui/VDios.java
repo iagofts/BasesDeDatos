@@ -1,5 +1,7 @@
 package gui;
 
+import aplicacion.Vivo;
+
 public class VDios extends javax.swing.JFrame {
     
      aplicacion.FachadaAplicacion fa;
@@ -11,6 +13,9 @@ public class VDios extends javax.swing.JFrame {
         ModeloTablaJuiciosPendientes mjp;
         mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
         mjp.setFilas(fa.juiciosPendientes());
+        //Se selecciona el primer elemento de la tabla
+        if(mjp.getRowCount()!=0) tablaJuiciosPendientes.setRowSelectionInterval(0, 0); 
+        this.actualizarDatos();
     }
 
     @SuppressWarnings("unchecked")
@@ -30,7 +35,7 @@ public class VDios extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         textoLocalidad = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        textofechaNacimiento = new javax.swing.JTextField();
+        textoFechaNacimiento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         textoFechaMuerte = new javax.swing.JTextField();
         btnJuzgar = new javax.swing.JButton();
@@ -56,6 +61,11 @@ public class VDios extends javax.swing.JFrame {
         setTitle("Ventana Dios");
 
         tablaJuiciosPendientes.setModel(new ModeloTablaJuiciosPendientes());
+        tablaJuiciosPendientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaJuiciosPendientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaJuiciosPendientes);
 
         jLabel1.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
@@ -63,13 +73,23 @@ public class VDios extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre:");
 
+        textoNombre.setEditable(false);
+
         jLabel3.setText("ID:");
+
+        textoID.setEditable(false);
 
         jLabel4.setText("Localidad:");
 
+        textoLocalidad.setEditable(false);
+
         jLabel5.setText("Fecha Nacimiento:");
 
+        textoFechaNacimiento.setEditable(false);
+
         jLabel6.setText("Fecha Muerte:");
+
+        textoFechaMuerte.setEditable(false);
 
         btnJuzgar.setText("Juzgar");
 
@@ -113,7 +133,7 @@ public class VDios extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelJuiciosLayout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(textofechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textoFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelJuiciosLayout.createSequentialGroup()
@@ -149,11 +169,12 @@ public class VDios extends javax.swing.JFrame {
                     .addComponent(textoLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(textofechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textoFechaMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(textoFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textoFechaMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46)
                 .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,6 +247,10 @@ public class VDios extends javax.swing.JFrame {
        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void tablaJuiciosPendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJuiciosPendientesMouseClicked
+       actualizarDatos();
+    }//GEN-LAST:event_tablaJuiciosPendientesMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJuzgar;
@@ -247,9 +272,25 @@ public class VDios extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedPanel;
     private javax.swing.JTable tablaJuiciosPendientes;
     private javax.swing.JTextField textoFechaMuerte;
+    private javax.swing.JTextField textoFechaNacimiento;
     private javax.swing.JTextField textoID;
     private javax.swing.JTextField textoLocalidad;
     private javax.swing.JTextField textoNombre;
-    private javax.swing.JTextField textofechaNacimiento;
     // End of variables declaration//GEN-END:variables
+    
+    public void actualizarDatos(){
+        ModeloTablaJuiciosPendientes mjp;
+        mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
+        if(tablaJuiciosPendientes.getSelectedRow()!=-1){
+            Vivo user=mjp.getRow(tablaJuiciosPendientes.getSelectedRow());
+        textoNombre.setText(user.getNombre());
+        textoID.setText(user.getNombreUsuario());
+        textoLocalidad.setText(user.getLocalidad());
+        textoFechaNacimiento.setText(String.valueOf(user.getFechaNacimiento()));
+        textoFechaMuerte.setText(String.valueOf(user.getFechaMuerte()));
+        }else{
+            
+        }
+    }
+
 }
