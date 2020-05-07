@@ -4,10 +4,12 @@ package aplicacion;
 public class FachadaAplicacion {
     gui.FachadaGui fgui;
     baseDatos.FachadaBaseDatos fbd;
+    GestionUsuarios cu;
     
     public FachadaAplicacion(){
         fgui=new gui.FachadaGui(this);
         fbd=new baseDatos.FachadaBaseDatos(this);
+        cu=new GestionUsuarios(fgui,fbd);
     }
     
     public static void main(String args[]){
@@ -29,10 +31,14 @@ public class FachadaAplicacion {
     }
     
     public Usuario comprobarAutentificacion(String user,String key){
-        return fbd.validarUsuario(user, key);
+        return cu.comprobarAutentificacion(user, key);
     }
     
     public void muestraVPrincipal(Usuario user){
         fgui.muestraVPrincipal(user);
     }
+    
+    public java.util.List<Vivo> juiciosPendientes(){
+        return cu.juiciosPendientes();
+    } 
 }
