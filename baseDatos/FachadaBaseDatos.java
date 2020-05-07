@@ -49,9 +49,15 @@ public class FachadaBaseDatos {
         }
 		
 	}
-                
-	public Usuario validarUsuario(String idUsuario, String clave) {
-               return daoUsuarios.validarUsuario(idUsuario, clave);
-	}
+		
+		public Usuario validarUsuario(String idUsuario, String clave) {
+	        return daoUsuarios.validarUsuario(idUsuario, clave);
+	    }
+		public java.util.List<Usuario> consultarUsuarios(Integer id, String nombre_usuario, String nombre) {
+	        return daoUsuarios.consultarUsuarios(id, nombre_usuario,nombre);
+	    }
+		public void modificarUsuarioVivo(String id, String nombre, String clave, String direccion, String email) {
+	        this.daoUsuarios.modificarUsuario(id, nombre, clave, direccion, email);
+	    }
 	
 }
