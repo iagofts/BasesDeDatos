@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import aplicacion.Usuario;
+import aplicacion.Vivo;
 
 class DAOVivos extends AbstractDAO{
 
@@ -16,7 +16,7 @@ class DAOVivos extends AbstractDAO{
 
 	public java.util.List<Vivo> VivosConJuicioPendiente (){
 		 java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
-	        Usuario UsuarioActual;
+		 	Vivo UsuarioActual;
 	        Connection con;
 	        PreparedStatement stmUsuario = null;
 	        ResultSet rsUsuario;
@@ -32,8 +32,9 @@ class DAOVivos extends AbstractDAO{
 	            stmUsuario = con.prepareStatement(consulta);
 	            rsUsuario = stmUsuario.executeQuery();
 	            while (rsUsuario.next()) {
-	                UsuarioActual = new Vivo(rsUsuario.getString("nombre"),
-	                        rsUsuario.getFloat("puntuacion")));
+	                UsuarioActual = new Vivo(rsUsuario.getFloat("puntuacion"),
+	                		rsUsuario.getString("nombre")
+	                        );
 	                resultado.add(UsuarioActual);
 	            }
 	        } catch (SQLException e) {

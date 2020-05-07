@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import aplicacion.Usuario;
+import aplicacion.Vivo;
 
 public class FachadaBaseDatos {
 		private aplicacion.FachadaAplicacion fa;
