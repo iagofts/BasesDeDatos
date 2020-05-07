@@ -17,7 +17,7 @@ public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 2;
     }
 
     @Override
@@ -25,11 +25,8 @@ public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
            Object resultado=null;
 
         switch (col){
-            case 0: resultado= usuarios.get(row).getDNI(); break;
-            case 1: resultado= usuarios.get(row).getNombre(); break;
-            case 2: resultado=usuarios.get(row).getDireccion();break;
-            case 3: resultado=usuarios.get(row).getEmail(); break;
-            case 4: resultado=usuarios.get(row).getTelefono(); break;
+            case 0: resultado= usuarios.get(row).getNombre(); break;
+            case 1: resultado= usuarios.get(row).getPuntuacion(); break;
         }
         return resultado;
     }
@@ -38,11 +35,8 @@ public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
         String nombre="";
 
         switch (col){
-            case 0: nombre= "DNI"; break;
-            case 1: nombre= "Nombre"; break;
-            case 2: nombre="Dirección"; break;
-            case 3: nombre="E-mail"; break;
-            case 4: nombre="Telefono"; break;
+            case 0: nombre= "Nombre"; break;
+            case 1: nombre= "Puntuación"; break;
         }
         return nombre;
     }
@@ -53,10 +47,7 @@ public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
 
         switch (col){
             case 0: clase= java.lang.String.class; break;
-            case 1: clase= java.lang.String.class; break;
-            case 2: clase=java.lang.String.class; break;
-            case 3: clase=java.lang.String.class; break;
-            case 4: clase=java.lang.Integer.class; break;
+            case 1: clase= java.lang.Integer.class; break;
         }
         return clase;
     }
