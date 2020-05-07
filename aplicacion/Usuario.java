@@ -23,6 +23,10 @@ public class Usuario {
         this.clave=clave;
         this.tipo=tipo;
     }
+
+    public Usuario(String nombre) {
+        this.nombre = nombre;
+    }
     
     public int getIdUsuario(){
         return this.id_usuario;

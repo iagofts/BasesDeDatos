@@ -22,6 +22,10 @@ public class Mortal extends Usuario{
     this.fecha_muerte=fecha_muerte;
     this.lugar=lugar;
     }
+
+    public Mortal(String nombre) {
+        super(nombre);
+    }
     
     public Date getFechaNacimiento(){
         return this.fecha_nacimiento;
