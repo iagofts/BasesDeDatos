@@ -12,6 +12,7 @@ public class FachadaBaseDatos {
 		private java.sql.Connection conexion;
 		private DAOUsuarios daoUsuarios;
 		private DAOAcciones daoAcciones;
+		private DAOVivos daoVivos;
 		
 		public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 		Properties configuracion = new Properties();
@@ -56,8 +57,11 @@ public class FachadaBaseDatos {
 		public java.util.List<Usuario> consultarUsuarios(Integer id, String nombre_usuario, String nombre) {
 	        return daoUsuarios.consultarUsuarios(id, nombre_usuario,nombre);
 	    }
-		public void modificarUsuarioVivo(String id, String nombre, String clave, String direccion, String email) {
-	        this.daoUsuarios.modificarUsuario(id, nombre, clave, direccion, email);
+		public void modificarUsuarioVivo(Integer id, String nombre_usuario, String clave, String localidad) {
+	        this.daoUsuarios.modificarUsuarioVivo(id, nombre_usuario, clave, localidad);
 	    }
+		public java.util.List<Vivo> VivosConJuicioPendiente (){
+			return daoVivos.VivosConJuicioPendiente();
+		}
 	
 }
