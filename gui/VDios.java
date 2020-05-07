@@ -10,7 +10,7 @@ public class VDios extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
         ModeloTablaJuiciosPendientes mjp;
         mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
-      //  mjp.setFilas(fa.juiciosPendientes());
+        mjp.setFilas(fa.juiciosPendientes());
     }
 
     @SuppressWarnings("unchecked")

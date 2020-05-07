@@ -1,13 +1,13 @@
 package gui;
 
-import aplicacion.Usuario;
+import aplicacion.Vivo;
 import javax.swing.table.*;
 
 public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
- private java.util.List<Usuario> usuarios;
+ private java.util.List<Vivo> usuarios;
  
     public ModeloTablaJuiciosPendientes(){
-        this.usuarios=new java.util.ArrayList<Usuario>();
+        this.usuarios=new java.util.ArrayList<Vivo>();
     }
 
     @Override
@@ -47,12 +47,12 @@ public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
 
         switch (col){
             case 0: clase= java.lang.String.class; break;
-            case 1: clase= java.lang.Integer.class; break;
+            case 1: clase= java.lang.Float.class; break;
         }
         return clase;
     }
     
-    public void setFilas(java.util.List<Usuario> usuarios){
+    public void setFilas(java.util.List<Vivo> usuarios){
         this.usuarios=usuarios;
         fireTableDataChanged();
     }
@@ -67,7 +67,7 @@ public class ModeloTablaJuiciosPendientes extends AbstractTableModel {
         fireTableDataChanged();
     }
    
-    public Usuario getRow(int row){
+    public Vivo getRow(int row){
         return this.usuarios.get(row);
     }
 }
