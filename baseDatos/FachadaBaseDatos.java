@@ -38,6 +38,7 @@ public class FachadaBaseDatos {
 
             daoUsuarios=new DAOUsuarios(conexion,fa);
             daoAcciones=new DAOAcciones(conexion,fa);
+            daoVivos=new DAOVivos(conexion,fa);
             
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());

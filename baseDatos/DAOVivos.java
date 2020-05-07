@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import aplicacion.TipoLugar;
+import aplicacion.TipoUsuario;
 import aplicacion.Vivo;
 
 class DAOVivos extends AbstractDAO{
@@ -16,7 +18,7 @@ class DAOVivos extends AbstractDAO{
 
 	public java.util.List<Vivo> VivosConJuicioPendiente (){
 		 java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
-		 	Vivo UsuarioActual;
+		 	Vivo UsuarioActual=null;
 	        Connection con;
 	        PreparedStatement stmUsuario = null;
 	        ResultSet rsUsuario;
@@ -32,10 +34,14 @@ class DAOVivos extends AbstractDAO{
 	            stmUsuario = con.prepareStatement(consulta);
 	            rsUsuario = stmUsuario.executeQuery();
 	            while (rsUsuario.next()) {
-	                UsuarioActual = new Vivo(rsUsuario.getFloat("puntuacion"),
-	                		rsUsuario.getString("nombre")
-	                        );
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),
+	                		rsUsuario.getString("nombre_usuario"),rsUsuario.getString("nombre"),
+	                		rsUsuario.getString("clave"),TipoUsuario.valueOf(rsUsuario.getString("tipo")),rsUsuario.getDate("fecha_nacimiento"),
+	                		rsUsuario.getDate("fecha_muerte"),TipoLugar.valueOf(rsUsuario.getString("lugar")),rsUsuario.getFloat("puntuacion"),
+	                		rsUsuario.getBoolean("pendiente_juicio"));
 	                resultado.add(UsuarioActual);
+	                
+	                System.out.println(UsuarioActual.getNombre());
 	            }
 	        } catch (SQLException e) {
 	            System.out.println(e.getMessage());
