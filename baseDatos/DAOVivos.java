@@ -28,6 +28,8 @@ class DAOVivos extends AbstractDAO{
 	        String consulta = "select * from usuario as u "
 	        		+ "full join vivo as v "
 	        		+ "on u.id_usuario=v.id_vivo "
+	        		+ "full join mortal as m "
+	        		+ "on u.id_usuario=m.id_mortal "
 	        		+ "where pendiente_juicio=FALSE";
 
 	        try {
