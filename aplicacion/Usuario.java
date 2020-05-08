@@ -28,6 +28,10 @@ public class Usuario {
         this.nombre = nombre;
     }
     
+    public Usuario(int id_usuario){
+        this.id_usuario=id_usuario;
+    }
+    
     public int getIdUsuario(){
         return this.id_usuario;
     }
