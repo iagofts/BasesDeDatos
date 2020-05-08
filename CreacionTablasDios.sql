@@ -1,4 +1,4 @@
-﻿create sequence seq_us_id_usuario;
+create sequence seq_us_id_usuario;
 create table usuario( 
     id_usuario integer default nextval('seq_us_id_usuario') not null primary key,
     nombre_usuario varchar(15) not null unique,
