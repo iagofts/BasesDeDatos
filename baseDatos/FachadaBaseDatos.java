@@ -69,5 +69,11 @@ public class FachadaBaseDatos {
 		public void RegistrarUsuarioVivo(Integer id_demonio, Integer id_angel, String nombre,String nombre_usuario,String localidad, String clave, Date fecha_nacimiento, Date fecha_muerte) {
 			this.daoVivos.RegistrarUsuarioVivo(id_demonio, id_angel, nombre, nombre_usuario, localidad, clave, fecha_nacimiento, fecha_muerte);
 		}
+		public java.util.List<Pecado> listaPecados(int id_usuario){
+			this.daoAcciones.listaPecados(id_usuario);
+		}
+		public java.util.List<BuenaAccion> listaBuenasAcciones(int id_usuario){
+			this.daoAcciones.listaBuenasAcciones(id_usuario);
+		}
 	
 }
