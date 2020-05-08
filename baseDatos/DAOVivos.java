@@ -37,7 +37,7 @@ class DAOVivos extends AbstractDAO {
 						rsUsuario.getString("nombre"), rsUsuario.getString("clave"),
 						TipoUsuario.valueOf(rsUsuario.getString("tipo")), rsUsuario.getDate("fecha_nacimiento"),
 						rsUsuario.getDate("fecha_muerte"), TipoLugar.valueOf(rsUsuario.getString("lugar")),
-						rsUsuario.getFloat("puntuacion"), rsUsuario.getBoolean("pendiente_juicio"));
+						rsUsuario.getFloat("puntuacion"), rsUsuario.getBoolean("pendiente_juicio"),rsUsuario.getString("localidad"));
 				resultado.add(UsuarioActual);
 			}
 		} catch (SQLException e) {

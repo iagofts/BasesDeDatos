@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import aplicacion.BuenaAccion;
+import aplicacion.Pecado;
 import aplicacion.TipoLugar;
 import aplicacion.TipoUsuario;
 import aplicacion.Vivo;
@@ -74,8 +76,8 @@ class DAOAcciones extends AbstractDAO{
 			stmPecado.setInt(1, id_usuario);
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
-				Pecado = new Pecado(rsPecado.getFloat("puntuacion"), rsPecado.getString("descrip_accion"));
-				resultado.add(Pecado);
+				PecadoActual = new Pecado(rsPecado.getFloat("puntuacion"), rsPecado.getString("descrip_accion"));
+				resultado.add(PecadoActual);
 
 			}
 		} catch (SQLException e) {
@@ -83,7 +85,7 @@ class DAOAcciones extends AbstractDAO{
 			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
 		} finally {
 			try {
-				Pecado.close();
+				stmPecado.close();
 			} catch (SQLException e) {
 				System.out.println("Imposible cerrar cursores");
 			}

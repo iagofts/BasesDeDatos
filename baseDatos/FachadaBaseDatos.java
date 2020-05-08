@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Properties;
 
+import aplicacion.BuenaAccion;
+import aplicacion.Pecado;
 import aplicacion.Usuario;
 import aplicacion.Vivo;
 
@@ -70,10 +72,10 @@ public class FachadaBaseDatos {
 			this.daoVivos.RegistrarUsuarioVivo(id_demonio, id_angel, nombre, nombre_usuario, localidad, clave, fecha_nacimiento, fecha_muerte);
 		}
 		public java.util.List<Pecado> listaPecados(int id_usuario){
-			this.daoAcciones.listaPecados(id_usuario);
+			return this.daoAcciones.listaPecados(id_usuario);
 		}
 		public java.util.List<BuenaAccion> listaBuenasAcciones(int id_usuario){
-			this.daoAcciones.listaBuenasAcciones(id_usuario);
+			return this.daoAcciones.listaBuenasAcciones(id_usuario);
 		}
 	
 }
