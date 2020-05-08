@@ -32,14 +32,14 @@ Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('01/12/1915','3
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('peterpark','Peter Parker','peet','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('12/01/1980','11/11/2025','Tierra');
-Insert into vivo (ang_asignado,dem_asignado) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'));
+Insert into vivo (ang_asignado,dem_asignado,localidad) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Cangas');
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('10/10/2019',1,(select id_usuario from usuario where nombre_usuario='peterpark'));
 Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('14/03/1995',2,(select id_usuario from usuario where nombre_usuario='peterpark'));
 Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('02/05/1998',1,(select id_usuario from usuario where nombre_usuario='peterpark'));
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('luckyluck','Luck Davis','ll777','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('23/02/1967','25/02/2020','Tierra');
-Insert into vivo (ang_asignado,dem_asignado) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'));
+Insert into vivo (ang_asignado,dem_asignado,localidad) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense');
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/1999',2,(select id_usuario from usuario where nombre_usuario='luckyluck'));
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('25/12/1999',3,(select id_usuario from usuario where nombre_usuario='luckyluck'));
 Insert into solicitar (fecha_solicitud,solicitante,victima,venganza,demonio) values ('26/12/1999',(select id_usuario from usuario where nombre_usuario='luckyluck'),(select id_usuario from usuario where nombre_usuario='peterpark'),2,(select id_usuario from usuario where nombre_usuario='mikemike'));
