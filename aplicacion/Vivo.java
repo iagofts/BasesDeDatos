@@ -6,6 +6,7 @@
 package aplicacion;
 
 import java.util.Date;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,11 +15,15 @@ import java.util.Date;
 public class Vivo extends Mortal{
     private float puntuacion;
     private boolean pendienteDeJuicio;
+    private String localidad;
+    private ArrayList<Pecado> pecados;
+    private ArrayList<BuenaAccion> buenasAcciones;
     
-    public Vivo(int id_usuario, String nombre_usuario, String nombre, String clave, TipoUsuario tipo, Date fecha_nacimiento, Date fecha_muerte, TipoLugar lugar, float puntuacion, boolean pendienteDeJuicio){
+    public Vivo(int id_usuario, String nombre_usuario, String nombre, String clave, TipoUsuario tipo, Date fecha_nacimiento, Date fecha_muerte, TipoLugar lugar, float puntuacion, boolean pendienteDeJuicio, String localidad){
         super(id_usuario, nombre_usuario, nombre, clave, tipo, fecha_nacimiento, fecha_muerte, lugar);
         this.puntuacion=puntuacion;
         this.pendienteDeJuicio=pendienteDeJuicio;
+        this.localidad=localidad;
     }
 
     public Vivo(float puntuacion, String nombre) {
@@ -42,6 +47,20 @@ public class Vivo extends Mortal{
         this.pendienteDeJuicio = pendienteDeJuicio;
     }
 
-    
+    public ArrayList<Pecado> getPecados() {
+        return pecados;
+    }
+
+    public void setPecados(ArrayList<Pecado> pecados) {
+        this.pecados = pecados;
+    }
+
+    public ArrayList<BuenaAccion> getBuenasAcciones() {
+        return buenasAcciones;
+    }
+
+    public void setBuenasAcciones(ArrayList<BuenaAccion> buenasAcciones) {
+        this.buenasAcciones = buenasAcciones;
+    }
     
 }
