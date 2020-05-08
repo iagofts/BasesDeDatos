@@ -35,6 +35,7 @@ create table vivo(
     puntuacion float not null Default 0,
     pendiente_juicio boolean Default FALSE,
     limbo_obligatorio boolean Default FALSE,
+    localidad varchar(30),
     foreign key(id_vivo) references mortal(id_mortal)
     on delete cascade on update cascade,
     foreign key(ang_asignado) references angel(id)
