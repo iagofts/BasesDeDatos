@@ -7,6 +7,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
     public VUsuarioVivo( aplicacion.FachadaAplicacion fa) {
         this.fa=fa;
         initComponents();
+        this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
     }
 
     @SuppressWarnings("unchecked")

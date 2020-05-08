@@ -1,6 +1,7 @@
 package gui;
 
 import aplicacion.Usuario;
+import java.awt.event.KeyEvent;
 
 public class VAutentificacion extends javax.swing.JFrame {
 
@@ -59,6 +60,7 @@ public class VAutentificacion extends javax.swing.JFrame {
                 textoUsuarioActionPerformed(evt);
             }
         });
+       
 
         jLabel2.setText("Contraseña:");
 
@@ -78,6 +80,13 @@ public class VAutentificacion extends javax.swing.JFrame {
 
         etiquetaFallo.setForeground(new java.awt.Color(255, 51, 51));
         etiquetaFallo.setText("Autentificación incorrecta!");
+
+        textoClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoClaveActionPerformed(evt);
+            }
+        });
+      
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/ojo.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +173,10 @@ public class VAutentificacion extends javax.swing.JFrame {
        textoClave.setEchoChar((char) 0);
        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void textoClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoClaveActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
