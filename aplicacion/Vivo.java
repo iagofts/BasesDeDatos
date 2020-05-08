@@ -24,6 +24,8 @@ public class Vivo extends Mortal{
         this.puntuacion=puntuacion;
         this.pendienteDeJuicio=pendienteDeJuicio;
         this.localidad=localidad;
+        this.pecados=null;
+        this.buenasAcciones=null;
     }
 
     public Vivo(float puntuacion, String nombre) {
