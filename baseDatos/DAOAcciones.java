@@ -7,9 +7,6 @@ import java.sql.SQLException;
 
 import aplicacion.BuenaAccion;
 import aplicacion.Pecado;
-import aplicacion.TipoLugar;
-import aplicacion.TipoUsuario;
-import aplicacion.Vivo;
 
 class DAOAcciones extends AbstractDAO{
 
@@ -86,6 +83,38 @@ class DAOAcciones extends AbstractDAO{
 		} finally {
 			try {
 				stmPecado.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return resultado;
+	}
+	public java.util.List<String> listaVenganzas() {
+		java.util.List<String> resultado = new java.util.ArrayList<String>();
+		String VenganzaActual = null;
+		Connection con;
+		PreparedStatement stmVenganza = null;
+		ResultSet rsVenganza;
+
+		con = super.getConexion();
+
+		String consulta = "select * "
+				+ "from venganza ";
+
+		try {
+			stmVenganza = con.prepareStatement(consulta);
+			rsVenganza = stmVenganza.executeQuery();
+			while (rsVenganza.next()) {
+				VenganzaActual = rsVenganza.getString("consecuencia");
+				resultado.add(VenganzaActual);
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmVenganza.close();
 			} catch (SQLException e) {
 				System.out.println("Imposible cerrar cursores");
 			}

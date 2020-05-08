@@ -88,30 +88,4 @@ class DAOUsuarios extends AbstractDAO{
 	        }
 	        return resultado;
 	    }
-	 
-	 	public void mandarALugar(int id_usuario,String lugar) {
-	 		Connection con;
-	        PreparedStatement stmUsuario = null;
-
-	        con = super.getConexion();
-
-	        try {
-	            stmUsuario = con.prepareStatement("update mortal "
-	                    + "set lugar = ? "
-	                    + "where id_mortal= ?");
-	            stmUsuario.setString(1, lugar);
-	            stmUsuario.setInt(2, id_usuario);
-	            stmUsuario.executeUpdate();
-	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
-	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-	        } finally {
-	            try {
-	                stmUsuario.close();
-	            } catch (SQLException e) {
-	                System.out.println("Imposible cerrar cursores");
-	            }
-	        }
-	 	}
-	 
 }

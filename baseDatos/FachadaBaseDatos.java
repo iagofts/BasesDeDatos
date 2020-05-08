@@ -109,4 +109,7 @@ public class FachadaBaseDatos {
 		public void demonizar(int id_usuario) {
 			this.daoVivos.demonizar(id_usuario);
 		}
+		public java.util.List<String> listaVenganzas(){
+			return this.daoAcciones.listaVenganzas();
+		}
 }
