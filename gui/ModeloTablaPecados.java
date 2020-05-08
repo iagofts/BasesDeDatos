@@ -1,18 +1,18 @@
 package gui;
 
-import aplicacion.Vivo;
+import aplicacion.Pecado;
 import javax.swing.table.*;
 
 public class ModeloTablaPecados extends AbstractTableModel {
- private java.util.List<Vivo> usuarios;
+ private java.util.List<Pecado> pecados;
  
     public ModeloTablaPecados(){
-        this.usuarios=new java.util.ArrayList<>();
+        this.pecados=new java.util.ArrayList<>();
     }
 
     @Override
     public int getRowCount() {
-        return usuarios.size();
+        return pecados.size();
     }
 
     @Override
@@ -25,8 +25,8 @@ public class ModeloTablaPecados extends AbstractTableModel {
            Object resultado=null;
 
         switch (col){
-            case 0: resultado= usuarios.get(row).getPuntuacion(); break;
-            case 1: resultado= usuarios.get(row).getPuntuacion(); break;
+            case 0: resultado= pecados.get(row).getGravedad(); break;
+            case 1: resultado= pecados.get(row).getDescripcion(); break;
         }
         return resultado;
     }
@@ -35,7 +35,7 @@ public class ModeloTablaPecados extends AbstractTableModel {
         String nombre="";
 
         switch (col){
-            case 0: nombre= "Puntuación"; break;
+            case 0: nombre= "Gravedad"; break;
             case 1: nombre= "Descripción"; break;
         }
         return nombre;
@@ -52,8 +52,8 @@ public class ModeloTablaPecados extends AbstractTableModel {
         return clase;
     }
     
-    public void setFilas(java.util.List<Vivo> usuarios){
-        this.usuarios=usuarios;
+    public void setFilas(java.util.List<Pecado> pecados){
+        this.pecados=pecados;
         fireTableDataChanged();
     }
     
@@ -63,11 +63,11 @@ public class ModeloTablaPecados extends AbstractTableModel {
     }
 
     public void borrarElemento(int i){
-        this.usuarios.remove(i);
+        this.pecados.remove(i);
         fireTableDataChanged();
     }
    
-    public Vivo getRow(int row){
-        return this.usuarios.get(row);
+    public aplicacion.Pecado getRow(int row){
+        return this.pecados.get(row);
     }
 }

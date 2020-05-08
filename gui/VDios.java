@@ -9,13 +9,8 @@ public class VDios extends javax.swing.JFrame {
     public VDios( aplicacion.FachadaAplicacion fa) {
         this.fa=fa;
         initComponents();
-        this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
-        ModeloTablaJuiciosPendientes mjp;
-        mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
-        mjp.setFilas(fa.juiciosPendientes());
-        //Se selecciona el primer elemento de la tabla
-        if(mjp.getRowCount()!=0) tablaJuiciosPendientes.setRowSelectionInterval(0, 0); 
-        this.actualizarDatos();
+        this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla      
+        this.inicializarDatos();
     }
 
     @SuppressWarnings("unchecked")
@@ -604,7 +599,7 @@ public class VDios extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tablaJuiciosPendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJuiciosPendientesMouseClicked
-       actualizarDatos();
+       inicializarDatos();
     }//GEN-LAST:event_tablaJuiciosPendientesMouseClicked
 
     private void textoPuntuacionCieloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPuntuacionCieloActionPerformed
@@ -710,9 +705,13 @@ public class VDios extends javax.swing.JFrame {
     private javax.swing.JTextField totalPuntuacionLimbo;
     // End of variables declaration//GEN-END:variables
     
-    public void actualizarDatos(){
+    public void inicializarDatos(){
+        //PESTAÑA JUICIOS
         ModeloTablaJuiciosPendientes mjp;
         mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
+        mjp.setFilas(fa.juiciosPendientes());
+        //Se selecciona el primer elemento de la tabla
+        if(mjp.getRowCount()!=0) tablaJuiciosPendientes.setRowSelectionInterval(0, 0); 
         if(tablaJuiciosPendientes.getSelectedRow()!=-1){
             Vivo user=mjp.getRow(tablaJuiciosPendientes.getSelectedRow());
         textoNombre.setText(user.getNombre());
@@ -727,6 +726,13 @@ public class VDios extends javax.swing.JFrame {
             textoFechaNacimiento.setText(" ");
             textoFechaMuerte.setText(" ");
         }
+        
+        //PESTAÑA CIELO
+        ModeloListaStrings mlstAngeles=new ModeloListaStrings();
+        //listaAngeles.set
+        //listaAngeles.setElementos()
+        
+        
     }
 
 }

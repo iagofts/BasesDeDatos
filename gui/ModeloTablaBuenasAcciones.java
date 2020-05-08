@@ -1,18 +1,18 @@
 package gui;
 
-import aplicacion.Vivo;
+import aplicacion.BuenaAccion;
 import javax.swing.table.*;
 
 public class ModeloTablaBuenasAcciones extends AbstractTableModel {
- private java.util.List<Vivo> usuarios;
+ private java.util.List<BuenaAccion> buenasAcciones;
  
     public ModeloTablaBuenasAcciones(){
-        this.usuarios=new java.util.ArrayList<>();
+        this.buenasAcciones=new java.util.ArrayList<>();
     }
 
     @Override
     public int getRowCount() {
-        return usuarios.size();
+        return this.buenasAcciones.size();
     }
 
     @Override
@@ -25,8 +25,8 @@ public class ModeloTablaBuenasAcciones extends AbstractTableModel {
            Object resultado=null;
 
         switch (col){
-            case 0: resultado= usuarios.get(row).getPuntuacion(); break;
-            case 1: resultado= usuarios.get(row).getPuntuacion(); break;
+            case 0: resultado= this.buenasAcciones.get(row).getPuntuacion(); break;
+            case 1: resultado= this.buenasAcciones.get(row).getDescripcion(); break;
         }
         return resultado;
     }
@@ -52,8 +52,8 @@ public class ModeloTablaBuenasAcciones extends AbstractTableModel {
         return clase;
     }
     
-    public void setFilas(java.util.List<Vivo> usuarios){
-        this.usuarios=usuarios;
+    public void setFilas(java.util.List<BuenaAccion> buenasAcciones){
+        this.buenasAcciones=buenasAcciones;
         fireTableDataChanged();
     }
     
@@ -63,11 +63,11 @@ public class ModeloTablaBuenasAcciones extends AbstractTableModel {
     }
 
     public void borrarElemento(int i){
-        this.usuarios.remove(i);
+        this.buenasAcciones.remove(i);
         fireTableDataChanged();
     }
    
-    public Vivo getRow(int row){
-        return this.usuarios.get(row);
+    public aplicacion.BuenaAccion getRow(int row){
+        return this.buenasAcciones.get(row);
     }
 }
