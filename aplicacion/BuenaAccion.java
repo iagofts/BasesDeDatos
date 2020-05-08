@@ -18,4 +18,11 @@ public class BuenaAccion {
         this.descripcion = descripcion;
     }
     
+    public float getPuntuacion(){
+        return this.puntuacion;
+    }
+    
+    public String getDescripcion(){
+        return this.descripcion;
+    
 }
