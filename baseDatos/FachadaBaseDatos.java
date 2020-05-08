@@ -3,6 +3,7 @@ package baseDatos;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.Properties;
 
 import aplicacion.Usuario;
@@ -64,6 +65,9 @@ public class FachadaBaseDatos {
 	    }
 		public java.util.List<Vivo> VivosConJuicioPendiente (){
 			return daoVivos.VivosConJuicioPendiente();
+		}
+		public void RegistrarUsuarioVivo(Integer id_demonio, Integer id_angel, String nombre,String nombre_usuario,String localidad, String clave, Date fecha_nacimiento, Date fecha_muerte) {
+			this.daoVivos.RegistrarUsuarioVivo(id_demonio, id_angel, nombre, nombre_usuario, localidad, clave, fecha_nacimiento, fecha_muerte);
 		}
 	
 }
