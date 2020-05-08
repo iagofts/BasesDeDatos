@@ -46,12 +46,12 @@ public class FachadaAplicacion {
         fgui.muestraVJuzgar(parent,modal,v);
     }
     
-    public void muestraVRegistrar(){
-        fgui.muestraVRegistrar();
+    public void muestraVRegistrar(java.awt.Frame parent,boolean modal){
+        fgui.muestraVRegistrar(parent,modal);
     }
     
-    public void muestraVEstadisticas(){
-        fgui.muestraVEstadisticas();
+    public void muestraVEstadisticas(java.awt.Frame parent,boolean modal){
+        fgui.muestraVEstadisticas(parent,modal);
     }
     public java.util.List<Vivo> listaVivosCielo() {
     	return cu.listaVivosCielo();
