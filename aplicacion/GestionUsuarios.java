@@ -21,5 +21,17 @@ public class GestionUsuarios {
     public java.util.List<Vivo> juiciosPendientes(){
         return fbd.VivosConJuicioPendiente();
     }
+    
+    public void muestraVJuzgar(Vivo v){
+        fgui.muestraVJuzgar(v);
+    }
+    
+    public void muestraVRegistrar(){
+        fgui.muestraVRegistrar();
+    }
+    
+    public void muestraVEstadisticas(){
+        fgui.muestraVEstadisticas();
+    }
  
 }

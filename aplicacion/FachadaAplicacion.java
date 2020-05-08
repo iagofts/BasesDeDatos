@@ -40,5 +40,17 @@ public class FachadaAplicacion {
     
     public java.util.List<Vivo> juiciosPendientes(){
         return cu.juiciosPendientes();
-    } 
+    }
+    
+    public void muestraVJuzgar(Vivo v){
+        cu.muestraVJuzgar(v);
+    }
+    
+    public void muestraVRegistrar(){
+        cu.muestraVRegistrar();
+    }
+    
+    public void muestraVEstadisticas(){
+        cu.muestraVEstadisticas();
+    }
 }
