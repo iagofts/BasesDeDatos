@@ -225,4 +225,131 @@ class DAOVivos extends AbstractDAO {
 	        return resultado;
 	    }
 
+		public java.util.List<Vivo> listaVivosTierra(String nombre){
+
+	        java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
+	        Vivo UsuarioActual;
+	        Connection con;
+	        PreparedStatement stmUsuario = null;
+	        ResultSet rsUsuario;
+
+	        con = this.getConexion();
+	        String consulta = "select * from vivo as v full join usuario as u on "
+	        		+ "v.id_vivo = u.id_usuario "
+	        		+ "where lugar = 'Tierra' and nombre like ? ";
+
+	        try {
+	            stmUsuario = con.prepareStatement(consulta);
+	            stmUsuario.setString(1, "%" + nombre + "%");
+	            rsUsuario = stmUsuario.executeQuery();
+	            while (rsUsuario.next()) {
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
+	                resultado.add(UsuarioActual);
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	        return resultado;
+	    }
+		public void mandarALugar(int id_usuario,String lugar) {
+	 		Connection con;
+	        PreparedStatement stmUsuario = null;
+
+	        con = super.getConexion();
+
+	        try {
+	            stmUsuario = con.prepareStatement("update mortal "
+	                    + "set lugar = ? "
+	                    + "where id_mortal= ?");
+	            stmUsuario.setString(1, lugar);
+	            stmUsuario.setInt(2, id_usuario);
+	            stmUsuario.executeUpdate();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	 	}
+		public void angelizar(int id_usuario) {
+	 		Connection con;
+	        PreparedStatement stmUsuario = null;
+
+	        con = super.getConexion();
+
+	        try {
+	            stmUsuario = con.prepareStatement("delete from buenaAccion "
+	            		+ "where usuario = ? "
+	            		+ "delete from pecado "
+	            		+" where usuario = ?"
+	                    + "delete from vivo "
+	                    + "where id_vivo = ? "
+	                    + "update mortal "
+	                    + "set lugar = 'Cielo' "
+	                    + "where id_mortal = ? "
+	                    + "insert into angel "
+	                    + "(id) values (?) ");
+	            stmUsuario.setInt(1, id_usuario);
+	            stmUsuario.setInt(2, id_usuario);
+	            stmUsuario.setInt(3, id_usuario);
+	            stmUsuario.setInt(4, id_usuario);
+	            stmUsuario.setInt(5, id_usuario);
+	            stmUsuario.executeUpdate();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	 	}
+		public void demonizar(int id_usuario) {
+	 		Connection con;
+	        PreparedStatement stmUsuario = null;
+
+	        con = super.getConexion();
+
+	        try {
+	            stmUsuario = con.prepareStatement("delete from buenaAccion "
+	            		+ "where usuario = ? "
+	            		+ "delete from pecado "
+	            		+" where usuario = ?"
+	                    + "delete from vivo "
+	                    + "where id_vivo = ? "
+	                    + "update mortal "
+	                    + "set lugar = 'Infierno' "
+	                    + "where id_mortal = ? "
+	                    + "insert into demonio "
+	                    + "(id) values (?) ");
+	            stmUsuario.setInt(1, id_usuario);
+	            stmUsuario.setInt(2, id_usuario);
+	            stmUsuario.setInt(3, id_usuario);
+	            stmUsuario.setInt(4, id_usuario);
+	            stmUsuario.setInt(5, id_usuario);
+	            stmUsuario.executeUpdate();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	 	}
 }

@@ -97,5 +97,16 @@ public class FachadaBaseDatos {
 		public java.util.List<Demonio> listaDemoniosInfierno(){
 			return this.daoMortales.listaDemoniosInfierno();
 		}
-	
+		public java.util.List<Vivo> listaVivosTierra(String nombre){
+			return this.daoVivos.listaVivosTierra(nombre);
+		}
+		public void mandarALugar(int id_usuario,String lugar) {
+			this.daoVivos.mandarALugar(id_usuario,lugar);
+		}
+		public void angelizar(int id_usuario) {
+			this.daoVivos.angelizar(id_usuario);
+		}
+		public void demonizar(int id_usuario) {
+			this.daoVivos.demonizar(id_usuario);
+		}
 }
