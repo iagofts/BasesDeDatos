@@ -24,5 +24,5 @@ public class BuenaAccion {
     
     public String getDescripcion(){
         return this.descripcion;
-    
+    }
 }
