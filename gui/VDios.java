@@ -41,9 +41,9 @@ public class VDios extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         listaAngeles = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
-        textoUsuario = new javax.swing.JTextField();
+        textoSeleccionadoCielo = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaBA = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         textoTotalBA = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -52,7 +52,7 @@ public class VDios extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        listaUsuarios3 = new javax.swing.JList<>();
+        listaUsuariosCielo = new javax.swing.JList<>();
         jLabel19 = new javax.swing.JLabel();
         panelInfierno = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -60,11 +60,11 @@ public class VDios extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         textoPuntuacionInfierno = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        listaUsuarios1 = new javax.swing.JList<>();
+        listaUsuariosInfierno = new javax.swing.JList<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaPecados = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
-        textoPecados = new javax.swing.JTextField();
+        textoSeleccionadoInfierno = new javax.swing.JTextField();
         btnDemonificar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -73,7 +73,7 @@ public class VDios extends javax.swing.JFrame {
         listaDemonios = new javax.swing.JList<>();
         panelLimbo = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        listaUsuarios2 = new javax.swing.JList<>();
+        listaUsuariosLimbo = new javax.swing.JList<>();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -234,8 +234,8 @@ public class VDios extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel7.setText("Buenas acciones de:");
 
-        jTable1.setModel(new gui.ModeloTablaBuenasAcciones());
-        jScrollPane3.setViewportView(jTable1);
+        tablaBA.setModel(new gui.ModeloTablaBuenasAcciones());
+        jScrollPane3.setViewportView(tablaBA);
 
         jLabel8.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel8.setText("Total BA:");
@@ -261,9 +261,9 @@ public class VDios extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel13.setText("Usuarios Vivos");
 
-        listaUsuarios3.setModel(new ModeloListaStrings());
-        listaUsuarios3.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane7.setViewportView(listaUsuarios3);
+        listaUsuariosCielo.setModel(new ModeloListaStrings());
+        listaUsuariosCielo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane7.setViewportView(listaUsuariosCielo);
 
         jLabel19.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel19.setText("Ángeles");
@@ -312,7 +312,7 @@ public class VDios extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCieloLayout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(textoSeleccionadoCielo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(32, 32, 32))
         );
         panelCieloLayout.setVerticalGroup(
@@ -323,7 +323,7 @@ public class VDios extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panelCieloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textoSeleccionadoCielo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCieloLayout.createSequentialGroup()
@@ -367,12 +367,12 @@ public class VDios extends javax.swing.JFrame {
             }
         });
 
-        listaUsuarios1.setModel(new ModeloListaStrings());
-        listaUsuarios1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane4.setViewportView(listaUsuarios1);
+        listaUsuariosInfierno.setModel(new ModeloListaStrings());
+        listaUsuariosInfierno.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane4.setViewportView(listaUsuariosInfierno);
 
-        jTable2.setModel(new gui.ModeloTablaPecados());
-        jScrollPane5.setViewportView(jTable2);
+        tablaPecados.setModel(new gui.ModeloTablaPecados());
+        jScrollPane5.setViewportView(tablaPecados);
 
         jLabel12.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel12.setText("Pecados de:");
@@ -437,7 +437,7 @@ public class VDios extends javax.swing.JFrame {
                         .addGap(117, 117, 117)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textoPecados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textoSeleccionadoInfierno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
@@ -449,7 +449,7 @@ public class VDios extends javax.swing.JFrame {
                     .addGroup(panelInfiernoLayout.createSequentialGroup()
                         .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(textoPecados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoSeleccionadoInfierno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelInfiernoLayout.createSequentialGroup()
@@ -480,9 +480,9 @@ public class VDios extends javax.swing.JFrame {
 
         tabbedPanel.addTab("Infierno", panelInfierno);
 
-        listaUsuarios2.setModel(new ModeloListaStrings());
-        listaUsuarios2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane6.setViewportView(listaUsuarios2);
+        listaUsuariosLimbo.setModel(new ModeloListaStrings());
+        listaUsuariosLimbo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane6.setViewportView(listaUsuariosLimbo);
 
         jLabel15.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel15.setText("Usuarios");
@@ -676,32 +676,32 @@ public class VDios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JList<String> listaAngeles;
     private javax.swing.JList<String> listaDemonios;
-    private javax.swing.JList<String> listaUsuarios1;
-    private javax.swing.JList<String> listaUsuarios2;
-    private javax.swing.JList<String> listaUsuarios3;
+    private javax.swing.JList<String> listaUsuariosCielo;
+    private javax.swing.JList<String> listaUsuariosInfierno;
+    private javax.swing.JList<String> listaUsuariosLimbo;
     private javax.swing.JPanel panelCielo;
     private javax.swing.JPanel panelInfierno;
     private javax.swing.JPanel panelJuicios;
     private javax.swing.JPanel panelLimbo;
     private javax.swing.JTabbedPane tabbedPanel;
+    private javax.swing.JTable tablaBA;
     private javax.swing.JTable tablaJuiciosPendientes;
+    private javax.swing.JTable tablaPecados;
     private javax.swing.JTextField textoFechaMuerte;
     private javax.swing.JTextField textoFechaNacimiento;
     private javax.swing.JTextField textoID;
     private javax.swing.JTextField textoLocalidad;
     private javax.swing.JTextField textoNombre;
-    private javax.swing.JTextField textoPecados;
     private javax.swing.JTextField textoPuntuacionCielo;
     private javax.swing.JTextField textoPuntuacionInfierno;
+    private javax.swing.JTextField textoSeleccionadoCielo;
+    private javax.swing.JTextField textoSeleccionadoInfierno;
     private javax.swing.JTextField textoTotalBA;
     private javax.swing.JTextField textoTotalBALimbo;
     private javax.swing.JTextField textoTotalPecados;
     private javax.swing.JTextField textoTotalPecadosLimbo;
-    private javax.swing.JTextField textoUsuario;
     private javax.swing.JTextField totalPuntuacionLimbo;
     // End of variables declaration//GEN-END:variables
     
@@ -729,9 +729,36 @@ public class VDios extends javax.swing.JFrame {
         
         //PESTAÑA CIELO
         ModeloListaStrings mlstAngeles=new ModeloListaStrings();
-        //listaAngeles.set
-        //listaAngeles.setElementos()
+        listaAngeles.setModel(mlstAngeles);
+        mlstAngeles.setElementos(fa.listaStringAngelesCielo());
+        ModeloListaStrings mlstUsuariosCielo=new ModeloListaStrings();
+        listaUsuariosCielo.setModel(mlstUsuariosCielo);
+        mlstUsuariosCielo.setElementos(fa.listaStringVivosCielo());
+        if(listaUsuariosCielo.getSelectedIndex()!=-1){
+            textoSeleccionadoCielo.setText(listaUsuariosCielo.getSelectedValue());
+            ModeloTablaBuenasAcciones mtba;
+            mtba=(ModeloTablaBuenasAcciones) tablaBA.getModel();
+            mtba.setFilas(fa.listaVivosCielo().get(listaUsuariosCielo.getSelectedIndex()).getBuenasAcciones());
+        }
         
+        //PESTAÑA INFIERNO
+        ModeloListaStrings mlstDemonios=new ModeloListaStrings();
+        listaDemonios.setModel(mlstDemonios);
+        mlstDemonios.setElementos(fa.listaStringDemoniosInfierno());
+        ModeloListaStrings mlstUsuariosInfierno=new ModeloListaStrings();
+        listaUsuariosInfierno.setModel(mlstUsuariosInfierno);
+        mlstUsuariosInfierno.setElementos(fa.listaStringVivosInfierno());
+        if(listaUsuariosInfierno.getSelectedIndex()!=-1){
+            textoSeleccionadoInfierno.setText(listaUsuariosInfierno.getSelectedValue());
+            ModeloTablaPecados mtp;
+            mtp=(ModeloTablaPecados) tablaPecados.getModel();
+            mtp.setFilas(fa.listaVivosInfierno().get(listaUsuariosInfierno.getSelectedIndex()).getPecados());
+        }
+        
+        //PESTAÑA LIMBO
+        ModeloListaStrings mlstUsuariosLimbo = new ModeloListaStrings();
+        listaUsuariosLimbo.setModel(mlstUsuariosLimbo);
+        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
         
     }
 

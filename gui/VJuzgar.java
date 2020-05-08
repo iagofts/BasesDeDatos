@@ -102,7 +102,7 @@ public class VJuzgar extends javax.swing.JDialog {
         textoTotalPecados1.setEditable(false);
 
         jLabel10.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
-        jLabel10.setText("Total Pecados:");
+        jLabel10.setText("Puntuación:");
 
         textoTotalPecados2.setEditable(false);
 

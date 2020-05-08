@@ -320,7 +320,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel7" min="-2" pref="127" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="textoUsuario" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <Component id="textoSeleccionadoCielo" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -337,7 +337,7 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textoSeleccionadoCielo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="276" max="-2" attributes="0"/>
@@ -408,7 +408,7 @@
                 <Property name="text" type="java.lang.String" value="Buenas acciones de:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="textoUsuario">
+            <Component class="javax.swing.JTextField" name="textoSeleccionadoCielo">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
               <AuxValues>
@@ -417,7 +417,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tablaBA">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new gui.ModeloTablaBuenasAcciones()" type="code"/>
@@ -483,7 +483,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="listaUsuarios3">
+                <Component class="javax.swing.JList" name="listaUsuariosCielo">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new ModeloListaStrings()" type="code"/>
@@ -564,7 +564,7 @@
                               <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" pref="81" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="textoPecados" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="textoSeleccionadoInfierno" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane5" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
                       </Group>
@@ -580,7 +580,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textoPecados" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textoSeleccionadoInfierno" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -653,7 +653,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="listaUsuarios1">
+                <Component class="javax.swing.JList" name="listaUsuariosInfierno">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new ModeloListaStrings()" type="code"/>
@@ -673,7 +673,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable2">
+                <Component class="javax.swing.JTable" name="tablaPecados">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new gui.ModeloTablaPecados()" type="code"/>
@@ -696,7 +696,7 @@
                 <Property name="text" type="java.lang.String" value="Pecados de:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="textoPecados">
+            <Component class="javax.swing.JTextField" name="textoSeleccionadoInfierno">
             </Component>
             <Component class="javax.swing.JButton" name="btnDemonificar">
               <Properties>
@@ -845,7 +845,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JList" name="listaUsuarios2">
+                <Component class="javax.swing.JList" name="listaUsuariosLimbo">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new ModeloListaStrings()" type="code"/>
