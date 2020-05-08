@@ -18,4 +18,12 @@ public class Pecado {
         this.descripcion = descripcion;
     }
     
+    public float getGravedad(){
+        return this.gravedad;
+    }
+    
+    public String getDescripcion(){
+        return this.descripcion;
+    }
+    
 }
