@@ -21,17 +21,43 @@ public class GestionUsuarios {
     public java.util.List<Vivo> juiciosPendientes(){
         return fbd.VivosConJuicioPendiente();
     }
-    
-    public void muestraVJuzgar(java.awt.Frame parent,boolean modal,Vivo v){
-        fgui.muestraVJuzgar(parent,modal,v);
+    public java.util.List<Vivo> listaVivosCielo() {
+    	java.util.List<Vivo> listaVivos=null;
+    	listaVivos = fbd.listaVivosCielo();
+    	if(listaVivos!=null) {
+    	for(Vivo v: listaVivos) {
+    			v.setBuenasAcciones(fbd.listaBuenasAcciones(v.getIdUsuario()));
+    		}
+    	}
+    	return listaVivos;
     }
     
-    public void muestraVRegistrar(){
-        fgui.muestraVRegistrar();
+    public java.util.List<Vivo> listaVivosInfierno() {
+    	java.util.List<Vivo> listaVivos=null;
+    	listaVivos = fbd.listaVivosInfierno();
+    	if(listaVivos!=null) {
+    	for(Vivo v: listaVivos) {
+    			v.setPecados(fbd.listaPecados(v.getIdUsuario()));
+    		}
+    	}
+    	return listaVivos;
     }
-    
-    public void muestraVEstadisticas(){
-        fgui.muestraVEstadisticas();
+    public java.util.List<Vivo> listaVivosLimbo() {
+    	java.util.List<Vivo> listaVivos=null;
+    	listaVivos = fbd.listaVivosCielo();
+    	if(listaVivos!=null) {
+    	for(Vivo v: listaVivos) {
+    			v.setBuenasAcciones(fbd.listaBuenasAcciones(v.getIdUsuario()));
+    			v.setPecados(fbd.listaPecados(v.getIdUsuario()));
+    		}
+    	}
+    	return listaVivos;
+    }
+    public java.util.List<Demonio> listaDemoniosInfierno() {
+    	return fbd.listaDemoniosInfierno();
+    }
+    public java.util.List<Angel> listaAngelesCielo() {
+    	return fbd.listaAngelesCielo();
     }
  
 }

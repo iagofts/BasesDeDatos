@@ -89,37 +89,5 @@ class DAOUsuarios extends AbstractDAO{
 	        return resultado;
 	    }
 
-	 public void modificarUsuarioVivo(Integer id, String nombre_usuario, String clave, String localidad) {
-	        Connection con;
-	        PreparedStatement stmUsuario = null;
-
-	        con = super.getConexion();
-
-	        try {
-	            stmUsuario = con.prepareStatement("update vivo "
-	                    + "set localidad=? "
-	                    + "where id_vivo=? "
-	                    + "update usuario "
-	                    + "set nombre_usuario=?,"
-	                    + "set clave=? "
-	                    + "where id_usuario=?");
-	            stmUsuario.setString(1, localidad);
-	            stmUsuario.setInt(2, id);
-	            stmUsuario.setString(3, nombre_usuario);
-	            stmUsuario.setString(4, clave);
-	            stmUsuario.setInt(5, id);
-	            stmUsuario.executeUpdate();
-	        } catch (SQLException e) {
-	            System.out.println(e.getMessage());
-	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-	        } finally {
-	            try {
-	                stmUsuario.close();
-	            } catch (SQLException e) {
-	                System.out.println("Imposible cerrar cursores");
-	            }
-	        }
-	    }
-
 	 
 }

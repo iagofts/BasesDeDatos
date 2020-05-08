@@ -88,5 +88,141 @@ class DAOVivos extends AbstractDAO {
 		}
 
 	}
+	 public void modificarUsuarioVivo(Integer id, String nombre_usuario, String clave, String localidad) {
+	        Connection con;
+	        PreparedStatement stmUsuario = null;
+
+	        con = super.getConexion();
+
+	        try {
+	            stmUsuario = con.prepareStatement("update vivo "
+	                    + "set localidad=? "
+	                    + "where id_vivo=? "
+	                    + "update usuario "
+	                    + "set nombre_usuario=?,"
+	                    + "set clave=? "
+	                    + "where id_usuario=?");
+	            stmUsuario.setString(1, localidad);
+	            stmUsuario.setInt(2, id);
+	            stmUsuario.setString(3, nombre_usuario);
+	            stmUsuario.setString(4, clave);
+	            stmUsuario.setInt(5, id);
+	            stmUsuario.executeUpdate();
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	    }
+	 
+	 public java.util.List<Vivo> listaVivosCielo() {
+	        java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
+	        Vivo UsuarioActual;
+	        Connection con;
+	        PreparedStatement stmUsuario = null;
+	        ResultSet rsUsuario;
+
+	        con = this.getConexion();
+	        String consulta = "select * "
+	                + "from mortal as m full join usuario as u on "
+	                + "u.id_usuario = m.id_mortal "
+	                + "full join vivo as v on "
+	                + "m.id_mortal = v.id_vivo "
+	                + "where lugar = 'Cielo' and id_vivo NOTNULL";
+
+	        try {
+	            stmUsuario = con.prepareStatement(consulta);
+	            rsUsuario = stmUsuario.executeQuery();
+	            while (rsUsuario.next()) {
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
+	                resultado.add(UsuarioActual);
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	        return resultado;
+	    }
+		
+		public java.util.List<Vivo> listaVivosInfierno() {
+	        java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
+	        Vivo UsuarioActual;
+	        Connection con;
+	        PreparedStatement stmUsuario = null;
+	        ResultSet rsUsuario;
+
+	        con = this.getConexion();
+	        String consulta = "select * "
+	                + "from mortal as m full join usuario as u on "
+	                + "u.id_usuario = m.id_mortal "
+	                + "full join vivo as v on "
+	                + "m.id_mortal = v.id_vivo "
+	                + "where lugar = 'Infierno' and id_vivo NOTNULL";
+
+	        try {
+	            stmUsuario = con.prepareStatement(consulta);
+	            rsUsuario = stmUsuario.executeQuery();
+	            while (rsUsuario.next()) {
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
+	                resultado.add(UsuarioActual);
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	        return resultado;
+	    }
+		
+		public java.util.List<Vivo> listaVivosLimbo() {
+	        java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
+	        Vivo UsuarioActual;
+	        Connection con;
+	        PreparedStatement stmUsuario = null;
+	        ResultSet rsUsuario;
+
+	        con = this.getConexion();
+	        String consulta = "select * "
+	                + "from mortal as m full join usuario as u on "
+	                + "u.id_usuario = m.id_mortal "
+	                + "full join vivo as v on "
+	                + "m.id_mortal = v.id_vivo "
+	                + "where lugar = 'Limbo' and id_vivo NOTNULL";
+
+	        try {
+	            stmUsuario = con.prepareStatement(consulta);
+	            rsUsuario = stmUsuario.executeQuery();
+	            while (rsUsuario.next()) {
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
+	                resultado.add(UsuarioActual);
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	        return resultado;
+	    }
 
 }

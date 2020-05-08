@@ -16,9 +16,14 @@ public class Demonio extends Mortal{
     public Demonio(int id_usuario, String nombre_usuario, String nombre, String clave, TipoUsuario tipo, Date fecha_nacimiento, Date fecha_muerte, TipoLugar lugar) {
         super(id_usuario, nombre_usuario, nombre, clave, tipo, fecha_nacimiento, fecha_muerte, lugar);
     }
-
+    
     public Demonio(String nombre) {
         super(nombre);
     }
+
+	public Demonio(int id_usuario,String nombre) {
+		super(id_usuario,nombre);
+	}
+    
     
 }

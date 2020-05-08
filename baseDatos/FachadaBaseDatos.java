@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.Properties;
 
+import aplicacion.Angel;
 import aplicacion.BuenaAccion;
+import aplicacion.Demonio;
+import aplicacion.Mortal;
 import aplicacion.Pecado;
 import aplicacion.Usuario;
 import aplicacion.Vivo;
@@ -17,6 +20,7 @@ public class FachadaBaseDatos {
 		private DAOUsuarios daoUsuarios;
 		private DAOAcciones daoAcciones;
 		private DAOVivos daoVivos;
+		private DAOMortales daoMortales;
 		
 		public FachadaBaseDatos(aplicacion.FachadaAplicacion fa) {
 		Properties configuracion = new Properties();
@@ -42,6 +46,7 @@ public class FachadaBaseDatos {
             daoUsuarios=new DAOUsuarios(conexion,fa);
             daoAcciones=new DAOAcciones(conexion,fa);
             daoVivos=new DAOVivos(conexion,fa);
+            daoMortales= new DAOMortales(conexion,fa);
             
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -63,7 +68,7 @@ public class FachadaBaseDatos {
 	        return daoUsuarios.consultarUsuarios(id, nombre_usuario,nombre);
 	    }
 		public void modificarUsuarioVivo(Integer id, String nombre_usuario, String clave, String localidad) {
-	        this.daoUsuarios.modificarUsuarioVivo(id, nombre_usuario, clave, localidad);
+	        this.daoVivos.modificarUsuarioVivo(id, nombre_usuario, clave, localidad);
 	    }
 		public java.util.List<Vivo> VivosConJuicioPendiente (){
 			return daoVivos.VivosConJuicioPendiente();
@@ -76,6 +81,21 @@ public class FachadaBaseDatos {
 		}
 		public java.util.List<BuenaAccion> listaBuenasAcciones(int id_usuario){
 			return this.daoAcciones.listaBuenasAcciones(id_usuario);
+		}
+		public java.util.List<Vivo> listaVivosCielo(){
+			return this.daoVivos.listaVivosCielo();
+		}
+		public java.util.List<Vivo> listaVivosInfierno(){
+			return this.daoVivos.listaVivosInfierno();
+		}
+		public java.util.List<Vivo> listaVivosLimbo(){
+			return this.daoVivos.listaVivosLimbo();
+		}
+		public java.util.List<Angel> listaAngelesCielo(){
+			return this.daoMortales.listaAngelesCielo();
+		}
+		public java.util.List<Demonio> listaDemoniosInfierno(){
+			return this.daoMortales.listaDemoniosInfierno();
 		}
 	
 }

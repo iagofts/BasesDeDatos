@@ -30,6 +30,9 @@ public class Mortal extends Usuario{
     public Mortal(int id_usuario){
         super(id_usuario);
     }
+    public Mortal(int id_usuario,String nombre){
+        super(id_usuario,nombre);
+    }
     
     public Date getFechaNacimiento(){
         return this.fecha_nacimiento;

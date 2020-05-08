@@ -43,14 +43,29 @@ public class FachadaAplicacion {
     }
     
     public void muestraVJuzgar(java.awt.Frame parent,boolean modal,Vivo v){
-        cu.muestraVJuzgar(parent,modal,v);
+        fgui.muestraVJuzgar(parent,modal,v);
     }
     
     public void muestraVRegistrar(){
-        cu.muestraVRegistrar();
+        fgui.muestraVRegistrar();
     }
     
     public void muestraVEstadisticas(){
-        cu.muestraVEstadisticas();
+        fgui.muestraVEstadisticas();
+    }
+    public java.util.List<Vivo> listaVivosCielo() {
+    	return cu.listaVivosCielo();
+    }
+    public java.util.List<Vivo> listaVivosInfierno() {
+    	return cu.listaVivosInfierno();
+    }
+    public java.util.List<Vivo> listaVivosLimbo() {
+    	return cu.listaVivosLimbo();
+    }
+    public java.util.List<Demonio> listaDemoniosInfierno() {
+    	return cu.listaDemoniosInfierno();
+    }
+    public java.util.List<Angel> listaAngelesCielo() {
+    	return cu.listaAngelesCielo();
     }
 }

@@ -27,6 +27,10 @@ public class Usuario {
     public Usuario(String nombre) {
         this.nombre = nombre;
     }
+    public Usuario(int id_usuario, String nombre) {
+        this.nombre = nombre;
+        this.id_usuario=id_usuario;
+    }
     
     public Usuario(int id_usuario){
         this.id_usuario=id_usuario;

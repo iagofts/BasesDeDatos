@@ -20,4 +20,7 @@ public class Angel extends Mortal{
     public Angel(String nombre) {
         super(nombre);
     }
+    public Angel(int id_usuario,String nombre) {
+		super(id_usuario,nombre);
+	}
 }
