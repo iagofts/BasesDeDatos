@@ -65,4 +65,12 @@ public class Vivo extends Mortal{
         this.buenasAcciones = buenasAcciones;
     }
     
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
+
+    public String getLocalidad() {
+        return localidad;
+    }
+    
 }

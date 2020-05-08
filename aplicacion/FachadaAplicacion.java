@@ -42,8 +42,8 @@ public class FachadaAplicacion {
         return cu.juiciosPendientes();
     }
     
-    public void muestraVJuzgar(Vivo v){
-        cu.muestraVJuzgar(v);
+    public void muestraVJuzgar(java.awt.Frame parent,boolean modal,Vivo v){
+        cu.muestraVJuzgar(parent,modal,v);
     }
     
     public void muestraVRegistrar(){

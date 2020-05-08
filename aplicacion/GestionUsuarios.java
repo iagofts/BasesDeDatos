@@ -22,8 +22,8 @@ public class GestionUsuarios {
         return fbd.VivosConJuicioPendiente();
     }
     
-    public void muestraVJuzgar(Vivo v){
-        fgui.muestraVJuzgar(v);
+    public void muestraVJuzgar(java.awt.Frame parent,boolean modal,Vivo v){
+        fgui.muestraVJuzgar(parent,modal,v);
     }
     
     public void muestraVRegistrar(){
