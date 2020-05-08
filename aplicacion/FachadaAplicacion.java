@@ -47,11 +47,11 @@ public class FachadaAplicacion {
     }
     
     public void muestraVRegistrar(java.awt.Frame parent,boolean modal){
-        fgui.muestraVRegistrar(parent,modal);
+        fgui.muestraVRegistrar(parent, modal);
     }
     
     public void muestraVEstadisticas(java.awt.Frame parent,boolean modal){
-        fgui.muestraVEstadisticas(parent,modal);
+        fgui.muestraVEstadisticas(parent, modal);
     }
     public java.util.List<Vivo> listaVivosCielo() {
     	return cu.listaVivosCielo();
@@ -67,5 +67,21 @@ public class FachadaAplicacion {
     }
     public java.util.List<Angel> listaAngelesCielo() {
     	return cu.listaAngelesCielo();
+    }
+    
+    public java.util.List<String> listaStringVivosCielo() {
+    	return cu.listaStringVivosCielo();
+    }
+    public java.util.List<String> listaStringVivosInfierno() {
+    	return cu.listaStringVivosInfierno();
+    }
+    public java.util.List<String> listaStringVivosLimbo() {
+    	return cu.listaStringVivosLimbo();
+    }
+    public java.util.List<String> listaStringDemoniosInfierno() {
+    	return cu.listaStringDemoniosInfierno();
+    }
+    public java.util.List<String> listaStringAngelesCielo() {
+    	return cu.listaStringAngelesCielo();
     }
 }
