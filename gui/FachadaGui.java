@@ -2,6 +2,7 @@ package gui;
 
 import aplicacion.TipoUsuario;
 import aplicacion.Usuario;
+import aplicacion.Vivo;
 
 public class FachadaGui {
     aplicacion.FachadaAplicacion fa;
@@ -36,6 +37,20 @@ public class FachadaGui {
             vUV=new VUsuarioVivo(fa);
             vUV.setVisible(true);
         }
+    }
+    
+    public void muestraVJuzgar(java.awt.Frame parent, boolean modal,Vivo vivo){
+        VJuzgar vj;
+        vj = new VJuzgar(parent,modal,vivo);
+        vj.setVisible(true);
+    }
+    
+    public void muestraVEstadisticas(){
+        
+    }
+     
+    public void muestraVRegistrar(){
+       
     }
     
 }
