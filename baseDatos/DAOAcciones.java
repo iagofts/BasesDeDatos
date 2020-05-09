@@ -24,7 +24,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tba.descrip_accion, puntuacion from vivo as v"
+		String consulta = "select tba.descrip_accion, v.puntuacion from vivo as v"
 				+ " full join buenaAccion as ba"
 				+ " on v.id_vivo=ba.usuario"
 				+ " full join tipoBA as tba"
@@ -61,7 +61,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tp.descrip_pecado, gravedad from vivo as v"
+		String consulta = "select tp.descrip_pecado, tp.gravedad from vivo as v"
 				+ " full join pecado as pe"
 				+ " on v.id_vivo=pe.usuario"
 				+ " full join tipoPecado as tp"
