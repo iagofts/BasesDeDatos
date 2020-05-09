@@ -1,5 +1,7 @@
 package gui;
 
+import aplicacion.BuenaAccion;
+import aplicacion.Pecado;
 import aplicacion.Vivo;
 
 public class VDios extends javax.swing.JFrame {
@@ -35,7 +37,7 @@ public class VDios extends javax.swing.JFrame {
         textoFechaMuerte = new javax.swing.JTextField();
         btnJuzgar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnEstadisticas = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         panelCielo = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -80,7 +82,7 @@ public class VDios extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         textoTotalPecadosLimbo = new javax.swing.JTextField();
         textoTotalBALimbo = new javax.swing.JTextField();
-        totalPuntuacionLimbo = new javax.swing.JTextField();
+        textoPuntuacionLimbo = new javax.swing.JTextField();
         btnEnviarCielo = new javax.swing.JButton();
         btnEnviarInfierno = new javax.swing.JButton();
         btnSalir1 = new javax.swing.JButton();
@@ -144,7 +146,12 @@ public class VDios extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Consultar Estadísticas");
+        btnEstadisticas.setText("Consultar Estadísticas");
+        btnEstadisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadisticasActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Salir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +170,7 @@ public class VDios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnEstadisticas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -219,7 +226,7 @@ public class VDios extends javax.swing.JFrame {
                         .addComponent(textoFechaMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46)
                 .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnJuzgar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -378,6 +385,14 @@ public class VDios extends javax.swing.JFrame {
 
         listaUsuariosInfierno.setModel(new ModeloListaStrings());
         listaUsuariosInfierno.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaUsuariosInfierno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaUsuariosInfiernoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listaUsuariosInfiernoMousePressed(evt);
+            }
+        });
         jScrollPane4.setViewportView(listaUsuariosInfierno);
 
         tablaPecados.setModel(new gui.ModeloTablaPecados());
@@ -492,6 +507,14 @@ public class VDios extends javax.swing.JFrame {
 
         listaUsuariosLimbo.setModel(new ModeloListaStrings());
         listaUsuariosLimbo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaUsuariosLimbo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaUsuariosLimboMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listaUsuariosLimboMousePressed(evt);
+            }
+        });
         jScrollPane6.setViewportView(listaUsuariosLimbo);
 
         jLabel15.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
@@ -507,6 +530,11 @@ public class VDios extends javax.swing.JFrame {
         jLabel18.setText("Puntuación:");
 
         btnEnviarCielo.setText("Enviar al Cielo");
+        btnEnviarCielo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarCieloActionPerformed(evt);
+            }
+        });
 
         btnEnviarInfierno.setText("Enviar al Infierno");
         btnEnviarInfierno.addActionListener(new java.awt.event.ActionListener() {
@@ -542,7 +570,7 @@ public class VDios extends javax.swing.JFrame {
                                 .addGroup(panelLimboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(textoTotalPecadosLimbo)
                                     .addComponent(textoTotalBALimbo)
-                                    .addComponent(totalPuntuacionLimbo, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
+                                    .addComponent(textoPuntuacionLimbo, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
                             .addGroup(panelLimboLayout.createSequentialGroup()
                                 .addComponent(btnEnviarCielo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
@@ -580,7 +608,7 @@ public class VDios extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(panelLimboLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(totalPuntuacionLimbo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoPuntuacionLimbo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -594,14 +622,14 @@ public class VDios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedPanel)
+            .addComponent(tabbedPanel, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+        fa.muestraVRegistrar(this, true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -629,7 +657,14 @@ public class VDios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEnviarInfiernoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarInfiernoActionPerformed
-        // TODO add your handling code here:
+        ModeloListaStrings mlstUsuariosLimbo;
+        mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
+        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
+        if(mlstUsuariosLimbo.getSize()>0){
+            java.util.List<Vivo> vivosLimbo;
+            vivosLimbo=fa.listaVivosLimbo();
+           // fa.enviarAlInfierno(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
+        }
     }//GEN-LAST:event_btnEnviarInfiernoActionPerformed
 
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
@@ -652,17 +687,48 @@ public class VDios extends javax.swing.JFrame {
         actualizarDatosCielo();
     }//GEN-LAST:event_listaUsuariosCieloMousePressed
 
+    private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
+        fa.muestraVEstadisticas(this,true);
+    }//GEN-LAST:event_btnEstadisticasActionPerformed
+
+    private void listaUsuariosInfiernoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaUsuariosInfiernoMouseClicked
+       actualizarDatosInfierno();
+    }//GEN-LAST:event_listaUsuariosInfiernoMouseClicked
+
+    private void listaUsuariosInfiernoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaUsuariosInfiernoMousePressed
+        actualizarDatosInfierno();
+    }//GEN-LAST:event_listaUsuariosInfiernoMousePressed
+
+    private void listaUsuariosLimboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaUsuariosLimboMouseClicked
+       actualizarDatosLimbo();
+    }//GEN-LAST:event_listaUsuariosLimboMouseClicked
+
+    private void listaUsuariosLimboMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaUsuariosLimboMousePressed
+         actualizarDatosLimbo();
+    }//GEN-LAST:event_listaUsuariosLimboMousePressed
+
+    private void btnEnviarCieloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarCieloActionPerformed
+        ModeloListaStrings mlstUsuariosLimbo;
+        mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
+        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
+        if(mlstUsuariosLimbo.getSize()>0){
+        java.util.List<Vivo> vivosLimbo;
+        vivosLimbo=fa.listaVivosLimbo();
+       // fa.enviarAlCielo(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
+        }
+    }//GEN-LAST:event_btnEnviarCieloActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAngelizar;
     private javax.swing.JButton btnDemonificar;
     private javax.swing.JButton btnEnviarCielo;
     private javax.swing.JButton btnEnviarInfierno;
+    private javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnJuzgar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSalir1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -714,13 +780,13 @@ public class VDios extends javax.swing.JFrame {
     private javax.swing.JTextField textoNombre;
     private javax.swing.JTextField textoPuntuacionCielo;
     private javax.swing.JTextField textoPuntuacionInfierno;
+    private javax.swing.JTextField textoPuntuacionLimbo;
     private javax.swing.JTextField textoSeleccionadoCielo;
     private javax.swing.JTextField textoSeleccionadoInfierno;
     private javax.swing.JTextField textoTotalBA;
     private javax.swing.JTextField textoTotalBALimbo;
     private javax.swing.JTextField textoTotalPecados;
     private javax.swing.JTextField textoTotalPecadosLimbo;
-    private javax.swing.JTextField totalPuntuacionLimbo;
     // End of variables declaration//GEN-END:variables
     
     public void inicializarDatos(){
@@ -761,9 +827,10 @@ public class VDios extends javax.swing.JFrame {
             textoSeleccionadoCielo.setText(listaUsuariosCielo.getModel().getElementAt(0));
             java.util.List<Vivo> vivosCielo;
             vivosCielo=fa.listaVivosCielo();
-            if(vivosCielo.get(0).getBuenasAcciones().size()>0){
+            java.util.List<BuenaAccion> listaBA=fa.listaBuenasAcciones(vivosCielo.get(0).getIdUsuario());
+            if(listaBA.size()>0){
                 mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
-                mtBA.setFilas(vivosCielo.get(0).getBuenasAcciones());
+                mtBA.setFilas(listaBA);
             }
             if(mtBA.getRowCount()>0){ //Comprobamos que tenga buenas acciones
                 textoTotalBA.setText(String.valueOf(mtBA.getRowCount()));
@@ -782,16 +849,52 @@ public class VDios extends javax.swing.JFrame {
         ModeloListaStrings mlstUsuariosInfierno;
         mlstUsuariosInfierno=(ModeloListaStrings) listaUsuariosInfierno.getModel();
         mlstUsuariosInfierno.setElementos(fa.listaStringVivosInfierno());
+        if(mlstUsuariosInfierno.getElementos().size()>0){
+            listaUsuariosInfierno.setSelectedIndex(0);
+        }
         if(listaUsuariosInfierno.getSelectedIndex()!=-1){
             textoSeleccionadoInfierno.setText(listaUsuariosInfierno.getSelectedValue());
             mtp=(ModeloTablaPecados) tablaPecados.getModel();
             mtp.setFilas(fa.listaVivosInfierno().get(listaUsuariosInfierno.getSelectedIndex()).getPecados());
+            
+            java.util.List<Vivo> vivosInfierno;
+            vivosInfierno=fa.listaVivosInfierno();
+            java.util.List<Pecado> listaPecados=fa.listaPecados(vivosInfierno.get(0).getIdUsuario());
+            if(listaPecados.size()>0){
+                mtp=(ModeloTablaPecados) tablaPecados.getModel();
+                mtp.setFilas(listaPecados);
+             mtp=(ModeloTablaPecados) tablaPecados.getModel();
+             mtp.setFilas(vivosInfierno.get(0).getPecados());
+            }
+            if(mtp.getRowCount()>0){ //Comprobamos que tenga buenas acciones
+                textoTotalPecados.setText(String.valueOf(mtp.getRowCount()));
+                textoPuntuacionInfierno.setText(String.valueOf(vivosInfierno.get(listaUsuariosInfierno.getSelectedIndex()).getPuntuacion()));
+            }else{
+                textoTotalPecados.setText(String.valueOf(0));
+                textoPuntuacionInfierno.setText(String.valueOf(0));
+            }
         }
         
         //PESTAÑA LIMBO
         ModeloListaStrings mlstUsuariosLimbo;
         mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
         mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
+        if(mlstUsuariosLimbo.getSize()>0){
+            listaUsuariosLimbo.setSelectedIndex(0);
+        }
+        if(listaUsuariosLimbo.getSelectedIndex()!=-1){
+        java.util.List<Vivo> vivosLimbo;
+        vivosLimbo=fa.listaVivosLimbo();
+        textoTotalPecadosLimbo.setText(String.valueOf(
+                fa.listaPecados(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario()).size()));
+        textoTotalBALimbo.setText(String.valueOf(
+                fa.listaBuenasAcciones(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario()).size()));
+        textoPuntuacionLimbo.setText(String.valueOf(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getPuntuacion()));
+        }else{
+            textoTotalPecadosLimbo.setText(String.valueOf(0));
+            textoTotalBALimbo.setText(String.valueOf(0));
+            textoPuntuacionLimbo.setText(String.valueOf(0));
+        }
         
     }
     
@@ -821,12 +924,16 @@ public class VDios extends javax.swing.JFrame {
         ModeloListaStrings mlstUsuariosCielo;
         mlstUsuariosCielo=(ModeloListaStrings) listaUsuariosCielo.getModel();
         if(listaUsuariosCielo.getSelectedIndex()!=-1){
-            textoSeleccionadoCielo.setText(mlstUsuariosCielo.getElementAt(0));
+            textoSeleccionadoCielo.setText(mlstUsuariosCielo.getElementAt(listaUsuariosCielo.getSelectedIndex()));
             ModeloTablaBuenasAcciones mtBA;
             mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
             java.util.List<Vivo> vivosCielo;
             vivosCielo=fa.listaVivosCielo();
-            mtBA.setFilas(vivosCielo.get(listaUsuariosCielo.getSelectedIndex()).getBuenasAcciones());
+            java.util.List<BuenaAccion> listaBA=fa.listaBuenasAcciones(vivosCielo.get(0).getIdUsuario());
+            if(listaBA.size()>0){
+                mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
+                mtBA.setFilas(listaBA);
+            }
             if(mtBA.getRowCount()>0){ //Comprobamos que tenga buenas acciones
                 textoTotalBA.setText(String.valueOf(mtBA.getRowCount()));
                 textoPuntuacionCielo.setText(String.valueOf(vivosCielo.get(listaUsuariosCielo.getSelectedIndex()).getPuntuacion()));
@@ -836,5 +943,52 @@ public class VDios extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void actualizarDatosInfierno(){
+        //PESTAÑA Infierno
+        ModeloListaStrings mlstUsuariosInfierno;
+        mlstUsuariosInfierno=(ModeloListaStrings) listaUsuariosInfierno.getModel();
+        if(listaUsuariosInfierno.getSelectedIndex()!=-1){
+            textoSeleccionadoInfierno.setText(mlstUsuariosInfierno.getElementAt(listaUsuariosInfierno.getSelectedIndex()));
+            ModeloTablaPecados mtp;
+            mtp=(ModeloTablaPecados) tablaPecados.getModel();
+            java.util.List<Vivo> vivosInfierno;
+            vivosInfierno=fa.listaVivosInfierno();
+            java.util.List<Pecado> listap=fa.listaPecados(vivosInfierno.get(listaUsuariosInfierno.getSelectedIndex()).getIdUsuario());
+            if(listap.size()>0){
+                mtp=(ModeloTablaPecados) tablaPecados.getModel();
+                mtp.setFilas(listap);
+            }
+            if(mtp.getRowCount()>0){ //Comprobamos que tenga Pecados
+                textoTotalPecados.setText(String.valueOf(mtp.getRowCount()));
+                textoPuntuacionInfierno.setText(String.valueOf(vivosInfierno.get(listaUsuariosInfierno.getSelectedIndex()).getPuntuacion()));
+            }else{
+                textoTotalPecados.setText(String.valueOf(0));
+                textoPuntuacionInfierno.setText(String.valueOf(0));
+            }
+        }
+    }
+    
+    
+    public void actualizarDatosLimbo(){
+    ModeloListaStrings mlstUsuariosLimbo;
+        mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
+        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
+        if(listaUsuariosLimbo.getSelectedIndex()!=-1){
+        java.util.List<Vivo> vivosLimbo;
+        vivosLimbo=fa.listaVivosLimbo();
+        textoTotalPecadosLimbo.setText(String.valueOf(
+                fa.listaPecados(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario()).size()));
+        textoTotalBALimbo.setText(String.valueOf(
+                fa.listaBuenasAcciones(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario()).size()));
+        textoPuntuacionLimbo.setText(String.valueOf(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getPuntuacion()));
+        }else{
+            textoTotalPecadosLimbo.setText(String.valueOf(0));
+            textoTotalBALimbo.setText(String.valueOf(0));
+            textoPuntuacionLimbo.setText(String.valueOf(0));
+        }
+        
+    }
+    
     
 }

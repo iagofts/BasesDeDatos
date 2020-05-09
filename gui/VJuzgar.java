@@ -1,12 +1,17 @@
 package gui;
 
+import aplicacion.BuenaAccion;
+import javax.swing.JOptionPane;
+
 public class VJuzgar extends javax.swing.JDialog {
 
     aplicacion.FachadaAplicacion fa;
     aplicacion.Vivo vivo;
+    java.awt.Frame parent;
     
     public VJuzgar(java.awt.Frame parent, boolean modal,aplicacion.Vivo vivo,aplicacion.FachadaAplicacion fa) {
         super(parent, modal);
+        this.parent=parent;
         this.fa=fa;
         this.vivo=vivo;
         initComponents();
@@ -126,29 +131,6 @@ public class VJuzgar extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 23, Short.MAX_VALUE)
-                                .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(textoID, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(textoLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(textoFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(171, 171, 171)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(textoFechaMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -172,11 +154,38 @@ public class VJuzgar extends javax.swing.JDialog {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(70, 70, 70)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(0, 18, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel7)
-                                        .addGap(90, 90, 90)))))
+                                        .addGap(90, 90, 90))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(60, 60, 60)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(textoFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(textoFechaMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(textoID, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(55, 55, 55)
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(textoLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                         .addContainerGap(32, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -246,7 +255,14 @@ public class VJuzgar extends javax.swing.JDialog {
     }//GEN-LAST:event_textoIDActionPerformed
 
     private void btnJuzgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuzgarActionPerformed
-       fa.JuzgarUsuario(vivo);
+         switch(fa.juzgarUsuario(vivo)){
+            case 1: JOptionPane.showMessageDialog(this, "Usuario convertido en Demonio","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            case 2: JOptionPane.showMessageDialog(this, "Usuario mandado al Infierno","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            case 3: JOptionPane.showMessageDialog(this, "Usuario mandado al Limbo","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            case 4: JOptionPane.showMessageDialog(this, "Usuario mandado al Cielo","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            case 5: JOptionPane.showMessageDialog(this, "Usuario convertido en Angel","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            default: fa.muestraExcepcion(parent,true,"Error al juzgar el usuario"); break;
+        }
     }//GEN-LAST:event_btnJuzgarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -278,6 +294,8 @@ public class VJuzgar extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void inicializarDatos(){
+        vivo.setPecados(fa.listaPecados(vivo.getIdUsuario()));
+        vivo.setBuenasAcciones(fa.listaBuenasAcciones(vivo.getIdUsuario()));
         textoID.setText(vivo.getNombreUsuario());
         textoNombre.setText(vivo.getNombre());
         textoLocalidad.setText(vivo.getLocalidad());
@@ -285,10 +303,10 @@ public class VJuzgar extends javax.swing.JDialog {
         textoFechaNacimiento.setText(String.valueOf(vivo.getFechaNacimiento()));
         ModeloTablaBuenasAcciones mtBA;
         mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
-        mtBA.setFilas(vivo.getBuenasAcciones());
+        mtBA.setFilas(fa.listaBuenasAcciones(vivo.getIdUsuario()));
         ModeloTablaPecados mtp;
         mtp=(ModeloTablaPecados) tablaPecados.getModel();
-        mtp.setFilas(vivo.getPecados());
+        mtp.setFilas(fa.listaPecados(vivo.getIdUsuario()));
         textoTotalPecados.setText(String.valueOf(vivo.getPecados().size()));
         textoTotalBA.setText(String.valueOf(vivo.getBuenasAcciones().size()));
         textoPuntuacion.setText(String.valueOf(vivo.getPuntuacion()));

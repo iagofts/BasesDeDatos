@@ -46,11 +46,15 @@ public class FachadaGui {
     }
     
     public void muestraVEstadisticas(java.awt.Frame parent,boolean modal){
-        
+        VEstadisticas ve;
+        ve=new VEstadisticas(parent,modal);
+        ve.setVisible(modal);
     }
      
     public void muestraVRegistrar(java.awt.Frame parent,boolean modal){
-       
+       VRegistrar vr;
+       vr=new VRegistrar(parent,modal);
+       vr.setVisible(modal);
     }
     
 }
