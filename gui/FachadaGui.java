@@ -34,7 +34,7 @@ public class FachadaGui {
             vD.setVisible(true);
         }else{ //Ventana principal Usuario Vivo
             VUsuarioVivo vUV;
-            vUV=new VUsuarioVivo(fa);
+            vUV=new VUsuarioVivo(fa,user);
             vUV.setVisible(true);
         }
     }
