@@ -22,7 +22,10 @@ public class GestionUsuarios {
         return fbd.VivosConJuicioPendiente();
     }
     public Vivo obtenerUsuarioVivo(int id_usuario){
-         return fbd.consultarUsuarioVivo(id_usuario);
+        Vivo v=fbd.consultarUsuarioVivo(id_usuario);
+        v.setBuenasAcciones(fbd.listaBuenasAcciones(id_usuario));
+        v.setPecados(fbd.listaPecados(id_usuario));
+        return v;
     }
     public java.util.List<Vivo> listaVivosCielo() {
     	java.util.List<Vivo> listaVivos=null;
