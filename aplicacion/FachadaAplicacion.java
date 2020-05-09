@@ -33,6 +33,9 @@ public class FachadaAplicacion {
     public Usuario comprobarAutentificacion(String user,String key){
         return cu.comprobarAutentificacion(user, key);
     }
+    public void RegistrarUsuarioVivo(Integer id_demonio, Integer id_angel, String nombre, String nombre_usuario, String localidad, String clave, java.sql.Date fecha_nacimiento, java.sql.Date fecha_muerte){
+        cu.RegistrarUsuarioVivo(id_demonio, id_angel, nombre, nombre_usuario, localidad, clave, fecha_nacimiento, fecha_muerte);
+    }
     
     public void muestraVPrincipal(Usuario user){
         fgui.muestraVPrincipal(user);
@@ -43,7 +46,7 @@ public class FachadaAplicacion {
     }
     
     public void muestraVJuzgar(java.awt.Frame parent,boolean modal,Vivo v){
-        fgui.muestraVJuzgar(parent,modal,v);
+        fgui.muestraVJuzgar(parent,modal,v,this);
     }
     
     public void muestraVRegistrar(java.awt.Frame parent,boolean modal){
@@ -55,6 +58,9 @@ public class FachadaAplicacion {
     }
     public Vivo obtenerUsuarioVivo(int id_usuario){
         return cu.obtenerUsuarioVivo(id_usuario);
+    }
+    public void modificarUsuarioVivo(Integer id, String nombre, String clave, String localidad) {
+	cu.modificarUsuarioVivo(id, nombre, clave, localidad);
     }
     public java.util.List<Vivo> listaVivosCielo() {
     	return cu.listaVivosCielo();
@@ -87,4 +93,14 @@ public class FachadaAplicacion {
     public java.util.List<String> listaStringAngelesCielo() {
     	return cu.listaStringAngelesCielo();
     }
+    public int juzgarUsuario(Vivo v){
+        return cu.juzgarUsuario(v);
+    }
+    public java.util.List<Pecado> listaPecados(int id_usuario){
+        return cu.listaPecados(id_usuario);
+    }
+    public java.util.List<BuenaAccion> listaBuenasAcciones(int id_usuario){
+        return cu.listaBuenasAcciones(id_usuario);
+    }
+    
 }

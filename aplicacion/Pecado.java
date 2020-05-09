@@ -5,6 +5,8 @@
  */
 package aplicacion;
 
+import java.util.Date;
+
 /**
  *
  * @author alumnogreibd
@@ -12,6 +14,8 @@ package aplicacion;
 public class Pecado {
     private float gravedad;
     private String descripcion;
+    private boolean confesado;
+    private java.util.Date fecha;
 
     public Pecado(float gravedad, String descripcion) {
         this.gravedad = gravedad;
@@ -24,6 +28,14 @@ public class Pecado {
     
     public String getDescripcion(){
         return this.descripcion;
+    }
+
+    public boolean isConfesado() {
+        return confesado;
+    }
+
+    public Date getFecha() {
+        return fecha;
     }
     
 }
