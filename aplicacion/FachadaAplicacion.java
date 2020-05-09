@@ -53,6 +53,9 @@ public class FachadaAplicacion {
     public void muestraVEstadisticas(java.awt.Frame parent,boolean modal){
         fgui.muestraVEstadisticas(parent, modal);
     }
+    public Vivo obtenerUsuarioVivo(int id_usuario){
+        return cu.obtenerUsuarioVivo(id_usuario);
+    }
     public java.util.List<Vivo> listaVivosCielo() {
     	return cu.listaVivosCielo();
     }
