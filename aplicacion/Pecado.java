@@ -15,6 +15,7 @@ public class Pecado {
     private float gravedad;
     private String descripcion;
     private boolean confesado;
+    private boolean confesionSolicitada;
     private java.util.Date fecha;
 
     public Pecado(float gravedad, String descripcion) {
@@ -33,7 +34,11 @@ public class Pecado {
     public boolean isConfesado() {
         return confesado;
     }
-
+    
+    public boolean isConfesionSolicitada(){
+        return confesionSolicitada;
+    }
+    
     public Date getFecha() {
         return fecha;
     }
