@@ -1,13 +1,17 @@
 package gui;
 
+import aplicacion.Vivo;
+
 public class VUsuarioVivo extends javax.swing.JFrame {
 
      aplicacion.FachadaAplicacion fa;
+     Vivo usuario;
     
-    public VUsuarioVivo( aplicacion.FachadaAplicacion fa) {
+    public VUsuarioVivo( aplicacion.FachadaAplicacion fa, aplicacion.Usuario user) {
         this.fa=fa;
         initComponents();
         this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
+        inicializarDatos(user);
     }
 
     @SuppressWarnings("unchecked")
@@ -55,19 +59,9 @@ public class VUsuarioVivo extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña");
 
-        textoNombre.setText("jTextField1");
-
-        textoUsuario.setText("jTextField2");
-
-        textoContrasena.setText("jTextField3");
-
         jLabel4.setText("Localidad");
 
         jLabel5.setText("Fecha Nacimiento");
-
-        textoLocalidad.setText("jTextField4");
-
-        textoFechaNacimiento.setText("jTextField5");
 
         btnGuardar.setText("Guardar");
 
@@ -308,4 +302,21 @@ public class VUsuarioVivo extends javax.swing.JFrame {
     private javax.swing.JTextField textoNombreBusqueda;
     private javax.swing.JTextField textoUsuario;
     // End of variables declaration//GEN-END:variables
+    public void inicializarDatos(aplicacion.Usuario u){
+        //Pestaña Informacion
+        this.usuario=fa.obtenerUsuarioVivo(u.getIdUsuario());
+        ModeloTablaBuenasAcciones mba;
+        mba = (ModeloTablaBuenasAcciones) tablaBA.getModel();
+        mba.setFilas(usuario.getBuenasAcciones());
+        ModeloTablaPecados mp;
+        mp = (ModeloTablaPecados) tablaPecados.getModel();
+        mp.setFilas(usuario.getPecados());
+        textoNombre.setText(usuario.getNombre());
+        textoUsuario.setText(usuario.getNombreUsuario());
+        textoContrasena.setText(usuario.getClave());
+        textoLocalidad.setText(usuario.getLocalidad());
+        textoFechaNacimiento.setText(String.valueOf(usuario.getFechaNacimiento()));
+        //PestañaVenganzas
+    }
+
 }
