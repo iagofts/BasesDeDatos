@@ -58,7 +58,7 @@ public class GestionUsuarios {
     }
     public java.util.List<Vivo> listaVivosLimbo() {
     	java.util.List<Vivo> listaVivos=null;
-    	listaVivos = fbd.listaVivosCielo();
+    	listaVivos = fbd.listaVivosLimbo();
     	if(listaVivos!=null) {
     	for(Vivo v: listaVivos) {
     			v.setBuenasAcciones(fbd.listaBuenasAcciones(v.getIdUsuario()));
