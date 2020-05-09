@@ -5,14 +5,14 @@ import aplicacion.Vivo;
 public class VDios extends javax.swing.JFrame {
     
      aplicacion.FachadaAplicacion fa;
-     ModeloTablaJuiciosPendientes mjp;
+    /* ModeloTablaJuiciosPendientes mjp;
      ModeloListaStrings mlstAngeles;
      ModeloListaStrings mlstUsuariosCielo;
      ModeloTablaBuenasAcciones mtBA;
      ModeloListaStrings mlstDemonios;
      ModeloTablaPecados mtp;
      ModeloListaStrings mlstUsuariosInfierno; 
-      ModeloListaStrings mlstUsuariosLimbo;
+      ModeloListaStrings mlstUsuariosLimbo;*/
      
     public VDios( aplicacion.FachadaAplicacion fa) {
         this.fa=fa;
@@ -732,7 +732,7 @@ public class VDios extends javax.swing.JFrame {
     
     public void inicializarDatos(){
         //PESTAÑA JUICIOS
-        mjp=new ModeloTablaJuiciosPendientes();
+        ModeloTablaJuiciosPendientes mjp;
         mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
         mjp.setFilas(fa.juiciosPendientes());
         //Se selecciona el primer elemento de la tabla
@@ -753,30 +753,34 @@ public class VDios extends javax.swing.JFrame {
         }
         
         //PESTAÑA CIELO
-        mlstAngeles=new ModeloListaStrings();
-        mtBA=new ModeloTablaBuenasAcciones();
-        tablaBA.setModel(mtBA);
-        listaAngeles.setModel(mlstAngeles);
+        ModeloListaStrings mlstAngeles;
+        ModeloTablaBuenasAcciones mtBA;
+        mlstAngeles=(ModeloListaStrings) listaAngeles.getModel();
+        mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
         mlstAngeles.setElementos(fa.listaStringAngelesCielo());
-        mlstUsuariosCielo=new ModeloListaStrings();
-        listaUsuariosCielo.setModel(mlstUsuariosCielo);
+        ModeloListaStrings mlstUsuariosCielo;
+        mlstUsuariosCielo=(ModeloListaStrings) listaUsuariosCielo.getModel();
         mlstUsuariosCielo.setElementos(fa.listaStringVivosCielo());
         if(mlstUsuariosCielo.getElementos().size()>0){
             listaUsuariosCielo.setSelectedIndex(0);
         }
         if(listaUsuariosCielo.getSelectedIndex()!=-1){
             textoSeleccionadoCielo.setText(listaUsuariosCielo.getModel().getElementAt(0));
-            mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
-            mtBA.setFilas(fa.listaVivosCielo().get(0).getBuenasAcciones());
+            java.util.List<Vivo> vivosCielo;
+            vivosCielo=fa.listaVivosCielo();
+            if(vivosCielo.get(0).getBuenasAcciones().size()>0){
+                mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
+                mtBA.setFilas(vivosCielo.get(0).getBuenasAcciones());
+            }
         }
         
         //PESTAÑA INFIERNO
-        mlstDemonios=new ModeloListaStrings();
-        mtp=new ModeloTablaPecados();
-        listaDemonios.setModel(mlstDemonios);
+        ModeloListaStrings mlstDemonios;
+        ModeloTablaPecados mtp;
+        mlstDemonios=(ModeloListaStrings) listaDemonios.getModel();
         mlstDemonios.setElementos(fa.listaStringDemoniosInfierno());
-        mlstUsuariosInfierno=new ModeloListaStrings();
-        listaUsuariosInfierno.setModel(mlstUsuariosInfierno);
+        ModeloListaStrings mlstUsuariosInfierno;
+        mlstUsuariosInfierno=(ModeloListaStrings) listaUsuariosInfierno.getModel();
         mlstUsuariosInfierno.setElementos(fa.listaStringVivosInfierno());
         if(listaUsuariosInfierno.getSelectedIndex()!=-1){
             textoSeleccionadoInfierno.setText(listaUsuariosInfierno.getSelectedValue());
@@ -785,14 +789,15 @@ public class VDios extends javax.swing.JFrame {
         }
         
         //PESTAÑA LIMBO
-        mlstUsuariosLimbo = new ModeloListaStrings();
-        listaUsuariosLimbo.setModel(mlstUsuariosLimbo);
+        ModeloListaStrings mlstUsuariosLimbo;
+        mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
         mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
         
     }
     
     public void actualizarDatosJuiciosPendientes(){
         //PESTAÑA JUICIOS
+        ModeloTablaJuiciosPendientes mjp;
         mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
         //Se selecciona el primer elemento de la tabla
         if(tablaJuiciosPendientes.getSelectedRow()!=-1){
@@ -813,9 +818,11 @@ public class VDios extends javax.swing.JFrame {
     
     public void actualizarDatosCielo(){
         //PESTAÑA CIELO
-        listaUsuariosCielo.setModel(mlstUsuariosCielo);
+        ModeloListaStrings mlstUsuariosCielo;
+        mlstUsuariosCielo=(ModeloListaStrings) listaUsuariosCielo.getModel();
         if(listaUsuariosCielo.getSelectedIndex()!=-1){
             textoSeleccionadoCielo.setText(mlstUsuariosCielo.getElementAt(0));
+            ModeloTablaBuenasAcciones mtBA;
             mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
             mtBA.setFilas(fa.listaVivosCielo().get(listaUsuariosCielo.getSelectedIndex()).getBuenasAcciones());
             //if(mtBA.getRowCount()>0){ //Comprobamos que tenga buenas acciones
