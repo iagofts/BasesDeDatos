@@ -21,6 +21,9 @@ public class GestionUsuarios {
     public java.util.List<Vivo> juiciosPendientes(){
         return fbd.VivosConJuicioPendiente();
     }
+    public Vivo obtenerUsuarioVivo(int id_usuario){
+         return fbd.consultarUsuarioVivo(id_usuario);
+    }
     public java.util.List<Vivo> listaVivosCielo() {
     	java.util.List<Vivo> listaVivos=null;
     	listaVivos = fbd.listaVivosCielo();
