@@ -5,7 +5,15 @@ import aplicacion.Vivo;
 public class VDios extends javax.swing.JFrame {
     
      aplicacion.FachadaAplicacion fa;
-    
+     ModeloTablaJuiciosPendientes mjp;
+     ModeloListaStrings mlstAngeles;
+     ModeloListaStrings mlstUsuariosCielo;
+     ModeloTablaBuenasAcciones mtBA;
+     ModeloListaStrings mlstDemonios;
+     ModeloTablaPecados mtp;
+     ModeloListaStrings mlstUsuariosInfierno; 
+      ModeloListaStrings mlstUsuariosLimbo;
+     
     public VDios( aplicacion.FachadaAplicacion fa) {
         this.fa=fa;
         initComponents();
@@ -263,6 +271,14 @@ public class VDios extends javax.swing.JFrame {
 
         listaUsuariosCielo.setModel(new ModeloListaStrings());
         listaUsuariosCielo.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaUsuariosCielo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listaUsuariosCieloMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listaUsuariosCieloMousePressed(evt);
+            }
+        });
         jScrollPane7.setViewportView(listaUsuariosCielo);
 
         jLabel19.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
@@ -447,10 +463,11 @@ public class VDios extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelInfiernoLayout.createSequentialGroup()
-                        .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(textoSeleccionadoInfierno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(textoSeleccionadoInfierno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelInfiernoLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -599,7 +616,7 @@ public class VDios extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tablaJuiciosPendientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaJuiciosPendientesMouseClicked
-       inicializarDatos();
+       actualizarDatosJuiciosPendientes();
     }//GEN-LAST:event_tablaJuiciosPendientesMouseClicked
 
     private void textoPuntuacionCieloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoPuntuacionCieloActionPerformed
@@ -633,6 +650,14 @@ public class VDios extends javax.swing.JFrame {
             fa.muestraVJuzgar(this,true,mjp.getRow(tablaJuiciosPendientes.getSelectedRow()));
         }
     }//GEN-LAST:event_btnJuzgarActionPerformed
+
+    private void listaUsuariosCieloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaUsuariosCieloMouseClicked
+        actualizarDatosCielo();
+    }//GEN-LAST:event_listaUsuariosCieloMouseClicked
+
+    private void listaUsuariosCieloMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaUsuariosCieloMousePressed
+        actualizarDatosCielo();
+    }//GEN-LAST:event_listaUsuariosCieloMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -707,7 +732,7 @@ public class VDios extends javax.swing.JFrame {
     
     public void inicializarDatos(){
         //PESTAÑA JUICIOS
-        ModeloTablaJuiciosPendientes mjp;
+        mjp=new ModeloTablaJuiciosPendientes();
         mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
         mjp.setFilas(fa.juiciosPendientes());
         //Se selecciona el primer elemento de la tabla
@@ -728,38 +753,75 @@ public class VDios extends javax.swing.JFrame {
         }
         
         //PESTAÑA CIELO
-        ModeloListaStrings mlstAngeles=new ModeloListaStrings();
+        mlstAngeles=new ModeloListaStrings();
+        mtBA=new ModeloTablaBuenasAcciones();
+        tablaBA.setModel(mtBA);
         listaAngeles.setModel(mlstAngeles);
         mlstAngeles.setElementos(fa.listaStringAngelesCielo());
-        ModeloListaStrings mlstUsuariosCielo=new ModeloListaStrings();
+        mlstUsuariosCielo=new ModeloListaStrings();
         listaUsuariosCielo.setModel(mlstUsuariosCielo);
         mlstUsuariosCielo.setElementos(fa.listaStringVivosCielo());
+        if(mlstUsuariosCielo.getElementos().size()>0){
+            listaUsuariosCielo.setSelectedIndex(0);
+        }
         if(listaUsuariosCielo.getSelectedIndex()!=-1){
-            textoSeleccionadoCielo.setText(listaUsuariosCielo.getSelectedValue());
-            ModeloTablaBuenasAcciones mtba;
-            mtba=(ModeloTablaBuenasAcciones) tablaBA.getModel();
-            mtba.setFilas(fa.listaVivosCielo().get(listaUsuariosCielo.getSelectedIndex()).getBuenasAcciones());
+            textoSeleccionadoCielo.setText(listaUsuariosCielo.getModel().getElementAt(0));
+            mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
+            mtBA.setFilas(fa.listaVivosCielo().get(0).getBuenasAcciones());
         }
         
         //PESTAÑA INFIERNO
-        ModeloListaStrings mlstDemonios=new ModeloListaStrings();
+        mlstDemonios=new ModeloListaStrings();
+        mtp=new ModeloTablaPecados();
         listaDemonios.setModel(mlstDemonios);
         mlstDemonios.setElementos(fa.listaStringDemoniosInfierno());
-        ModeloListaStrings mlstUsuariosInfierno=new ModeloListaStrings();
+        mlstUsuariosInfierno=new ModeloListaStrings();
         listaUsuariosInfierno.setModel(mlstUsuariosInfierno);
         mlstUsuariosInfierno.setElementos(fa.listaStringVivosInfierno());
         if(listaUsuariosInfierno.getSelectedIndex()!=-1){
             textoSeleccionadoInfierno.setText(listaUsuariosInfierno.getSelectedValue());
-            ModeloTablaPecados mtp;
             mtp=(ModeloTablaPecados) tablaPecados.getModel();
             mtp.setFilas(fa.listaVivosInfierno().get(listaUsuariosInfierno.getSelectedIndex()).getPecados());
         }
         
         //PESTAÑA LIMBO
-        ModeloListaStrings mlstUsuariosLimbo = new ModeloListaStrings();
+        mlstUsuariosLimbo = new ModeloListaStrings();
         listaUsuariosLimbo.setModel(mlstUsuariosLimbo);
         mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
         
     }
-
+    
+    public void actualizarDatosJuiciosPendientes(){
+        //PESTAÑA JUICIOS
+        mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
+        //Se selecciona el primer elemento de la tabla
+        if(tablaJuiciosPendientes.getSelectedRow()!=-1){
+            Vivo user=mjp.getRow(tablaJuiciosPendientes.getSelectedRow());
+        textoNombre.setText(user.getNombre());
+        textoID.setText(user.getNombreUsuario());
+        textoLocalidad.setText(user.getLocalidad());
+        textoFechaNacimiento.setText(String.valueOf(user.getFechaNacimiento()));
+        textoFechaMuerte.setText(String.valueOf(user.getFechaMuerte()));
+        }else{
+            textoNombre.setText(" ");
+            textoID.setText(" ");
+            textoLocalidad.setText(" ");
+            textoFechaNacimiento.setText(" ");
+            textoFechaMuerte.setText(" ");
+        }
+    }
+    
+    public void actualizarDatosCielo(){
+        //PESTAÑA CIELO
+        listaUsuariosCielo.setModel(mlstUsuariosCielo);
+        if(listaUsuariosCielo.getSelectedIndex()!=-1){
+            textoSeleccionadoCielo.setText(mlstUsuariosCielo.getElementAt(0));
+            mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
+            mtBA.setFilas(fa.listaVivosCielo().get(listaUsuariosCielo.getSelectedIndex()).getBuenasAcciones());
+            //if(mtBA.getRowCount()>0){ //Comprobamos que tenga buenas acciones
+                textoTotalBA.setText(String.valueOf(mtBA.getRowCount()));
+            //}
+        }
+    }
+    
 }
