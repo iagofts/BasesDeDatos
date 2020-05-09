@@ -112,4 +112,7 @@ public class FachadaBaseDatos {
 		public java.util.List<String> listaVenganzas(){
 			return this.daoAcciones.listaVenganzas();
 		}
+		public Vivo consultarUsuarioVivo(int id_usuario) {
+			return this.daoVivos.consultarUsuarioVivo(id_usuario);
+		}
 }

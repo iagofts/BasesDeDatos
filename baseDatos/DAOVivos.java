@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import aplicacion.TipoLugar;
 import aplicacion.TipoUsuario;
+import aplicacion.Usuario;
 import aplicacion.Vivo;
 
 class DAOVivos extends AbstractDAO {
@@ -352,4 +353,41 @@ class DAOVivos extends AbstractDAO {
 	            }
 	        }
 	 	}
+		public Vivo consultarUsuarioVivo(int id_usuario) {
+			Vivo resultado = null;
+	        Connection con;
+	        PreparedStatement stmUsuario = null;
+	        ResultSet rsUsuario;
+
+	        con = this.getConexion();
+
+	        try {
+	            stmUsuario = con.prepareStatement("select * "
+	                    + "from usuario full join mortal "
+	                    + "on id_usuario = id_mortal "
+	                    + "full join vivo "
+	                    + "on id_mortal = id_vivo "
+	                    + "where id_usuario = ? ");
+	            stmUsuario.setInt(1, id_usuario);
+	            rsUsuario = stmUsuario.executeQuery();
+	            if (rsUsuario.next()) {
+	                resultado = new Vivo(rsUsuario.getInt("id_usuario"),
+	                        rsUsuario.getString("nombre_usuario"), rsUsuario.getString("nombre"),
+	                        rsUsuario.getString("clave"), TipoUsuario.valueOf(rsUsuario.getString("tipo")),
+	                        rsUsuario.getDate("fecha_nacimiento"),rsUsuario.getDate("fecha_muerte"),TipoLugar.valueOf(rsUsuario.getString("lugar")),
+	                        rsUsuario.getFloat("puntuacion"),rsUsuario.getBoolean("pendiente_juicio"),rsUsuario.getString("localidad"));
+
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	        return resultado;
+	    }
 }
