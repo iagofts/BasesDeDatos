@@ -73,7 +73,7 @@ class DAOAcciones extends AbstractDAO{
 			stmPecado.setInt(1, id_usuario);
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
-				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_accion"));
+				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"));
 				resultado.add(PecadoActual);
 
 			}
@@ -110,7 +110,7 @@ class DAOAcciones extends AbstractDAO{
 			stmPecado.setInt(1, id_usuario);
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
-				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_accion"));
+				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"));
 				resultado.add(PecadoActual);
 
 			}
