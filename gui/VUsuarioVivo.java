@@ -63,7 +63,14 @@ public class VUsuarioVivo extends javax.swing.JFrame {
 
         jLabel5.setText("Fecha Nacimiento");
 
+        textoFechaNacimiento.setEditable(false);
+
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Pecados");
 
@@ -78,6 +85,11 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         btnConfesar.setText("Confesar");
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelInformacionLayout = new javax.swing.GroupLayout(jPanelInformacion);
         jPanelInformacion.setLayout(jPanelInformacionLayout);
@@ -267,6 +279,17 @@ public class VUsuarioVivo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        fa.modificarUsuarioVivo(usuario.getIdUsuario(), textoNombre.getText(), textoContrasena.getText(), textoLocalidad.getText());
+        inicializarDatos(usuario);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
