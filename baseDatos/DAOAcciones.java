@@ -24,7 +24,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tba.descrip_accion, v.puntuacion from vivo as v"
+		String consulta = "select tba.descrip_accion, tba.puntuacion from vivo as v"
 				+ " full join buenaAccion as ba"
 				+ " on v.id_vivo=ba.usuario"
 				+ " full join tipoBA as tba"
@@ -73,7 +73,44 @@ class DAOAcciones extends AbstractDAO{
 			stmPecado.setInt(1, id_usuario);
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
-				PecadoActual = new Pecado(rsPecado.getFloat("puntuacion"), rsPecado.getString("descrip_accion"));
+				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_accion"));
+				resultado.add(PecadoActual);
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmPecado.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return resultado;
+	}
+	public java.util.List<Pecado> listaPecadosNoConfesados(int id_usuario) {
+		java.util.List<Pecado> resultado = new java.util.ArrayList<Pecado>();
+		Pecado PecadoActual = null;
+		Connection con;
+		PreparedStatement stmPecado = null;
+		ResultSet rsPecado;
+
+		con = super.getConexion();
+
+		String consulta = "select tp.descrip_pecado, tp.gravedad from vivo as v"
+				+ " full join pecado as pe"
+				+ " on v.id_vivo=pe.usuario"
+				+ " full join tipoPecado as tp"
+				+ " on tp.tipo_pecado=pe.tipo_pecado"
+				+ " where v.id_vivo = ? and confesado = 'FALSE'";
+
+		try {
+			stmPecado = con.prepareStatement(consulta);
+			stmPecado.setInt(1, id_usuario);
+			rsPecado = stmPecado.executeQuery();
+			while (rsPecado.next()) {
+				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_accion"));
 				resultado.add(PecadoActual);
 
 			}
@@ -121,4 +158,8 @@ class DAOAcciones extends AbstractDAO{
 		}
 		return resultado;
 	}
+	public int numeroHabitantesPorLocalidad() {
+		return 5;
+	}
+	
 }

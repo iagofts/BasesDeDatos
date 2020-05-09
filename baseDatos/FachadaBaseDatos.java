@@ -79,6 +79,9 @@ public class FachadaBaseDatos {
 		public java.util.List<Pecado> listaPecados(int id_usuario){
 			return this.daoAcciones.listaPecados(id_usuario);
 		}
+		public java.util.List<Pecado> listaPecadosNoConfesados(int id_usuario) {
+			return this.daoAcciones.listaPecadosNoConfesados(id_usuario);
+		}
 		public java.util.List<BuenaAccion> listaBuenasAcciones(int id_usuario){
 			return this.daoAcciones.listaBuenasAcciones(id_usuario);
 		}
@@ -113,6 +116,6 @@ public class FachadaBaseDatos {
 			return this.daoAcciones.listaVenganzas();
 		}
 		public Vivo consultarUsuarioVivo(int id_usuario) {
-			return this.daoVivos.consultarUsuarioVivo(id_usuario);
+			return this.daoVivos.consultarUsuarioVivo(id_usuario);  
 		}
 }
