@@ -5,14 +5,6 @@ import aplicacion.Vivo;
 public class VDios extends javax.swing.JFrame {
     
      aplicacion.FachadaAplicacion fa;
-    /* ModeloTablaJuiciosPendientes mjp;
-     ModeloListaStrings mlstAngeles;
-     ModeloListaStrings mlstUsuariosCielo;
-     ModeloTablaBuenasAcciones mtBA;
-     ModeloListaStrings mlstDemonios;
-     ModeloTablaPecados mtp;
-     ModeloListaStrings mlstUsuariosInfierno; 
-      ModeloListaStrings mlstUsuariosLimbo;*/
      
     public VDios( aplicacion.FachadaAplicacion fa) {
         this.fa=fa;
@@ -172,34 +164,35 @@ public class VDios extends javax.swing.JFrame {
                 .addComponent(btnRegistrar)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJuiciosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelJuiciosLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textoFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textoFechaMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelJuiciosLayout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(textoFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textoFechaMuerte, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelJuiciosLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textoID, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textoID, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textoLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textoLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(158, 158, 158))
         );
         panelJuiciosLayout.setVerticalGroup(
@@ -320,7 +313,7 @@ public class VDios extends javax.swing.JFrame {
                                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(42, 42, 42))))
                             .addGroup(panelCieloLayout.createSequentialGroup()
-                                .addGap(64, 64, 64)
+                                .addGap(72, 72, 72)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(panelCieloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -772,6 +765,13 @@ public class VDios extends javax.swing.JFrame {
                 mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
                 mtBA.setFilas(vivosCielo.get(0).getBuenasAcciones());
             }
+            if(mtBA.getRowCount()>0){ //Comprobamos que tenga buenas acciones
+                textoTotalBA.setText(String.valueOf(mtBA.getRowCount()));
+                textoPuntuacionCielo.setText(String.valueOf(vivosCielo.get(listaUsuariosCielo.getSelectedIndex()).getPuntuacion()));
+            }else{
+                textoTotalBA.setText(String.valueOf(0));
+                textoPuntuacionCielo.setText(String.valueOf(0));
+            }
         }
         
         //PESTAÑA INFIERNO
@@ -824,10 +824,16 @@ public class VDios extends javax.swing.JFrame {
             textoSeleccionadoCielo.setText(mlstUsuariosCielo.getElementAt(0));
             ModeloTablaBuenasAcciones mtBA;
             mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
-            mtBA.setFilas(fa.listaVivosCielo().get(listaUsuariosCielo.getSelectedIndex()).getBuenasAcciones());
-            //if(mtBA.getRowCount()>0){ //Comprobamos que tenga buenas acciones
+            java.util.List<Vivo> vivosCielo;
+            vivosCielo=fa.listaVivosCielo();
+            mtBA.setFilas(vivosCielo.get(listaUsuariosCielo.getSelectedIndex()).getBuenasAcciones());
+            if(mtBA.getRowCount()>0){ //Comprobamos que tenga buenas acciones
                 textoTotalBA.setText(String.valueOf(mtBA.getRowCount()));
-            //}
+                textoPuntuacionCielo.setText(String.valueOf(vivosCielo.get(listaUsuariosCielo.getSelectedIndex()).getPuntuacion()));
+            }else{
+                textoTotalBA.setText(String.valueOf(0));
+                textoPuntuacionCielo.setText(String.valueOf(0));
+            }
         }
     }
     

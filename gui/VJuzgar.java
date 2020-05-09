@@ -2,10 +2,12 @@ package gui;
 
 public class VJuzgar extends javax.swing.JDialog {
 
+    aplicacion.FachadaAplicacion fa;
     aplicacion.Vivo vivo;
     
-    public VJuzgar(java.awt.Frame parent, boolean modal,aplicacion.Vivo vivo) {
+    public VJuzgar(java.awt.Frame parent, boolean modal,aplicacion.Vivo vivo,aplicacion.FachadaAplicacion fa) {
         super(parent, modal);
+        this.fa=fa;
         this.vivo=vivo;
         initComponents();
         this.setLocationRelativeTo(null); //Coloca la ventana en el centro de la pantalla
@@ -26,21 +28,21 @@ public class VJuzgar extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaPecados = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         textoFechaMuerte = new javax.swing.JTextField();
         textoLocalidad = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaBA = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         btnJuzgar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         textoTotalPecados = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        textoTotalPecados1 = new javax.swing.JTextField();
+        textoTotalBA = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        textoTotalPecados2 = new javax.swing.JTextField();
+        textoPuntuacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Juicio Final");
@@ -67,8 +69,8 @@ public class VJuzgar extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel1.setText("Pecados:");
 
-        jTable2.setModel(new gui.ModeloTablaPecados());
-        jScrollPane5.setViewportView(jTable2);
+        tablaPecados.setModel(new gui.ModeloTablaPecados());
+        jScrollPane5.setViewportView(tablaPecados);
 
         jLabel6.setText("Fecha Muerte:");
 
@@ -76,13 +78,18 @@ public class VJuzgar extends javax.swing.JDialog {
 
         textoLocalidad.setEditable(false);
 
-        jTable1.setModel(new gui.ModeloTablaBuenasAcciones());
-        jScrollPane3.setViewportView(jTable1);
+        tablaBA.setModel(new gui.ModeloTablaBuenasAcciones());
+        jScrollPane3.setViewportView(tablaBA);
 
         jLabel7.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel7.setText("Buenas Acciones:");
 
         btnJuzgar.setText("Juzgar");
+        btnJuzgar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJuzgarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,12 +106,12 @@ public class VJuzgar extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel9.setText("Total Buenas Acciones:");
 
-        textoTotalPecados1.setEditable(false);
+        textoTotalBA.setEditable(false);
 
         jLabel10.setFont(new java.awt.Font("Noto Serif", 1, 12)); // NOI18N
         jLabel10.setText("Puntuación:");
 
-        textoTotalPecados2.setEditable(false);
+        textoPuntuacion.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,11 +163,11 @@ public class VJuzgar extends javax.swing.JDialog {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addGap(18, 18, 18)
-                                        .addComponent(textoTotalPecados2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(textoPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
-                                        .addComponent(textoTotalPecados1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(textoTotalBA, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(70, 70, 70)
@@ -198,17 +205,17 @@ public class VJuzgar extends javax.swing.JDialog {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(textoTotalPecados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textoTotalPecados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(textoTotalPecados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoTotalBA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(textoTotalPecados2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnJuzgar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,6 +245,10 @@ public class VJuzgar extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_textoIDActionPerformed
 
+    private void btnJuzgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuzgarActionPerformed
+       fa.JuzgarUsuario(vivo);
+    }//GEN-LAST:event_btnJuzgarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnJuzgar;
@@ -254,16 +265,16 @@ public class VJuzgar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tablaBA;
+    private javax.swing.JTable tablaPecados;
     private javax.swing.JTextField textoFechaMuerte;
     private javax.swing.JTextField textoFechaNacimiento;
     private javax.swing.JTextField textoID;
     private javax.swing.JTextField textoLocalidad;
     private javax.swing.JTextField textoNombre;
+    private javax.swing.JTextField textoPuntuacion;
+    private javax.swing.JTextField textoTotalBA;
     private javax.swing.JTextField textoTotalPecados;
-    private javax.swing.JTextField textoTotalPecados1;
-    private javax.swing.JTextField textoTotalPecados2;
     // End of variables declaration//GEN-END:variables
 
     public void inicializarDatos(){
@@ -272,6 +283,15 @@ public class VJuzgar extends javax.swing.JDialog {
         textoLocalidad.setText(vivo.getLocalidad());
         textoFechaMuerte.setText(String.valueOf(vivo.getFechaMuerte()));
         textoFechaNacimiento.setText(String.valueOf(vivo.getFechaNacimiento()));
+        ModeloTablaBuenasAcciones mtBA;
+        mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
+        mtBA.setFilas(vivo.getBuenasAcciones());
+        ModeloTablaPecados mtp;
+        mtp=(ModeloTablaPecados) tablaPecados.getModel();
+        mtp.setFilas(vivo.getPecados());
+        textoTotalPecados.setText(String.valueOf(vivo.getPecados().size()));
+        textoTotalBA.setText(String.valueOf(vivo.getBuenasAcciones().size()));
+        textoPuntuacion.setText(String.valueOf(vivo.getPuntuacion()));
     }
 
 }

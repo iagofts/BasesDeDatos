@@ -39,9 +39,9 @@ public class FachadaGui {
         }
     }
     
-    public void muestraVJuzgar(java.awt.Frame parent, boolean modal,Vivo vivo){
+    public void muestraVJuzgar(java.awt.Frame parent, boolean modal,Vivo vivo,aplicacion.FachadaAplicacion fa){
         VJuzgar vj;
-        vj = new VJuzgar(parent,modal,vivo);
+        vj = new VJuzgar(parent,modal,vivo,fa);
         vj.setVisible(true);
     }
     
