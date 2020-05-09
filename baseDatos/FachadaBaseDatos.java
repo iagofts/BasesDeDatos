@@ -67,8 +67,8 @@ public class FachadaBaseDatos {
 		public java.util.List<Usuario> consultarUsuarios(Integer id, String nombre_usuario, String nombre) {
 	        return daoUsuarios.consultarUsuarios(id, nombre_usuario,nombre);
 	    }
-		public void modificarUsuarioVivo(Integer id, String nombre_usuario, String clave, String localidad) {
-	        this.daoVivos.modificarUsuarioVivo(id, nombre_usuario, clave, localidad);
+		public void modificarUsuarioVivo(Integer id, String nombre, String clave, String localidad) {
+	        this.daoVivos.modificarUsuarioVivo(id, nombre, clave, localidad);
 	    }
 		public java.util.List<Vivo> VivosConJuicioPendiente (){
 			return daoVivos.VivosConJuicioPendiente();
@@ -117,5 +117,11 @@ public class FachadaBaseDatos {
 		}
 		public Vivo consultarUsuarioVivo(int id_usuario) {
 			return this.daoVivos.consultarUsuarioVivo(id_usuario);  
+		}
+		public java.util.List<String> localidades() {
+			return this.daoAcciones.localidades();
+		}
+		public Integer numeroHabitantes(String localidad) {
+			return this.daoAcciones.numeroHabitantes(localidad);
 		}
 }

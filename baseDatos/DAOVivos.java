@@ -89,7 +89,7 @@ class DAOVivos extends AbstractDAO {
 		}
 
 	}
-	 public void modificarUsuarioVivo(Integer id, String nombre_usuario, String clave, String localidad) {
+	 public void modificarUsuarioVivo(Integer id, String nombre, String clave, String localidad) {
 	        Connection con;
 	        PreparedStatement stmUsuario = null;
 
@@ -97,15 +97,15 @@ class DAOVivos extends AbstractDAO {
 
 	        try {
 	            stmUsuario = con.prepareStatement("update vivo "
-	                    + "set localidad=? "
-	                    + "where id_vivo=? "
+	                    + "set localidad = ? "
+	                    + "where id_vivo = ? "
 	                    + "update usuario "
-	                    + "set nombre_usuario=?,"
-	                    + "set clave=? "
+	                    + "set nombre = ?, "
+	                    + "set clave= ? "
 	                    + "where id_usuario=?");
 	            stmUsuario.setString(1, localidad);
 	            stmUsuario.setInt(2, id);
-	            stmUsuario.setString(3, nombre_usuario);
+	            stmUsuario.setString(3, nombre);
 	            stmUsuario.setString(4, clave);
 	            stmUsuario.setInt(5, id);
 	            stmUsuario.executeUpdate();

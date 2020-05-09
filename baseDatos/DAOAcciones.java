@@ -61,7 +61,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tp.descrip_pecado, tp.gravedad from vivo as v"
+		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado from vivo as v"
 				+ " full join pecado as pe"
 				+ " on v.id_vivo=pe.usuario"
 				+ " full join tipoPecado as tp"
@@ -98,7 +98,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tp.descrip_pecado, tp.gravedad from vivo as v"
+		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado from vivo as v"
 				+ " full join pecado as pe"
 				+ " on v.id_vivo=pe.usuario"
 				+ " full join tipoPecado as tp"
@@ -158,8 +158,101 @@ class DAOAcciones extends AbstractDAO{
 		}
 		return resultado;
 	}
-	public int numeroHabitantesPorLocalidad() {
-		return 5;
+	public java.util.List<String> localidades() {
+		java.util.List<String> resultado = new java.util.ArrayList<String>();
+		String LocalidadActual = null;
+		Connection con;
+		PreparedStatement stmLocalidad = null;
+		ResultSet rsLocalidad;
+
+		con = super.getConexion();
+
+		String consulta = "select distinct localidad "
+				+ "from vivo ";
+
+		try {
+			stmLocalidad = con.prepareStatement(consulta);
+			rsLocalidad = stmLocalidad.executeQuery();
+			while (rsLocalidad.next()) {
+				LocalidadActual = rsLocalidad.getString("localidad");
+				resultado.add(LocalidadActual);
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmLocalidad.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return resultado;
+	}
+	public Integer numeroHabitantes(String localidad) {
+		Integer nHabitantes = null;
+		Connection con;
+		PreparedStatement stmnHabitantes = null;
+		ResultSet rsnHabitantes;
+
+		con = super.getConexion();
+
+		String consulta = "select count(id_vivo) as nHabitantes"
+				+ "from vivo "
+				+ "where localidad = ? ";
+
+		try {
+			stmnHabitantes = con.prepareStatement(consulta);
+			stmnHabitantes.setString(1, localidad);
+			rsnHabitantes = stmnHabitantes.executeQuery();
+			if(rsnHabitantes.next()) {
+				nHabitantes = rsnHabitantes.getInt("nHabitantes");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmnHabitantes.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return nHabitantes;
+	}
+	public Integer numeroPecados(int id_usuario) {
+		Integer nPecados = null;
+		Connection con;
+		PreparedStatement stmnPecados = null;
+		ResultSet rsnPecados;
+
+		con = super.getConexion();
+
+		String consulta = "select count(id_vivo) "
+				+ "from vivo "
+				+ "where localidad = ? ";
+
+		try {
+			stmnPecados = con.prepareStatement(consulta);
+			stmnPecados.setInt(1, id_usuario);
+			rsnPecados = stmnPecados.executeQuery();
+			if(rsnPecados.next()) {
+				nPecados = rsnPecados.getInt("localidad");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmnPecados.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return nPecados;
 	}
 	
 }
