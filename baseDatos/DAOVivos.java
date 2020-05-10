@@ -43,7 +43,7 @@ class DAOVivos extends AbstractDAO {
 			}
 		}
 	}
-	public Integer maximoPuntuacion() {
+	private Integer maximoPuntuacion() {
 		Integer id_usuario = null;
 		Connection con;
 		PreparedStatement stmMaximo = null;
@@ -54,7 +54,8 @@ class DAOVivos extends AbstractDAO {
 		String consulta = "SELECT m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m " + 
 				"full join vivo as v " + 
 				"on v.id_vivo = m.id_mortal " + 
-				"where v.puntuacion = (select MAX(puntuacion) from vivo) " + 
+				"where v.puntuacion = (select MAX(puntuacion) from vivo) "
+				+ "and m.lugar = 'Cielo' " + 
 				"group by m.id_mortal order by edad DESC ";
 
 		try {
@@ -76,7 +77,7 @@ class DAOVivos extends AbstractDAO {
 		}
 		return id_usuario;
 	}
-	public Integer minimoPuntuacion() {
+	private Integer minimoPuntuacion() {
 		Integer id_usuario = null;
 		Connection con;
 		PreparedStatement stmMinimo = null;
@@ -87,7 +88,8 @@ class DAOVivos extends AbstractDAO {
 		String consulta = "SELECT m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m " + 
 				"full join vivo as v " + 
 				"on v.id_vivo = m.id_mortal " + 
-				"where v.puntuacion = (select MIN(puntuacion) from vivo) " + 
+				"where v.puntuacion = (select MIN(puntuacion) from vivo) "
+				+ "and m.lugar = 'Infierno' " + 
 				"group by m.id_mortal order by edad ASC ";
 
 		try {
