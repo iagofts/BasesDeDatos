@@ -1,6 +1,7 @@
 package gui;
 
 import aplicacion.Vivo;
+import javax.swing.JOptionPane;
 
 public class VUsuarioVivo extends javax.swing.JFrame {
 
@@ -304,6 +305,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         ModeloTablaPecados mp;
         mp = (ModeloTablaPecados) tablaPecados.getModel();
         fa.solicitarConfesion(usuario.getIdUsuario(), mp.getRow(tablaPecados.getSelectedRow()).getFecha());
+        JOptionPane.showMessageDialog(this,"Confesion solicitada","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnConfesarActionPerformed
 
@@ -321,6 +323,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         if(tablaUsuarios.getSelectedRow()!=-1){
             if(tablaVenganzas.getSelectedRow()!=-1){
                 fa.solicitarVenganza(usuario.getIdUsuario(),mu.getRow(tablaUsuarios.getSelectedRow()).getIdUsuario(), mv.getRow(tablaVenganzas.getSelectedRow()).getNivel());
+                JOptionPane.showMessageDialog(this,"Venganza solicitada","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
             }
         }
         inicializarDatos(usuario);
