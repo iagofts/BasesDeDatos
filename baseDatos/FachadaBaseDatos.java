@@ -128,8 +128,8 @@ public class FachadaBaseDatos {
 		public Integer habitantesLocalidad(String localidad) {
 			return this.daoAcciones.habitantesLocalidad(localidad);
 		}
-		public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
-			this.daoAcciones.solicitarConfesion(id_usuario, fecha_hora);
+		public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora, int tipo_pecado) {
+			this.daoAcciones.solicitarConfesion(id_usuario, fecha_hora, tipo_pecado);
 		}
 		public java.sql.Date getFecha() {
 			return this.daoAcciones.getFecha();

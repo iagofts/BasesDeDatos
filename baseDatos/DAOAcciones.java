@@ -62,7 +62,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado, pe.confesion_solicitada from vivo as v"
+		String consulta = "select tp.tipo_pecado, tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado, pe.confesion_solicitada from vivo as v"
 				+ " join pecado as pe"
 				+ " on v.id_vivo=pe.usuario"
 				+ " join tipoPecado as tp"
@@ -75,7 +75,7 @@ class DAOAcciones extends AbstractDAO{
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
 				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"),rsPecado.getBoolean("confesado"),
-						rsPecado.getBoolean("confesion_solicitada"),rsPecado.getDate("fecha_hora"));
+						rsPecado.getBoolean("confesion_solicitada"),rsPecado.getDate("fecha_hora"),rsPecado.getInt("tipo_pecado"));
 				resultado.add(PecadoActual);
 
 			}
@@ -100,7 +100,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado, pe.confesion_solicitada from vivo as v"
+		String consulta = "select tp.tipo_pecado, tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado, pe.confesion_solicitada from vivo as v"
 				+ " full join pecado as pe"
 				+ " on v.id_vivo=pe.usuario"
 				+ " full join tipoPecado as tp"
@@ -113,7 +113,7 @@ class DAOAcciones extends AbstractDAO{
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
 				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"),rsPecado.getBoolean("confesado"),
-						rsPecado.getBoolean("confesion_solicitada"),rsPecado.getDate("fecha_hora"));
+						rsPecado.getBoolean("confesion_solicitada"),rsPecado.getDate("fecha_hora"),rsPecado.getInt("tipo_pecado"));
 				resultado.add(PecadoActual);
 
 			}
@@ -354,7 +354,7 @@ class DAOAcciones extends AbstractDAO{
 		return nPecados;
 	}
 	
-	public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
+	public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora, int tipo_pecado) {
 		Connection con;
 		PreparedStatement stmConfesar = null;
 
@@ -363,12 +363,14 @@ class DAOAcciones extends AbstractDAO{
 		String consulta = "update pecado "
 				+ "set confesion_solicitada = 'TRUE' "
 				+ "where usuario = ? "
-				+ "and fecha_hora = ? ";
+				+ "and fecha_hora = ? "
+				+ "and tipo_pecado = ? ";
 
 		try {
 			stmConfesar = con.prepareStatement(consulta);
 			stmConfesar.setInt(1, id_usuario);
 			stmConfesar.setDate(2, fecha_hora);
+			stmConfesar.setInt(3, tipo_pecado);
 			stmConfesar.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
