@@ -39,7 +39,7 @@ public class FachadaAplicacion {
     public java.util.List<Usuario> consultarUsuariosMenos(Integer id, String nombre) {
 	return cu.consultarUsuariosMenos(id, nombre);
     }
-    public java.sql.Date RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, String fecha_muerte){
+    public String RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, String fecha_muerte){
         return cu.RegistrarUsuarioVivo(nombre, nombre_usuario, localidad, fecha_muerte);
     }
     
