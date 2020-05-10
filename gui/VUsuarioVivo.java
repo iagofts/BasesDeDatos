@@ -192,6 +192,11 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tablaUsuarios);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Venganza");
 
@@ -304,7 +309,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         // TODO add your handling code here:
         ModeloTablaPecados mp;
         mp = (ModeloTablaPecados) tablaPecados.getModel();
-        fa.solicitarConfesion(usuario.getIdUsuario(), mp.getRow(tablaPecados.getSelectedRow()).getFecha());
+        fa.solicitarConfesion(usuario.getIdUsuario(), mp.getRow(tablaPecados.getSelectedRow()).getFecha(), mp.getRow(tablaPecados.getSelectedRow()).getTipoPecado());
         JOptionPane.showMessageDialog(this,"Confesion solicitada","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnConfesarActionPerformed
@@ -328,6 +333,15 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         }
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnSolicitarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        ModeloTablaUsuarios mtu;
+        mtu=(ModeloTablaUsuarios) tablaUsuarios.getModel();
+        if(!textoNombreBusqueda.getText().isEmpty()){
+            mtu.setFilas(fa.consultarUsuariosMenos(usuario.getIdUsuario(), textoNombreBusqueda.getText()));
+        }
+        inicializarDatos(usuario);
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
