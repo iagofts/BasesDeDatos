@@ -50,10 +50,10 @@ class DAOVivos extends AbstractDAO {
 
 		con = super.getConexion();
 
-		String consulta = "SELECT m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m "
+		String consulta = "SELECT v.puntuacion, m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m "
 				+ "full join vivo as v " + "on v.id_vivo = m.id_mortal "
 				+ "where v.puntuacion = (select MAX(puntuacion) from vivo) " + "and m.lugar = 'Cielo' "
-				+ "and v.id_vivo NOTNULL" + "group by m.id_mortal order by edad DESC ";
+				+ "and v.id_vivo NOTNULL" + "group by m.id_mortal, v.puntuacion order by edad DESC ";
 
 		try {
 			stmMaximo = con.prepareStatement(consulta);
@@ -83,11 +83,11 @@ class DAOVivos extends AbstractDAO {
 
 		con = super.getConexion();
 
-		String consulta = "SELECT m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m "
+		String consulta = "SELECT v.puntuacion, m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m "
 				+ "full join vivo as v " + "on v.id_vivo = m.id_mortal "
 				+ "where v.puntuacion = (select MIN(puntuacion) from vivo) " 
 				+ "and m.lugar = 'Infierno' "
-				+ "and v.id_vivo NOTNULL" + "group by m.id_mortal order by edad ASC ";
+				+ "and v.id_vivo NOTNULL" + "group by m.id_mortal, v.puntuacion order by edad ASC ";
 
 		try {
 			stmMinimo = con.prepareStatement(consulta);
@@ -157,7 +157,7 @@ class DAOVivos extends AbstractDAO {
 		try {
 			stmUsuario = con.prepareStatement("insert into usuario(nombre_usuario, nombre, clave, tipo) "
 					+ "values (?,?,?,?); " + "insert into mortal(fecha_nacimiento,fecha_muerte,lugar) "
-					+ "values (?,?,?); " + "insert into vivo(ang_asignado,dem_asignado) " + "values(?,?) ");
+					+ "values (?,?,?); " + "insert into vivo(ang_asignado,dem_asignado,localidad) " + "values(?,?,?) ");
 			stmUsuario.setString(1, nombre_usuario);
 			stmUsuario.setString(2, nombre);
 			stmUsuario.setString(3, clave);
@@ -167,6 +167,7 @@ class DAOVivos extends AbstractDAO {
 			stmUsuario.setString(7, "Tierra");
 			stmUsuario.setInt(8, id_angel);
 			stmUsuario.setInt(9, id_demonio);
+			stmUsuario.setString(10, localidad);
 			stmUsuario.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

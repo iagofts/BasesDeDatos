@@ -131,9 +131,6 @@ public class FachadaBaseDatos {
 		public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
 			this.daoAcciones.solicitarConfesion(id_usuario, fecha_hora);
 		}
-		public Float puntuacionLocalidad(String localidad) {
-			return this.daoAcciones.puntuacionLocalidad(localidad);
-		}
 		public java.sql.Date getFecha() {
 			return this.daoAcciones.getFecha();
 		}
@@ -146,5 +143,8 @@ public class FachadaBaseDatos {
 		
 		public Float puntuacionEdad(int edad) {
 			return this.daoAcciones.puntuacionEdad(edad);
+		}
+		public Float puntuacionLocalidad(String localidad) {
+			return this.daoAcciones.puntuacionLocalidad(localidad);
 		}
 }
