@@ -303,9 +303,8 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         // TODO add your handling code here:
         ModeloTablaPecados mp;
         mp = (ModeloTablaPecados) tablaPecados.getModel();
-        java.util.Date f=mp.getRow(tablaPecados.getSelectedRow()).getFecha();
-        java.sql.Date sqlF=java.sql.Date.valueOf(f.toString());
-        fa.solicitarConfesion(usuario.getIdUsuario(), sqlF);
+        java.sql.Date f=new java.sql.Date(mp.getRow(tablaPecados.getSelectedRow()).getFecha().getTime());
+        fa.solicitarConfesion(usuario.getIdUsuario(), f);
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnConfesarActionPerformed
 
