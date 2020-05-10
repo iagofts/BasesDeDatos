@@ -49,7 +49,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         btnSolicitar = new javax.swing.JButton();
         btnSalirV = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
         tablaVenganzas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,7 +145,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnSalir)))
                                 .addComponent(jLabel7)))
-                        .addGap(0, 97, Short.MAX_VALUE))))
+                        .addGap(0, 41, Short.MAX_VALUE))))
         );
         jPanelInformacionLayout.setVerticalGroup(
             jPanelInformacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,20 +191,20 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tablaUsuarios);
 
         btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
 
         jLabel10.setText("Venganza");
 
         btnSolicitar.setText("Solicitar");
 
         btnSalirV.setText("Salir");
+        btnSalirV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirVActionPerformed(evt);
+            }
+        });
 
         tablaVenganzas.setModel(new ModeloTablaVenganzas());
-        jScrollPane5.setViewportView(tablaVenganzas);
+        jScrollPane4.setViewportView(tablaVenganzas);
 
         javax.swing.GroupLayout jPanelVenganzasLayout = new javax.swing.GroupLayout(jPanelVenganzas);
         jPanelVenganzas.setLayout(jPanelVenganzasLayout);
@@ -216,32 +216,36 @@ public class VUsuarioVivo extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addGroup(jPanelVenganzasLayout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelVenganzasLayout.createSequentialGroup()
+                        .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelVenganzasLayout.createSequentialGroup()
                                 .addGap(149, 149, 149)
                                 .addComponent(btnBuscar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelVenganzasLayout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(btnSolicitar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalirV))
                             .addGroup(jPanelVenganzasLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel10))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textoNombreBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(262, 262, 262))
+                                .addComponent(jLabel10))
+                            .addGroup(jPanelVenganzasLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelVenganzasLayout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(textoNombreBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelVenganzasLayout.createSequentialGroup()
+                                        .addComponent(btnSolicitar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnSalirV)
+                                        .addGap(15, 15, 15))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVenganzasLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanelVenganzasLayout.setVerticalGroup(
             jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVenganzasLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel9)
-                .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelVenganzasLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,19 +256,15 @@ public class VUsuarioVivo extends javax.swing.JFrame {
                             .addComponent(textoNombreBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscar)
-                        .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelVenganzasLayout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanelVenganzasLayout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSolicitar)
-                            .addComponent(btnSalirV))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelVenganzasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSolicitar)
+                    .addComponent(btnSalirV))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Venganzas", jPanelVenganzas);
@@ -273,11 +273,11 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -298,17 +298,16 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         // TODO add your handling code here:
         ModeloTablaPecados mp;
         mp = (ModeloTablaPecados) tablaPecados.getModel();
-        if(mp.getRowCount()>0){
-            fa.solicitarConfesion(usuario.getIdUsuario(),mp.getRow(tablaPecados.getSelectedRow()).getFecha());
-        }
+        java.util.Date f=mp.getRow(tablaPecados.getSelectedRow()).getFecha();
+        java.sql.Date sqlF=java.sql.Date.valueOf(f.toString());
+        fa.solicitarConfesion(usuario.getIdUsuario(), sqlF);
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnConfesarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    private void btnSalirVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirVActionPerformed
         // TODO add your handling code here:
-        fa.consultarUsuarios(null, null, textoNombreBusqueda.getText());
-        inicializarDatos(usuario);
-    }//GEN-LAST:event_btnBuscarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirVActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -332,7 +331,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tablaBA;
     private javax.swing.JTable tablaPecados;
@@ -363,7 +362,6 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         ModeloTablaUsuarios mu;
         mu = (ModeloTablaUsuarios) tablaUsuarios.getModel();
         mu.setFilas(fa.consultarUsuarios(null, null, null));
-        if(mu.getRowCount()>0) tablaUsuarios.setRowSelectionInterval(0,0);
         ModeloTablaVenganzas mv;
         mv = (ModeloTablaVenganzas) tablaVenganzas.getModel();
         mv.setFilas(fa.listaVenganzas());
