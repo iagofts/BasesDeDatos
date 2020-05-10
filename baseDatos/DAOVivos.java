@@ -228,7 +228,7 @@ class DAOVivos extends AbstractDAO {
 	        ResultSet rsUsuario;
 
 	        con = this.getConexion();
-	        String consulta = "select * "
+	        String consulta = "select u.id_usuario, u.nombre, v.puntuacion "
 	                + "from mortal as m full join usuario as u on "
 	                + "u.id_usuario = m.id_mortal "
 	                + "full join vivo as v on "
@@ -240,7 +240,7 @@ class DAOVivos extends AbstractDAO {
 	            stmUsuario = con.prepareStatement(consulta);
 	            rsUsuario = stmUsuario.executeQuery();
 	            while (rsUsuario.next()) {
-	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"),rsUsuario.getFloat("puntuacion"));
 	                resultado.add(UsuarioActual);
 	            }
 	        } catch (SQLException e) {
@@ -264,7 +264,7 @@ class DAOVivos extends AbstractDAO {
 	        ResultSet rsUsuario;
 
 	        con = this.getConexion();
-	        String consulta = "select * "
+	        String consulta = "select u.id_usuario, u.nombre, v.puntuacion "
 	                + "from mortal as m full join usuario as u on "
 	                + "u.id_usuario = m.id_mortal "
 	                + "full join vivo as v on "
@@ -276,7 +276,7 @@ class DAOVivos extends AbstractDAO {
 	            stmUsuario = con.prepareStatement(consulta);
 	            rsUsuario = stmUsuario.executeQuery();
 	            while (rsUsuario.next()) {
-	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"),rsUsuario.getFloat("puntuacion"));
 	                resultado.add(UsuarioActual);
 	            }
 	        } catch (SQLException e) {
@@ -300,7 +300,7 @@ class DAOVivos extends AbstractDAO {
 	        ResultSet rsUsuario;
 
 	        con = this.getConexion();
-	        String consulta = "select * "
+	        String consulta = "select u.id_usuario, u.nombre, v.puntuacion "
 	                + "from mortal as m full join usuario as u on "
 	                + "u.id_usuario = m.id_mortal "
 	                + "full join vivo as v on "
@@ -312,7 +312,7 @@ class DAOVivos extends AbstractDAO {
 	            stmUsuario = con.prepareStatement(consulta);
 	            rsUsuario = stmUsuario.executeQuery();
 	            while (rsUsuario.next()) {
-	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
+	                UsuarioActual = new Vivo(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"),rsUsuario.getFloat("puntuacion"));
 	                resultado.add(UsuarioActual);
 	            }
 	        } catch (SQLException e) {

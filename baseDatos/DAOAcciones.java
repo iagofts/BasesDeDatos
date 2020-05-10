@@ -62,7 +62,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado from vivo as v"
+		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado, pe.confesion_solicitada from vivo as v"
 				+ " join pecado as pe"
 				+ " on v.id_vivo=pe.usuario"
 				+ " join tipoPecado as tp"
@@ -74,7 +74,8 @@ class DAOAcciones extends AbstractDAO{
 			stmPecado.setInt(1, id_usuario);
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
-				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"));
+				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"),rsPecado.getBoolean("confesado"),
+						rsPecado.getBoolean("confesion_solicitada"),rsPecado.getDate("fecha_hora"));
 				resultado.add(PecadoActual);
 
 			}
@@ -99,7 +100,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado from vivo as v"
+		String consulta = "select tp.descrip_pecado, tp.gravedad, pe.fecha_hora, pe.confesado, pe.confesion_solicitada from vivo as v"
 				+ " full join pecado as pe"
 				+ " on v.id_vivo=pe.usuario"
 				+ " full join tipoPecado as tp"
@@ -111,7 +112,8 @@ class DAOAcciones extends AbstractDAO{
 			stmPecado.setInt(1, id_usuario);
 			rsPecado = stmPecado.executeQuery();
 			while (rsPecado.next()) {
-				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"));
+				PecadoActual = new Pecado(rsPecado.getFloat("gravedad"), rsPecado.getString("descrip_pecado"),rsPecado.getBoolean("confesado"),
+						rsPecado.getBoolean("confesion_solicitada"),rsPecado.getDate("fecha_hora"));
 				resultado.add(PecadoActual);
 
 			}
