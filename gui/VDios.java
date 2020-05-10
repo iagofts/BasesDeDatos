@@ -1014,6 +1014,7 @@ public class VDios extends javax.swing.JFrame {
     public void actualizarDatosLimbo(){
         ModeloListaStrings mlstUsuariosLimbo;
         mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
+        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
         if(listaUsuariosLimbo.getSelectedIndex()!=-1){
         java.util.List<Vivo> vivosLimbo;
         vivosLimbo=fa.listaVivosLimbo();
