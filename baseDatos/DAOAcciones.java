@@ -178,7 +178,7 @@ class DAOAcciones extends AbstractDAO{
 			rsLocalidad = stmLocalidad.executeQuery();
 			while (rsLocalidad.next()) {
 				LocalidadActual = rsLocalidad.getString("localidad");
-				if (LocalidadActual == "") {
+				if (LocalidadActual == null) {
 					LocalidadActual = "Desconocido";
 				}
 				resultado.add(LocalidadActual);

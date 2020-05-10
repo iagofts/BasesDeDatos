@@ -56,7 +56,8 @@ class DAOVivos extends AbstractDAO {
 				"on v.id_vivo = m.id_mortal " + 
 				"where v.puntuacion = (select MAX(puntuacion) from vivo) "
 				+ "and m.lugar = 'Cielo' " + 
-				"group by m.id_mortal order by edad DESC ";
+				"group by m.id_mortal order by edad DESC "
+				+ "and id.vivo NOTNULL";
 
 		try {
 			stmMaximo = con.prepareStatement(consulta);

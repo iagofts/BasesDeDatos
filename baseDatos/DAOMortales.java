@@ -30,8 +30,8 @@ class DAOMortales extends AbstractDAO {
         String consulta = "select * "
                 + "from mortal as m full join usuario as u on "
                 + "u.id_usuario = m.id_mortal full join angel as a on "
-                + "m.id_mortal = a.id "
-                + "where lugar = 'Cielo' and a.id NOTNULL ";
+                + "m.id_mortal = a.id_angel "
+                + "where lugar = 'Cielo' and a.id_angel NOTNULL ";
 
         try {
             stmUsuario = con.prepareStatement(consulta);
@@ -63,8 +63,8 @@ class DAOMortales extends AbstractDAO {
         String consulta = "select * "
                 + "from mortal as m full join usuario as u on "
                 + "u.id_usuario = m.id_mortal full join demonio as d on "
-                + "m.id_mortal = d.id "
-                + "where lugar = 'Infierno' and d.id NOTNULL ";
+                + "m.id_mortal = d.id_demonio "
+                + "where lugar = 'Infierno' and d.id_demonio NOTNULL ";
 
         try {
             stmUsuario = con.prepareStatement(consulta);
