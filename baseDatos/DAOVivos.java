@@ -126,8 +126,8 @@ class DAOVivos extends AbstractDAO {
 				+ "on u.id_usuario=v.id_vivo "
 				+ "full join mortal as m " 
 				+ "on u.id_usuario=m.id_mortal " 
-				+ "where pendiente_juicio= 'TRUE' and"
-				+ "m.fecha_muerte<CURRENT_TIMESTAMP";
+				+ "where pendiente_juicio= 'TRUE' and "
+				+ "m.fecha_muerte < CURRENT_TIMESTAMP ";
 
 		try {
 			stmUsuario = con.prepareStatement(consulta);
