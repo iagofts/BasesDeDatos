@@ -677,6 +677,9 @@ public class VDios extends javax.swing.JFrame {
             vivosLimbo=fa.listaVivosLimbo();
             fa.mandarAInfierno(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
         }
+        textoTotalPecadosLimbo.setText("");
+        textoTotalBALimbo.setText("");
+        textoPuntuacionLimbo.setText("");
     }//GEN-LAST:event_btnEnviarInfiernoActionPerformed
 
     private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
@@ -723,12 +726,15 @@ public class VDios extends javax.swing.JFrame {
     private void btnEnviarCieloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarCieloActionPerformed
         ModeloListaStrings mlstUsuariosLimbo;
         mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
-        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
         if(mlstUsuariosLimbo.getSize()>0){
         java.util.List<Vivo> vivosLimbo;
         vivosLimbo=fa.listaVivosLimbo();
         fa.mandarACielo(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
         }
+        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
+        textoTotalPecadosLimbo.setText("");
+        textoTotalBALimbo.setText("");
+        textoPuntuacionLimbo.setText("");
     }//GEN-LAST:event_btnEnviarCieloActionPerformed
 
     private void btnAngelizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngelizarActionPerformed
@@ -740,6 +746,13 @@ public class VDios extends javax.swing.JFrame {
             mlstAngeles=(ModeloListaStrings) listaAngeles.getModel();
             mlstAngeles.nuevoElemento(mlstUsuariosCielo.getElementAt(listaUsuariosCielo.getSelectedIndex()));
             mlstUsuariosCielo.borrarElemento(listaUsuariosCielo.getSelectedIndex());
+            textoTotalBA.setText("");
+            textoPuntuacionCielo.setText("");
+            textoSeleccionadoCielo.setText("");
+            ModeloTablaBuenasAcciones mtBA;
+            mtBA=(ModeloTablaBuenasAcciones) tablaBA.getModel();
+            java.util.List<BuenaAccion> bas=new java.util.ArrayList<>();
+            mtBA.setFilas(bas);
         }else{
             fa.muestraExcepcion(this,true,"No hay usuarios para angelizar");
         }
@@ -754,6 +767,13 @@ public class VDios extends javax.swing.JFrame {
           mlstDemonios=(ModeloListaStrings) listaDemonios.getModel();
           mlstDemonios.nuevoElemento(mlstUsuariosInfierno.getElementAt(listaUsuariosInfierno.getSelectedIndex()));
           mlstUsuariosInfierno.borrarElemento(listaUsuariosInfierno.getSelectedIndex());
+          textoTotalPecados.setText("");
+          textoPuntuacionInfierno.setText("");
+          textoSeleccionadoInfierno.setText("");
+          ModeloTablaPecados mtp;
+          mtp=(ModeloTablaPecados) tablaPecados.getModel();
+          java.util.List<Pecado> pecados=new java.util.ArrayList<>();
+          mtp.setFilas(pecados);
       }else{
             fa.muestraExcepcion(this,true,"No hay usuarios para demonificar");
       }
