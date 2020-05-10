@@ -195,6 +195,11 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         jLabel10.setText("Venganza");
 
         btnSolicitar.setText("Solicitar");
+        btnSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarActionPerformed(evt);
+            }
+        });
 
         btnSalirV.setText("Salir");
         btnSalirV.addActionListener(new java.awt.event.ActionListener() {
@@ -309,6 +314,20 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnSalirVActionPerformed
 
+    private void btnSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarActionPerformed
+        // TODO add your handling code here:
+        ModeloTablaUsuarios mu;
+        mu = (ModeloTablaUsuarios) tablaUsuarios.getModel();
+        ModeloTablaVenganzas mv;
+        mv= (ModeloTablaVenganzas) tablaVenganzas.getModel();
+        if(tablaUsuarios.getSelectedRow()!=-1){
+            if(tablaVenganzas.getSelectedRow()!=-1){
+                fa.solicitarVenganza(usuario.getIdUsuario(),mu.getRow(tablaUsuarios.getSelectedRow()).getIdUsuario(), mv.getRow(tablaVenganzas.getSelectedRow()).getNivel());
+            }
+        }
+        inicializarDatos(usuario);
+    }//GEN-LAST:event_btnSolicitarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnConfesar;
@@ -361,7 +380,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         //PestañaVenganzas
         ModeloTablaUsuarios mu;
         mu = (ModeloTablaUsuarios) tablaUsuarios.getModel();
-        mu.setFilas(fa.consultarUsuarios(null, null, null));
+        mu.setFilas(fa.consultarUsuariosMenos(usuario.getIdUsuario(), textoNombreBusqueda.getText()));
         ModeloTablaVenganzas mv;
         mv = (ModeloTablaVenganzas) tablaVenganzas.getModel();
         mv.setFilas(fa.listaVenganzas());
