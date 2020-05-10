@@ -255,4 +255,33 @@ class DAOAcciones extends AbstractDAO{
 		return nPecados;
 	}
 	
+	public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
+		Connection con;
+		PreparedStatement stmConfesar = null;
+		ResultSet rsConfesar;
+
+		con = super.getConexion();
+
+		String consulta = "update pecado "
+				+ "set confesado_solicitada = 'TRUE' "
+				+ "where usuario = ? "
+				+ "and fecha_hora = ? ";
+
+		try {
+			stmConfesar = con.prepareStatement(consulta);
+			stmConfesar.setInt(1, id_usuario);
+			stmConfesar.setDate(1, fecha_hora);
+			stmConfesar.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmConfesar.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+	}
+	
 }

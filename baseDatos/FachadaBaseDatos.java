@@ -124,4 +124,7 @@ public class FachadaBaseDatos {
 		public Integer numeroHabitantes(String localidad) {
 			return this.daoAcciones.numeroHabitantes(localidad);
 		}
+		public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
+			this.daoAcciones.solicitarConfesion(id_usuario, fecha_hora);
+		}
 }

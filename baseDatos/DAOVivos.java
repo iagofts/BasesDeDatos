@@ -134,7 +134,8 @@ class DAOVivos extends AbstractDAO {
 	                + "u.id_usuario = m.id_mortal "
 	                + "full join vivo as v on "
 	                + "m.id_mortal = v.id_vivo "
-	                + "where lugar = 'Cielo' and id_vivo NOTNULL";
+	                + "where m.lugar = 'Cielo' and id_vivo NOTNULL "
+	                + "order by v.puntuacion";
 
 	        try {
 	            stmUsuario = con.prepareStatement(consulta);
@@ -169,7 +170,8 @@ class DAOVivos extends AbstractDAO {
 	                + "u.id_usuario = m.id_mortal "
 	                + "full join vivo as v on "
 	                + "m.id_mortal = v.id_vivo "
-	                + "where lugar = 'Infierno' and id_vivo NOTNULL";
+	                + "where m.lugar = 'Infierno' and id_vivo NOTNULL "
+	                + "order by v.puntuacion";
 
 	        try {
 	            stmUsuario = con.prepareStatement(consulta);
@@ -204,7 +206,8 @@ class DAOVivos extends AbstractDAO {
 	                + "u.id_usuario = m.id_mortal "
 	                + "full join vivo as v on "
 	                + "m.id_mortal = v.id_vivo "
-	                + "where lugar = 'Limbo' and id_vivo NOTNULL";
+	                + "where lugar = 'Limbo' and id_vivo NOTNULL "
+	                + "order by puntuacion ";
 
 	        try {
 	            stmUsuario = con.prepareStatement(consulta);
@@ -236,8 +239,10 @@ class DAOVivos extends AbstractDAO {
 
 	        con = this.getConexion();
 	        String consulta = "select * from vivo as v full join usuario as u on "
-	        		+ "v.id_vivo = u.id_usuario "
-	        		+ "where lugar = 'Tierra' and nombre like ? ";
+	        		+ "v.id_vivo = u.id_usuario full join mortal as m on"
+	        		+ "v.id_vivo = m.id_mortal "
+	        		+ "where m.lugar = 'Tierra' and nombre like ? "
+	        		+ "order by v.puntuacion ";
 
 	        try {
 	            stmUsuario = con.prepareStatement(consulta);
@@ -326,14 +331,14 @@ class DAOVivos extends AbstractDAO {
 
 	        try {
 	            stmUsuario = con.prepareStatement("delete from buenaAccion "
-	            		+ "where usuario = ? "
+	            		+ "where usuario = ?; "
 	            		+ "delete from pecado "
-	            		+" where usuario = ?"
+	            		+" where usuario = ?;"
 	                    + "delete from vivo "
-	                    + "where id_vivo = ? "
+	                    + "where id_vivo = ?; "
 	                    + "update mortal "
 	                    + "set lugar = 'Infierno' "
-	                    + "where id_mortal = ? "
+	                    + "where id_mortal = ?; "
 	                    + "insert into demonio "
 	                    + "(id) values (?) ");
 	            stmUsuario.setInt(1, id_usuario);
