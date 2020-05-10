@@ -18,6 +18,31 @@ class DAOVivos extends AbstractDAO {
 		super.setFachadaAplicacion(fa);
 	}
 
+	private void Juzgado(int id_usuario) {
+		Connection con;
+		PreparedStatement stmJuzgado = null;
+
+		con = super.getConexion();
+
+		String consulta = "update vivo "
+				+ "set pendiente_juicio = 'FALSE' "
+				+ "where id_usuario = ? ";
+
+		try {
+			stmJuzgado = con.prepareStatement(consulta);
+			stmJuzgado.setInt(1, id_usuario);
+			stmJuzgado.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmJuzgado.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+	}
 	public java.util.List<Vivo> VivosConJuicioPendiente() {
 		java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
 		Vivo UsuarioActual = null;
@@ -27,8 +52,12 @@ class DAOVivos extends AbstractDAO {
 
 		con = this.getConexion();
 
-		String consulta = "select * from usuario as u " + "full join vivo as v " + "on u.id_usuario=v.id_vivo "
-				+ "full join mortal as m " + "on u.id_usuario=m.id_mortal " + "where pendiente_juicio=FALSE";
+		String consulta = "select * from usuario as u "
+		+ "full join vivo as v "
+				+ "on u.id_usuario=v.id_vivo "
+				+ "full join mortal as m " 
+				+ "on u.id_usuario=m.id_mortal " 
+				+ "where pendiente_juicio= 'TRUE' ";
 
 		try {
 			stmUsuario = con.prepareStatement(consulta);
@@ -269,7 +298,6 @@ class DAOVivos extends AbstractDAO {
 	        PreparedStatement stmUsuario = null;
 
 	        con = super.getConexion();
-
 	        try {
 	            stmUsuario = con.prepareStatement("update mortal "
 	                    + "set lugar = ? "
@@ -287,6 +315,7 @@ class DAOVivos extends AbstractDAO {
 	                System.out.println("Imposible cerrar cursores");
 	            }
 	        }
+	        this.Juzgado(id_usuario);
 	 	}
 		public void angelizar(int id_usuario) {
 	 		Connection con;
@@ -322,6 +351,7 @@ class DAOVivos extends AbstractDAO {
 	                System.out.println("Imposible cerrar cursores");
 	            }
 	        }
+	        this.Juzgado(id_usuario);
 	 	}
 		public void demonizar(int id_usuario) {
 	 		Connection con;
@@ -357,6 +387,7 @@ class DAOVivos extends AbstractDAO {
 	                System.out.println("Imposible cerrar cursores");
 	            }
 	        }
+	        this.Juzgado(id_usuario);
 	 	}
 		public Vivo consultarUsuarioVivo(int id_usuario) {
 			Vivo resultado = null;

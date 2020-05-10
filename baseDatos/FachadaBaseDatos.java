@@ -121,8 +121,8 @@ public class FachadaBaseDatos {
 		public java.util.List<String> localidades() {
 			return this.daoAcciones.localidades();
 		}
-		public Integer numeroHabitantes(String localidad) {
-			return this.daoAcciones.numeroHabitantes(localidad);
+		public Integer habitantesLocalidad(String localidad) {
+			return this.daoAcciones.habitantesLocalidad(localidad);
 		}
 		public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
 			this.daoAcciones.solicitarConfesion(id_usuario, fecha_hora);

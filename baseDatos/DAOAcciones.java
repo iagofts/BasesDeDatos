@@ -190,7 +190,7 @@ class DAOAcciones extends AbstractDAO{
 		}
 		return resultado;
 	}
-	public Integer numeroHabitantes(String localidad) {
+	public Integer habitantesLocalidad(String localidad) {
 		Integer nHabitantes = null;
 		Connection con;
 		PreparedStatement stmnHabitantes = null;
@@ -258,7 +258,6 @@ class DAOAcciones extends AbstractDAO{
 	public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
 		Connection con;
 		PreparedStatement stmConfesar = null;
-		ResultSet rsConfesar;
 
 		con = super.getConexion();
 
@@ -284,4 +283,61 @@ class DAOAcciones extends AbstractDAO{
 		}
 	}
 	
+	public Integer puntuacionLocalidad(int id_usuario) {
+		Integer nPecados = null;
+		Connection con;
+		PreparedStatement stmnPecados = null;
+		ResultSet rsnPecados;
+
+		con = super.getConexion();
+
+		String consulta = "select count(id_vivo) "
+				+ "from vivo "
+				+ "where localidad = ? ";
+
+		try {
+			stmnPecados = con.prepareStatement(consulta);
+			stmnPecados.setInt(1, id_usuario);
+			rsnPecados = stmnPecados.executeQuery();
+			if(rsnPecados.next()) {
+				nPecados = rsnPecados.getInt("localidad");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmnPecados.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return nPecados;
+	}
+	private void Juzgado(int id_usuario) {
+		Connection con;
+		PreparedStatement stmJuzgado = null;
+
+		con = super.getConexion();
+
+		String consulta = "update vivo "
+				+ "set pendiente_juicio = 'FALSE' "
+				+ "where id_usuario = ? ";
+
+		try {
+			stmJuzgado = con.prepareStatement(consulta);
+			stmJuzgado.setInt(1, id_usuario);
+			stmJuzgado.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmJuzgado.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+	}
 }
