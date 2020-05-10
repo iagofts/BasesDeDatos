@@ -67,13 +67,50 @@ class DAOUsuarios extends AbstractDAO{
 
 	        try {
 	            stmUsuario = con.prepareStatement(consulta);
-	            stmUsuario.setString(1, "%" + nombre + "%");
-	            stmUsuario.setString(2, "%" + id + "%");
+	            stmUsuario.setString(1, "%" + nombre_usuario + "%");
+	            stmUsuario.setString(2, "%" + nombre + "%");
+	            stmUsuario.setInt(3, id );
 	            rsUsuario = stmUsuario.executeQuery();
 	            while (rsUsuario.next()) {
 	                UsuarioActual = new Usuario(rsUsuario.getInt("id_usuario"),
 	                        rsUsuario.getString("nombre_usuario"), rsUsuario.getString("nombre"),
 	                        rsUsuario.getString("clave"), TipoUsuario.valueOf(rsUsuario.getString("tipo")));
+	                resultado.add(UsuarioActual);
+	            }
+	        } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	            this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+	        } finally {
+	            try {
+	                stmUsuario.close();
+	            } catch (SQLException e) {
+	                System.out.println("Imposible cerrar cursores");
+	            }
+	        }
+	        return resultado;
+	    }
+	 public java.util.List<Usuario> consultarUsuariosMenos(Integer id, String nombre) {
+	        java.util.List<Usuario> resultado = new java.util.ArrayList<Usuario>();
+	        Usuario UsuarioActual;
+	        Connection con;
+	        PreparedStatement stmUsuario = null;
+	        ResultSet rsUsuario;
+
+	        con = this.getConexion();
+	        String consulta = "select id_usuario, nombre "
+	                + "from usuario as u FULL JOIN mortal as m "
+	                + "on u.id_usuario = m.id_mortal "
+	                + "where nombre like ? "
+	                + "and id_usuario != ? "
+	                + "and lugar = 'Tierra'";
+	        
+	        try {
+	            stmUsuario = con.prepareStatement(consulta);
+	            stmUsuario.setString(1, "%" + nombre + "%");
+	            stmUsuario.setInt(2,  id );
+	            rsUsuario = stmUsuario.executeQuery();
+	            while (rsUsuario.next()) {
+	                UsuarioActual = new Usuario(rsUsuario.getInt("id_usuario"),rsUsuario.getString("nombre"));
 	                resultado.add(UsuarioActual);
 	            }
 	        } catch (SQLException e) {

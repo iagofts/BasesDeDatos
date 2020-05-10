@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import aplicacion.BuenaAccion;
 import aplicacion.Pecado;
+import aplicacion.Venganza;
 
 class DAOAcciones extends AbstractDAO{
 
@@ -262,7 +263,7 @@ class DAOAcciones extends AbstractDAO{
 		con = super.getConexion();
 
 		String consulta = "update pecado "
-				+ "set confesado_solicitada = 'TRUE' "
+				+ "set confesion_solicitada = 'TRUE' "
 				+ "where usuario = ? "
 				+ "and fecha_hora = ? ";
 
@@ -315,4 +316,34 @@ class DAOAcciones extends AbstractDAO{
 		}
 		return puntuacion;
 	}
+	public java.sql.Date getFecha() {
+		java.sql.Date fecha = null;
+		Connection con;
+		PreparedStatement stmFecha = null;
+		ResultSet rsFecha;
+
+		con = super.getConexion();
+
+		String consulta = "select CURRENT_TIMESTAMP as fecha";
+
+		try {
+			stmFecha = con.prepareStatement(consulta);
+			rsFecha = stmFecha.executeQuery();
+			if(rsFecha.next()) {
+				fecha = rsFecha.getDate("fecha");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmFecha.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return fecha;
+	}
+	
 }

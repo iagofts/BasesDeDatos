@@ -12,6 +12,7 @@ import aplicacion.Demonio;
 import aplicacion.Mortal;
 import aplicacion.Pecado;
 import aplicacion.Usuario;
+import aplicacion.Venganza;
 import aplicacion.Vivo;
 
 public class FachadaBaseDatos {
@@ -67,6 +68,9 @@ public class FachadaBaseDatos {
 		public java.util.List<Usuario> consultarUsuarios(Integer id, String nombre_usuario, String nombre) {
 	        return daoUsuarios.consultarUsuarios(id, nombre_usuario,nombre);
 	    }
+		public java.util.List<Usuario> consultarUsuariosMenos(Integer id, String nombre) {
+			return this.daoUsuarios.consultarUsuariosMenos(id, nombre)
+;		}
 		public void modificarUsuarioVivo(Integer id, String nombre, String clave, String localidad) {
 	        this.daoVivos.modificarUsuarioVivo(id, nombre, clave, localidad);
 	    }
@@ -112,7 +116,7 @@ public class FachadaBaseDatos {
 		public void demonizar() {
 			this.daoVivos.demonizar();
 		}
-		public java.util.List<String> listaVenganzas(){
+		public java.util.List<Venganza> listaVenganzas(){
 			return this.daoAcciones.listaVenganzas();
 		}
 		public Vivo consultarUsuarioVivo(int id_usuario) {
@@ -129,5 +133,8 @@ public class FachadaBaseDatos {
 		}
 		public Float puntuacionLocalidad(String localidad) {
 			return this.daoAcciones.puntuacionLocalidad(localidad);
+		}
+		public java.sql.Date getFecha() {
+			return this.daoAcciones.getFecha();
 		}
 }
