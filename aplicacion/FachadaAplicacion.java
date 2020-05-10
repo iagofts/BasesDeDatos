@@ -117,5 +117,17 @@ public class FachadaAplicacion {
     public java.util.List<Venganza> listaVenganzas(){
         return cu.listaVenganzas();
     }
+    public java.util.List<String> localidades() {
+        return cu.localidades();
+    }
+    public Integer habitantesLocalidad(String localidad) {
+	return cu.habitantesLocalidad(localidad);
+    }
+    public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
+	cu.solicitarConfesion(id_usuario, fecha_hora);
+    }
+    public Float puntuacionLocalidad(String localidad) {
+	return cu.puntuacionLocalidad(localidad);
+    }
     
 }

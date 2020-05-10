@@ -181,5 +181,17 @@ public class GestionUsuarios {
     public java.util.List<Venganza> listaVenganzas(){
         return fbd.listaVenganzas();
     }
+    public java.util.List<String> localidades() {
+        return fbd.localidades();
+    }
+    public Integer habitantesLocalidad(String localidad) {
+	return fbd.habitantesLocalidad(localidad);
+    }
+    public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
+	fbd.solicitarConfesion(id_usuario, fecha_hora);
+    }
+    public Float puntuacionLocalidad(String localidad) {
+	return fbd.puntuacionLocalidad(localidad);
+    }
  
 }
