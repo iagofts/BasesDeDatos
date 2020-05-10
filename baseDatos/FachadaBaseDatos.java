@@ -106,11 +106,11 @@ public class FachadaBaseDatos {
 		public void mandarALugar(int id_usuario,String lugar) {
 			this.daoVivos.mandarALugar(id_usuario,lugar);
 		}
-		public void angelizar(int id_usuario) {
-			this.daoVivos.angelizar(id_usuario);
+		public void angelizar() {
+			this.daoVivos.angelizar();
 		}
-		public void demonizar(int id_usuario) {
-			this.daoVivos.demonizar(id_usuario);
+		public void demonizar() {
+			this.daoVivos.demonizar();
 		}
 		public java.util.List<String> listaVenganzas(){
 			return this.daoAcciones.listaVenganzas();

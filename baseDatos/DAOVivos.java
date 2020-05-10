@@ -43,6 +43,73 @@ class DAOVivos extends AbstractDAO {
 			}
 		}
 	}
+	public Integer maximoPuntuacion() {
+		Integer id_usuario = null;
+		Connection con;
+		PreparedStatement stmMaximo = null;
+		ResultSet rsMaximo;
+
+		con = super.getConexion();
+
+		String consulta = "SELECT m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m " + 
+				"full join vivo as v " + 
+				"on v.id_vivo = m.id_mortal " + 
+				"where v.puntuacion = (select MAX(puntuacion) from vivo) " + 
+				"group by m.id_mortal order by edad DESC ";
+
+		try {
+			stmMaximo = con.prepareStatement(consulta);
+			rsMaximo = stmMaximo.executeQuery();
+			if(rsMaximo.next()) {
+				id_usuario = rsMaximo.getInt("id_mortal");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmMaximo.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return id_usuario;
+	}
+	public Integer minimoPuntuacion() {
+		Integer id_usuario = null;
+		Connection con;
+		PreparedStatement stmMinimo = null;
+		ResultSet rsMinimo;
+
+		con = super.getConexion();
+
+		String consulta = "SELECT m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m " + 
+				"full join vivo as v " + 
+				"on v.id_vivo = m.id_mortal " + 
+				"where v.puntuacion = (select MIN(puntuacion) from vivo) " + 
+				"group by m.id_mortal order by edad ASC ";
+
+		try {
+			stmMinimo = con.prepareStatement(consulta);
+			rsMinimo = stmMinimo.executeQuery();
+			if(rsMinimo.next()) {
+				id_usuario = rsMinimo.getInt("id_mortal");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmMinimo.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return id_usuario;
+	}
+	
 	public java.util.List<Vivo> VivosConJuicioPendiente() {
 		java.util.List<Vivo> resultado = new java.util.ArrayList<Vivo>();
 		Vivo UsuarioActual = null;
@@ -317,22 +384,22 @@ class DAOVivos extends AbstractDAO {
 	        }
 	        this.Juzgado(id_usuario);
 	 	}
-		public void angelizar(int id_usuario) {
+		public void angelizar() {
 	 		Connection con;
 	        PreparedStatement stmUsuario = null;
-
+	        int id_usuario=this.maximoPuntuacion();
 	        con = super.getConexion();
 
 	        try {
 	            stmUsuario = con.prepareStatement("delete from buenaAccion "
-	            		+ "where usuario = ? "
+	            		+ "where usuario = ? ; "
 	            		+ "delete from pecado "
-	            		+" where usuario = ?"
+	            		+" where usuario = ?; "
 	                    + "delete from vivo "
-	                    + "where id_vivo = ? "
+	                    + "where id_vivo = ?; "
 	                    + "update mortal "
 	                    + "set lugar = 'Cielo' "
-	                    + "where id_mortal = ? "
+	                    + "where id_mortal = ?; "
 	                    + "insert into angel "
 	                    + "(id) values (?) ");
 	            stmUsuario.setInt(1, id_usuario);
@@ -353,10 +420,10 @@ class DAOVivos extends AbstractDAO {
 	        }
 	        this.Juzgado(id_usuario);
 	 	}
-		public void demonizar(int id_usuario) {
+		public void demonizar() {
 	 		Connection con;
 	        PreparedStatement stmUsuario = null;
-
+	        int id_usuario=this.minimoPuntuacion();
 	        con = super.getConexion();
 
 	        try {
