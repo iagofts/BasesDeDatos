@@ -24,7 +24,7 @@ Insert into angel (id) values ((select id_usuario from usuario where nombre_usua
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('neut23','Elneu Tral','nn00','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('16/07/1952','05/06/2003','Limbo');
-Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense',-1.8);
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juicio) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense',-1.8,TRUE);
 Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('16/05/1993',1,(select id_usuario from usuario where nombre_usuario='neut23'));
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/2000',4,(select id_usuario from usuario where nombre_usuario='neut23'));
 
@@ -38,19 +38,19 @@ Insert into demonio (id) values ((select id_usuario from usuario where nombre_us
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('paclu','Paco de Lucia','pcl','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('21/12/1947','25/02/2014','Cielo');
-Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion) values ((select id_usuario from usuario where nombre_usuario='casib40'),(select id_usuario from usuario where nombre_usuario='traps3'),'Andalusia',2.2);
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juicio) values ((select id_usuario from usuario where nombre_usuario='casib40'),(select id_usuario from usuario where nombre_usuario='traps3'),'Andalusia',2.2,TRUE);
 Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('16/05/1993',1,(select id_usuario from usuario where nombre_usuario='paclu'));
 Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('02/04/1999',2,(select id_usuario from usuario where nombre_usuario='paclu'));
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('untreh','Pino Prestanizzi','pp','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('20/04/1940','05/06/2010','Infierno');
-Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion) values ((select id_usuario from usuario where nombre_usuario='casib40'),(select id_usuario from usuario where nombre_usuario='traps3'),'Barcelona',1.7);
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juicio) values ((select id_usuario from usuario where nombre_usuario='casib40'),(select id_usuario from usuario where nombre_usuario='traps3'),'Barcelona',1.7,TRUE);
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/2000',1,(select id_usuario from usuario where nombre_usuario='untreh'));
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('25/12/2001',3,(select id_usuario from usuario where nombre_usuario='untreh'));
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('peterpark','Peter Parker','peet','Mortal');
-Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('12/01/1980','11/11/2025','Tierra');
-Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense',2.5);
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('12/01/1980','11/11/2013','Tierra');
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juicio) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense',2.5,TRUE);
 
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('10/10/2019',1,(select id_usuario from usuario where nombre_usuario='peterpark'));
 Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('14/03/1995',3,(select id_usuario from usuario where nombre_usuario='peterpark'));
@@ -58,7 +58,7 @@ Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('02/05/1998',1,(
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('luckyluck','Luck Davis','ll777','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('23/02/1967','25/02/2020','Tierra');
-Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Barcelona',2.7);
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juicio) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Barcelona',2.7,TRUE);
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/1999',2,(select id_usuario from usuario where nombre_usuario='luckyluck'));
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('25/12/1999',3,(select id_usuario from usuario where nombre_usuario='luckyluck'));
 Insert into solicitar (fecha_solicitud,solicitante,victima,venganza,demonio) values ('26/12/1999',(select id_usuario from usuario where nombre_usuario='luckyluck'),(select id_usuario from usuario where nombre_usuario='peterpark'),2,(select id_usuario from usuario where nombre_usuario='mikemike'));
