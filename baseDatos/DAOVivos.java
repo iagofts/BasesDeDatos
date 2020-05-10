@@ -43,7 +43,7 @@ class DAOVivos extends AbstractDAO {
 	}
 
 	private Integer maximoPuntuacion() {
-		Integer id_usuario = null;
+		int id_usuario = 0;
 		Connection con;
 		PreparedStatement stmMaximo = null;
 		ResultSet rsMaximo;
@@ -53,7 +53,7 @@ class DAOVivos extends AbstractDAO {
 		String consulta = "SELECT v.puntuacion, m.id_mortal, MAX(age(fecha_muerte,fecha_nacimiento)) as edad from mortal as m "
 				+ "full join vivo as v " + "on v.id_vivo = m.id_mortal "
 				+ "where v.puntuacion = (select MAX(puntuacion) from vivo) " + "and m.lugar = 'Cielo' "
-				+ "and v.id_vivo NOTNULL" + "group by m.id_mortal, v.puntuacion order by edad DESC ";
+				+ "and v.id_vivo NOTNULL " + "group by m.id_mortal, v.puntuacion order by edad DESC ";
 
 		try {
 			stmMaximo = con.prepareStatement(consulta);
@@ -76,7 +76,7 @@ class DAOVivos extends AbstractDAO {
 	}
 
 	private Integer minimoPuntuacion() {
-		Integer id_usuario = null;
+		int id_usuario = 0;
 		Connection con;
 		PreparedStatement stmMinimo = null;
 		ResultSet rsMinimo;
@@ -87,7 +87,7 @@ class DAOVivos extends AbstractDAO {
 				+ "full join vivo as v " + "on v.id_vivo = m.id_mortal "
 				+ "where v.puntuacion = (select MIN(puntuacion) from vivo) " 
 				+ "and m.lugar = 'Infierno' "
-				+ "and v.id_vivo NOTNULL" + "group by m.id_mortal, v.puntuacion order by edad ASC ";
+				+ "and v.id_vivo NOTNULL " + "group by m.id_mortal, v.puntuacion order by edad ASC ";
 
 		try {
 			stmMinimo = con.prepareStatement(consulta);
