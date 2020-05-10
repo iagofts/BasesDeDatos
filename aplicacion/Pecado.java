@@ -17,13 +17,15 @@ public class Pecado {
     private boolean confesado;
     private boolean confesionSolicitada;
     private Date fecha;
+    private Integer tipoPecado;
 
-    public Pecado(float gravedad, String descripcion, boolean confesado, boolean confesionSolicitada, Date fecha) {
+    public Pecado(float gravedad, String descripcion, boolean confesado, boolean confesionSolicitada, Date fecha, Integer tipoPecado) {
         this.gravedad = gravedad;
         this.descripcion = descripcion;
         this.confesado = confesado;
         this.confesionSolicitada = confesionSolicitada;
         this.fecha = fecha;
+        this.tipoPecado=tipoPecado;
     }
 
     public Pecado(float gravedad, String descripcion) {
@@ -49,6 +51,10 @@ public class Pecado {
     
     public Date getFecha() {
         return fecha;
+    }
+    
+    public int getTipoPecado(){
+        return tipoPecado;
     }
     
 }
