@@ -236,7 +236,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select count(tabla.edad) as nHabitantes"
+		String consulta = "select count(tabla.edad) as nHabitantes "
 				+ "from "
 				+ "(select age(fecha_muerte,fecha_nacimiento) as edad from mortal as m) as tabla " 
 				+ "where ";
