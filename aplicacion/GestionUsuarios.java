@@ -25,11 +25,11 @@ public class GestionUsuarios {
 	return fbd.consultarUsuariosMenos(id, nombre);
     }
     
-    public java.sql.Date RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, String fecha_muerte){
+    public String RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, String fecha_muerte){
         java.sql.Date fecha_nacimiento=fbd.getFecha();
         java.sql.Date fMuerte=java.sql.Date.valueOf(fecha_muerte);
         fbd.RegistrarUsuarioVivo(fbd.listaDemoniosInfierno().get(0).getIdUsuario(), fbd.listaAngelesCielo().get(0).getIdUsuario(), nombre, nombre_usuario, localidad, "0000", fecha_nacimiento, fMuerte);
-        return fecha_nacimiento;
+        return fecha_nacimiento.toString();
     }
     
     public void modificarUsuarioVivo(Integer id, String nombre, String clave, String localidad) {
@@ -151,25 +151,17 @@ public class GestionUsuarios {
         return fbd.listaBuenasAcciones(id_usuario);
     }
     public int juzgarUsuario(Vivo v){
-        if(v.getPuntuacion()<-2.0){
-            fbd.demonizar();
-            return 1;
-        }
-        else if(v.getPuntuacion()<-0.5){
+        if(v.getPuntuacion()<-0.5){
             fbd.mandarALugar(v.getIdUsuario(), "Infierno");
-            return 2;
+            return 1;
         }
         else if(v.getPuntuacion()<0.5){
             fbd.mandarALugar(v.getIdUsuario(), "Limbo");
-            return 3;
-        }
-        else if(v.getPuntuacion()<2.0){
-            fbd.mandarALugar(v.getIdUsuario(), "Cielo");
-            return 4;
+            return 2;
         }
         else{
-            fbd.angelizar();
-            return 5;
+            fbd.mandarALugar(v.getIdUsuario(), "Cielo");
+            return 3;
         }
     }
     public void mandarACielo(int id_usuario){
