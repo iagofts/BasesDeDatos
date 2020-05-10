@@ -3,6 +3,7 @@ package gui;
 import aplicacion.BuenaAccion;
 import aplicacion.Pecado;
 import aplicacion.Vivo;
+import java.awt.event.WindowListener;
 
 public class VDios extends javax.swing.JFrame {
     
@@ -171,7 +172,7 @@ public class VDios extends javax.swing.JFrame {
                 .addComponent(btnRegistrar)
                 .addGap(18, 18, 18)
                 .addComponent(btnEstadisticas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJuiciosLayout.createSequentialGroup()
@@ -200,7 +201,7 @@ public class VDios extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textoLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(158, 158, 158))
+                .addGap(148, 148, 148))
         );
         panelJuiciosLayout.setVerticalGroup(
             panelJuiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,7 +299,7 @@ public class VDios extends javax.swing.JFrame {
                     .addGroup(panelCieloLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(btnAngelizar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 495, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 489, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelCieloLayout.createSequentialGroup()
                         .addGroup(panelCieloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,6 +408,11 @@ public class VDios extends javax.swing.JFrame {
         jLabel12.setText("Pecados de:");
 
         btnDemonificar.setText("Demonificar");
+        btnDemonificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDemonificarActionPerformed(evt);
+            }
+        });
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -430,44 +436,45 @@ public class VDios extends javax.swing.JFrame {
         panelInfiernoLayout.setHorizontalGroup(
             panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfiernoLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(btnDemonificar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(panelInfiernoLayout.createSequentialGroup()
-                .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelInfiernoLayout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel20)
+                        .addGap(45, 45, 45)
+                        .addComponent(btnDemonificar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelInfiernoLayout.createSequentialGroup()
                         .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelInfiernoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addGap(60, 60, 60)
+                                .addComponent(jLabel20)
                                 .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(textoPuntuacionInfierno)
-                                    .addComponent(textoTotalPecados, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28))
+                                    .addGroup(panelInfiernoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(textoPuntuacionInfierno)
+                                            .addComponent(textoTotalPecados, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(28, 28, 28))
+                                    .addGroup(panelInfiernoLayout.createSequentialGroup()
+                                        .addGap(139, 139, 139)
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfiernoLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelInfiernoLayout.createSequentialGroup()
-                                .addGap(139, 139, 139)
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfiernoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelInfiernoLayout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textoSeleccionadoInfierno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(117, 117, 117)
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(textoSeleccionadoInfierno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(28, 28, 28))
         );
         panelInfiernoLayout.setVerticalGroup(
@@ -503,8 +510,8 @@ public class VDios extends javax.swing.JFrame {
                     .addComponent(textoPuntuacionInfierno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(panelInfiernoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDemonificar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDemonificar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -681,6 +688,7 @@ public class VDios extends javax.swing.JFrame {
         mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
         if(mjp.getRowCount()>0){ //Si hemos seleccionado un usuario para juzgar, se abre la ventana de Juicio Final
             fa.muestraVJuzgar(this,true,mjp.getRow(tablaJuiciosPendientes.getSelectedRow()));
+            actualizarDatosJuiciosPendientes();
         }
     }//GEN-LAST:event_btnJuzgarActionPerformed
 
@@ -724,8 +732,32 @@ public class VDios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarCieloActionPerformed
 
     private void btnAngelizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngelizarActionPerformed
-        // TODO add your handling code here:
+        ModeloListaStrings mlstUsuariosCielo;
+        mlstUsuariosCielo=(ModeloListaStrings) listaUsuariosCielo.getModel();
+        if(mlstUsuariosCielo.getElementos().size()>0){
+            fa.angelizar();
+            ModeloListaStrings mlstAngeles;
+            mlstAngeles=(ModeloListaStrings) listaAngeles.getModel();
+            mlstAngeles.nuevoElemento(mlstUsuariosCielo.getElementAt(listaUsuariosCielo.getSelectedIndex()));
+            mlstUsuariosCielo.borrarElemento(listaUsuariosCielo.getSelectedIndex());
+        }else{
+            fa.muestraExcepcion(this,true,"No hay usuarios para angelizar");
+        }
     }//GEN-LAST:event_btnAngelizarActionPerformed
+    
+    private void btnDemonificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDemonificarActionPerformed
+      ModeloListaStrings mlstUsuariosInfierno;
+      mlstUsuariosInfierno=(ModeloListaStrings) listaUsuariosInfierno.getModel();
+      if(mlstUsuariosInfierno.getElementos().size()>0){
+          fa.demonizar();
+          ModeloListaStrings mlstDemonios;
+          mlstDemonios=(ModeloListaStrings) listaDemonios.getModel();
+          mlstDemonios.nuevoElemento(mlstUsuariosInfierno.getElementAt(listaUsuariosInfierno.getSelectedIndex()));
+          mlstUsuariosInfierno.borrarElemento(listaUsuariosInfierno.getSelectedIndex());
+      }else{
+            fa.muestraExcepcion(this,true,"No hay usuarios para demonificar");
+      }
+    }//GEN-LAST:event_btnDemonificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -980,9 +1012,8 @@ public class VDios extends javax.swing.JFrame {
     
     
     public void actualizarDatosLimbo(){
-    ModeloListaStrings mlstUsuariosLimbo;
+        ModeloListaStrings mlstUsuariosLimbo;
         mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
-        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
         if(listaUsuariosLimbo.getSelectedIndex()!=-1){
         java.util.List<Vivo> vivosLimbo;
         vivosLimbo=fa.listaVivosLimbo();
@@ -997,6 +1028,25 @@ public class VDios extends javax.swing.JFrame {
             textoPuntuacionLimbo.setText(String.valueOf(0));
         }
         
+    }
+    
+    public void actualizarElementos(){
+         //JUICIOS
+        ModeloTablaJuiciosPendientes mjp;
+        mjp=(ModeloTablaJuiciosPendientes) tablaJuiciosPendientes.getModel();
+        mjp.setFilas(fa.juiciosPendientes());
+        //CIELO
+        ModeloListaStrings mlstUsuariosCielo;
+        mlstUsuariosCielo=(ModeloListaStrings) listaUsuariosCielo.getModel();
+        mlstUsuariosCielo.setElementos(fa.listaStringVivosCielo());
+        //INFIERNO
+        ModeloListaStrings mlstUsuariosInfierno;
+        mlstUsuariosInfierno=(ModeloListaStrings) listaUsuariosInfierno.getModel();
+        mlstUsuariosInfierno.setElementos(fa.listaStringVivosInfierno());
+        //LIMBO
+        ModeloListaStrings mlstUsuariosLimbo;
+        mlstUsuariosLimbo=(ModeloListaStrings) listaUsuariosLimbo.getModel();
+        mlstUsuariosLimbo.setElementos(fa.listaStringVivosLimbo());
     }
     
     

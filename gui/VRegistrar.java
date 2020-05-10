@@ -1,5 +1,7 @@
 package gui;
 
+import javax.swing.JOptionPane;
+
 
 public class VRegistrar extends javax.swing.JDialog {
     aplicacion.FachadaAplicacion fa;
@@ -144,6 +146,7 @@ public class VRegistrar extends javax.swing.JDialog {
        if(camposCompletados()){
         textoFechaNacimiento.setText(String.valueOf(
                 fa.RegistrarUsuarioVivo(textoNombre.getText(),textoID.getText(),textoLocalidad.getText().isEmpty()?null:textoLocalidad.getText(),textoFechaMuerte.getText())));
+                JOptionPane.showMessageDialog(this, "Usuario registrado","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
        }else{
            fa.muestraExcepcion(parent,true,"Rellene todos los campos por favor");
        }
