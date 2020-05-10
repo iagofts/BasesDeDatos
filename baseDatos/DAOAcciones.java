@@ -346,4 +346,31 @@ class DAOAcciones extends AbstractDAO{
 		return fecha;
 	}
 	
+	public void solicitarVenganza(int id_usuario_solicitante, int id_usuario_solicitado, int id_venganza) {
+		Connection con;
+		PreparedStatement stmVengar = null;
+
+		con = super.getConexion();
+
+		String consulta = "insert into solicitar(fecha_solicitud,solicitante,victima,venganza,demonio) "
+				+ "values (CURRENT_TIMESTAMP,?,?,?,(select dem_asignado from vivo where id_vivo = ?))";
+
+		try {
+			stmVengar = con.prepareStatement(consulta);
+			stmVengar.setInt(1, id_usuario_solicitante);
+			stmVengar.setInt(2, id_usuario_solicitado);
+			stmVengar.setInt(3, id_venganza);
+			stmVengar.setInt(4, id_usuario_solicitante);
+			stmVengar.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmVengar.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+	}
 }

@@ -137,4 +137,7 @@ public class FachadaBaseDatos {
 		public java.sql.Date getFecha() {
 			return this.daoAcciones.getFecha();
 		}
+		public void solicitarVenganza(int id_usuario_solicitante, int id_usuario_solicitado, int id_venganza) {
+			this.daoAcciones.solicitarVenganza(id_usuario_solicitante, id_usuario_solicitado, id_venganza);
+		}
 }

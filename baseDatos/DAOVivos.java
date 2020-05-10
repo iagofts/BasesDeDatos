@@ -160,9 +160,9 @@ class DAOVivos extends AbstractDAO {
 
 		try {
 			stmUsuario = con.prepareStatement("insert into usuario(nombre_usuario, nombre, clave, tipo) "
-							+ "values (?,?,?,?) "
+							+ "values (?,?,?,?); "
 							+ "insert into mortal(fecha_nacimiento,fecha_muerte,lugar) "
-							+ "values (?,?,?) "
+							+ "values (?,?,?); "
 							+ "insert into vivo(ang_asignado,dem_asignado) "
 							+ "values(?,?) ");
 			stmUsuario.setString(1, nombre_usuario);
