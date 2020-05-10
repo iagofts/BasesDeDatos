@@ -28,6 +28,11 @@ public class Vivo extends Mortal{
         this.buenasAcciones=null;
     }
 
+    public Vivo(int id_usuario, String nombre, float puntuacion){
+        super(id_usuario, nombre);
+        this.puntuacion = puntuacion;
+    }
+    
     public Vivo(int id_usuario,String nombre){
         super(id_usuario,nombre);
     }

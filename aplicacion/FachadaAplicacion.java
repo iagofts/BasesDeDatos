@@ -135,5 +135,10 @@ public class FachadaAplicacion {
     public void solicitarVenganza(Integer id_solicitante, Integer id_vengado, Integer id_venganza){
         cu.solicitarVenganza(id_solicitante, id_vengado, id_venganza);
     }
-    
+    public void angelizar(){
+        cu.angelizar();
+    }
+    public void demonizar(){
+        cu.demonizar();
+    }
 }

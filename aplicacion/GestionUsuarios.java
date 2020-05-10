@@ -192,5 +192,10 @@ public class GestionUsuarios {
     public void solicitarVenganza(Integer id_solicitante, Integer id_vengado, Integer id_venganza){
         fbd.solicitarVenganza(id_solicitante, id_vengado, id_venganza);
     }
- 
+    public void angelizar(){
+        fbd.angelizar();
+    }
+    public void demonizar(){
+        fbd.demonizar();
+    }
 }
