@@ -199,7 +199,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select count(id_vivo) as nHabitantes"
+		String consulta = "select count(id_vivo) as nHabitantes "
 				+ "from vivo "
 				+ "where localidad = ? ";
 
@@ -292,7 +292,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select SUM(puntuacion) as sumPuntuacion"
+		String consulta = "select SUM(puntuacion) as sumPuntuacion "
 				+ "from vivo "
 				+ "where localidad = ? ";
 
