@@ -25,12 +25,12 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select tba.descrip_accion, tba.puntuacion from vivo as v"
-				+ " join buenaAccion as ba"
-				+ " on v.id_vivo=ba.usuario"
-				+ " join tipoBA as tba"
-				+ " on tba.tipo_accion=ba.tipo_accion"
-				+ " where v.id_vivo = ?";
+		String consulta = "select tba.descrip_accion, tba.puntuacion from vivo as v "
+				+ "join buenaAccion as ba "
+				+ "on v.id_vivo = ba.usuario "
+				+ "join tipoBA as tba "
+				+ "on tba.tipo_accion = ba.tipo_accion "
+				+ "where v.id_vivo = ? ";
 
 		try {
 			stmBuenaAccion = con.prepareStatement(consulta);
