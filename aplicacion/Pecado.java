@@ -5,7 +5,7 @@
  */
 package aplicacion;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -16,7 +16,15 @@ public class Pecado {
     private String descripcion;
     private boolean confesado;
     private boolean confesionSolicitada;
-    private java.util.Date fecha;
+    private Date fecha;
+
+    public Pecado(float gravedad, String descripcion, boolean confesado, boolean confesionSolicitada, Date fecha) {
+        this.gravedad = gravedad;
+        this.descripcion = descripcion;
+        this.confesado = confesado;
+        this.confesionSolicitada = confesionSolicitada;
+        this.fecha = fecha;
+    }
 
     public Pecado(float gravedad, String descripcion) {
         this.gravedad = gravedad;
