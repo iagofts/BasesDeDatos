@@ -126,9 +126,9 @@ class DAOAcciones extends AbstractDAO{
 		}
 		return resultado;
 	}
-	public java.util.List<String> listaVenganzas() {
-		java.util.List<String> resultado = new java.util.ArrayList<String>();
-		String VenganzaActual = null;
+	public java.util.List<Venganza> listaVenganzas() {
+		java.util.List<Venganza> resultado = new java.util.ArrayList<Venganza>();
+		Venganza VenganzaActual = null;
 		Connection con;
 		PreparedStatement stmVenganza = null;
 		ResultSet rsVenganza;
@@ -142,7 +142,7 @@ class DAOAcciones extends AbstractDAO{
 			stmVenganza = con.prepareStatement(consulta);
 			rsVenganza = stmVenganza.executeQuery();
 			while (rsVenganza.next()) {
-				VenganzaActual = rsVenganza.getString("consecuencia");
+				VenganzaActual = new Venganza(rsVenganza.getInt("nivel"),rsVenganza.getString("consecuencia"));
 				resultado.add(VenganzaActual);
 
 			}
@@ -283,24 +283,24 @@ class DAOAcciones extends AbstractDAO{
 		}
 	}
 	
-	public Integer puntuacionLocalidad(int id_usuario) {
-		Integer nPecados = null;
+	public Float puntuacionLocalidad(String localidad) {
+		Float puntuacion = (float)0.0;
 		Connection con;
-		PreparedStatement stmnPecados = null;
-		ResultSet rsnPecados;
+		PreparedStatement stmPuntuacion = null;
+		ResultSet rsPuntuacion;
 
 		con = super.getConexion();
 
-		String consulta = "select count(id_vivo) "
+		String consulta = "select SUM(puntuacion) as sumPuntuacion"
 				+ "from vivo "
 				+ "where localidad = ? ";
 
 		try {
-			stmnPecados = con.prepareStatement(consulta);
-			stmnPecados.setInt(1, id_usuario);
-			rsnPecados = stmnPecados.executeQuery();
-			if(rsnPecados.next()) {
-				nPecados = rsnPecados.getInt("localidad");
+			stmPuntuacion = con.prepareStatement(consulta);
+			stmPuntuacion.setString(1, localidad);
+			rsPuntuacion = stmPuntuacion.executeQuery();
+			if(rsPuntuacion.next()) {
+				puntuacion = rsPuntuacion.getFloat("sumPuntuacion");
 
 			}
 		} catch (SQLException e) {
@@ -308,36 +308,11 @@ class DAOAcciones extends AbstractDAO{
 			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
 		} finally {
 			try {
-				stmnPecados.close();
+				stmPuntuacion.close();
 			} catch (SQLException e) {
 				System.out.println("Imposible cerrar cursores");
 			}
 		}
-		return nPecados;
-	}
-	private void Juzgado(int id_usuario) {
-		Connection con;
-		PreparedStatement stmJuzgado = null;
-
-		con = super.getConexion();
-
-		String consulta = "update vivo "
-				+ "set pendiente_juicio = 'FALSE' "
-				+ "where id_usuario = ? ";
-
-		try {
-			stmJuzgado = con.prepareStatement(consulta);
-			stmJuzgado.setInt(1, id_usuario);
-			stmJuzgado.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
-		} finally {
-			try {
-				stmJuzgado.close();
-			} catch (SQLException e) {
-				System.out.println("Imposible cerrar cursores");
-			}
-		}
+		return puntuacion;
 	}
 }
