@@ -150,8 +150,8 @@ public class FachadaAplicacion {
 		return cu.habitantesLocalidad(localidad);
 	}
 
-	public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
-		cu.solicitarConfesion(id_usuario, fecha_hora);
+	public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora, int tipoPecado) {
+		cu.solicitarConfesion(id_usuario, fecha_hora, tipoPecado);
 	}
 
 	public Float puntuacionLocalidad(String localidad) {
