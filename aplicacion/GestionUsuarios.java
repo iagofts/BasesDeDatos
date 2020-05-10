@@ -183,8 +183,8 @@ public class GestionUsuarios {
     public Integer habitantesLocalidad(String localidad) {
 	return fbd.habitantesLocalidad(localidad);
     }
-    public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora) {
-	fbd.solicitarConfesion(id_usuario, fecha_hora);
+    public void solicitarConfesion(int id_usuario, java.sql.Date fecha_hora, int tipoPecado) {
+	fbd.solicitarConfesion(id_usuario, fecha_hora, tipoPecado);
     }
     public Float puntuacionLocalidad(String localidad) {
 	return fbd.puntuacionLocalidad(localidad);
