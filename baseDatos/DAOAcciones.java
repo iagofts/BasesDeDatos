@@ -178,6 +178,9 @@ class DAOAcciones extends AbstractDAO{
 			rsLocalidad = stmLocalidad.executeQuery();
 			while (rsLocalidad.next()) {
 				LocalidadActual = rsLocalidad.getString("localidad");
+				if (LocalidadActual == "") {
+					LocalidadActual = "Desconocido";
+				}
 				resultado.add(LocalidadActual);
 
 			}
@@ -387,7 +390,7 @@ class DAOAcciones extends AbstractDAO{
 
 		con = super.getConexion();
 
-		String consulta = "select SUM(puntuacion) as sumPuntuacion "
+		String consulta = "select SUM(puntuacion) as sumpuntuacion "
 				+ "from vivo "
 				+ "where localidad = ? ";
 
@@ -396,8 +399,7 @@ class DAOAcciones extends AbstractDAO{
 			stmPuntuacion.setString(1, localidad);
 			rsPuntuacion = stmPuntuacion.executeQuery();
 			if(rsPuntuacion.next()) {
-				puntuacion = rsPuntuacion.getFloat("sumPuntuacion");
-
+				puntuacion = rsPuntuacion.getFloat("sumpuntuacion");
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
