@@ -62,3 +62,8 @@ Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juici
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/1999',2,(select id_usuario from usuario where nombre_usuario='luckyluck'));
 Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('25/12/1999',3,(select id_usuario from usuario where nombre_usuario='luckyluck'));
 Insert into solicitar (fecha_solicitud,solicitante,victima,venganza,demonio) values ('26/12/1999',(select id_usuario from usuario where nombre_usuario='luckyluck'),(select id_usuario from usuario where nombre_usuario='peterpark'),2,(select id_usuario from usuario where nombre_usuario='mikemike'));
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('nikejordan','Michael Jordan','mj99','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('17/02/1963','05/06/2040','Tierra');
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juicio) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Xinzo',0.4,FALSE);
+Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('19/08/1993',2,(select id_usuario from usuario where nombre_usuario='nikejordan'));
