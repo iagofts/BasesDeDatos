@@ -140,4 +140,11 @@ public class FachadaBaseDatos {
 		public void solicitarVenganza(int id_usuario_solicitante, int id_usuario_solicitado, int id_venganza) {
 			this.daoAcciones.solicitarVenganza(id_usuario_solicitante, id_usuario_solicitado, id_venganza);
 		}
+		public Integer habitantesEdad(int edad) {
+			return this.daoAcciones.habitantesEdad(edad);
+		}
+		
+		public Float puntuacionEdad(int edad) {
+			return this.daoAcciones.puntuacionEdad(edad);
+		}
 }

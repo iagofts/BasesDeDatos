@@ -225,6 +225,99 @@ class DAOAcciones extends AbstractDAO{
 		}
 		return nHabitantes;
 	}
+	public Integer habitantesEdad(int edad) {
+		Integer nHabitantes = null;
+		Connection con;
+		PreparedStatement stmnHabitantes = null;
+		ResultSet rsnHabitantes;
+
+		con = super.getConexion();
+
+		String consulta = "select count(tabla.edad) as nHabitantes"
+				+ "from "
+				+ "(select age(fecha_muerte,fecha_nacimiento) as edad from mortal as m) as tabla " 
+				+ "where ";
+		switch (edad) {
+		case 0:
+			consulta = consulta + "edad < age('1/1/2025','1/1/2000') ";
+			break;
+		case 1:
+			consulta = consulta + "edad between age('1/1/2025','1/1/2000') and age('1/1/2050','1/1/2000') ";
+			break;
+		case 2:
+			consulta = consulta + "edad between age('1/1/2050','1/1/2000') and age('1/1/2075','1/1/2000') ";
+			break;
+		case 3:
+			consulta = consulta + "edad > age('1/1/2075','1/1/2000') ";
+			break;
+		}
+
+		try {
+			stmnHabitantes = con.prepareStatement(consulta);
+			rsnHabitantes = stmnHabitantes.executeQuery();
+			if(rsnHabitantes.next()) {
+				nHabitantes = rsnHabitantes.getInt("nHabitantes");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmnHabitantes.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return nHabitantes;
+	}
+	public Float puntuacionEdad(int edad) {
+		Float Puntuacion = null;
+		Connection con;
+		PreparedStatement stmPuntuacion = null;
+		ResultSet rsPuntuacion;
+
+		con = super.getConexion();
+
+		String consulta = "select SUM(puntuacion) as sumPuntuacion " + 
+				"from (select v.puntuacion,age(m.fecha_muerte,m.fecha_nacimiento) as edad from mortal as m " + 
+				"full join vivo as v on m.id_mortal = v.id_vivo " + 
+				"where id_vivo NOTNULL) as tabla " + 
+				"where tabla.edad ";
+		switch (edad) {
+		case 0:
+			consulta = consulta + "< age('1/1/2025','1/1/2000') ";
+			break;
+		case 1:
+			consulta = consulta + "between age('1/1/2025','1/1/2000') and age('1/1/2050','1/1/2000') ";
+			break;
+		case 2:
+			consulta = consulta + "between age('1/1/2050','1/1/2000') and age('1/1/2075','1/1/2000') ";
+			break;
+		case 3:
+			consulta = consulta + "> age('1/1/2075','1/1/2000') ";
+			break;
+		}
+
+		try {
+			stmPuntuacion = con.prepareStatement(consulta);
+			rsPuntuacion = stmPuntuacion.executeQuery();
+			if(rsPuntuacion.next()) {
+				Puntuacion = rsPuntuacion.getFloat("sumPuntuacion");
+
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			this.getFachadaAplicacion().muestraExcepcion(e.getMessage());
+		} finally {
+			try {
+				stmPuntuacion.close();
+			} catch (SQLException e) {
+				System.out.println("Imposible cerrar cursores");
+			}
+		}
+		return Puntuacion;
+	}
 	public Integer numeroPecados(int id_usuario) {
 		Integer nPecados = null;
 		Connection con;

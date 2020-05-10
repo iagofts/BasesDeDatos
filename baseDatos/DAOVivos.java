@@ -77,6 +77,7 @@ class DAOVivos extends AbstractDAO {
 		}
 		return id_usuario;
 	}
+	
 	private Integer minimoPuntuacion() {
 		Integer id_usuario = null;
 		Connection con;
