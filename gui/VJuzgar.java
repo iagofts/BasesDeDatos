@@ -1,6 +1,5 @@
 package gui;
 
-import aplicacion.BuenaAccion;
 import javax.swing.JOptionPane;
 
 public class VJuzgar extends javax.swing.JDialog {
@@ -256,11 +255,9 @@ public class VJuzgar extends javax.swing.JDialog {
 
     private void btnJuzgarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJuzgarActionPerformed
          switch(fa.juzgarUsuario(vivo)){
-            case 1: JOptionPane.showMessageDialog(this, "Usuario convertido en Demonio","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
-            case 2: JOptionPane.showMessageDialog(this, "Usuario mandado al Infierno","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
-            case 3: JOptionPane.showMessageDialog(this, "Usuario mandado al Limbo","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
-            case 4: JOptionPane.showMessageDialog(this, "Usuario mandado al Cielo","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
-            case 5: JOptionPane.showMessageDialog(this, "Usuario convertido en Angel","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            case 1: JOptionPane.showMessageDialog(this, "Usuario mandado al Infierno","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            case 2: JOptionPane.showMessageDialog(this, "Usuario mandado al Limbo","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
+            case 3: JOptionPane.showMessageDialog(this, "Usuario mandado al Cielo","INFORMATION",JOptionPane.INFORMATION_MESSAGE); break;
             default: fa.muestraExcepcion(parent,true,"Error al juzgar el usuario"); break;
         }
     }//GEN-LAST:event_btnJuzgarActionPerformed
