@@ -45,15 +45,15 @@ public class FachadaGui {
         vj.setVisible(true);
     }
     
-    public void muestraVEstadisticas(java.awt.Frame parent,boolean modal){
+    public void muestraVEstadisticas(java.awt.Frame parent,boolean modal,aplicacion.FachadaAplicacion fa){
         VEstadisticas ve;
-        ve=new VEstadisticas(parent,modal);
+        ve=new VEstadisticas(parent,modal,fa);
         ve.setVisible(modal);
     }
      
-    public void muestraVRegistrar(java.awt.Frame parent,boolean modal){
+    public void muestraVRegistrar(java.awt.Frame parent,boolean modal,aplicacion.FachadaAplicacion fa){
        VRegistrar vr;
-       vr=new VRegistrar(parent,modal);
+       vr=new VRegistrar(parent,modal,fa);
        vr.setVisible(modal);
     }
     

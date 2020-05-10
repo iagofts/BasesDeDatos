@@ -258,6 +258,11 @@ public class VDios extends javax.swing.JFrame {
         });
 
         btnAngelizar.setText("Angelizar");
+        btnAngelizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAngelizarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salir");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -663,7 +668,7 @@ public class VDios extends javax.swing.JFrame {
         if(mlstUsuariosLimbo.getSize()>0){
             java.util.List<Vivo> vivosLimbo;
             vivosLimbo=fa.listaVivosLimbo();
-           // fa.enviarAlInfierno(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
+            fa.enviarAlInfierno(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
         }
     }//GEN-LAST:event_btnEnviarInfiernoActionPerformed
 
@@ -714,9 +719,13 @@ public class VDios extends javax.swing.JFrame {
         if(mlstUsuariosLimbo.getSize()>0){
         java.util.List<Vivo> vivosLimbo;
         vivosLimbo=fa.listaVivosLimbo();
-       // fa.enviarAlCielo(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
+        fa.enviarAlCielo(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
         }
     }//GEN-LAST:event_btnEnviarCieloActionPerformed
+
+    private void btnAngelizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngelizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAngelizarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
