@@ -23,7 +23,7 @@ public class VEstadisticas extends javax.swing.JDialog {
         rbtnLocalidad = new javax.swing.JRadioButton();
         rbtnEdad = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaLocalidades = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,9 +50,14 @@ public class VEstadisticas extends javax.swing.JDialog {
                 rbtnEdadMouseClicked(evt);
             }
         });
+        rbtnEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnEdadActionPerformed(evt);
+            }
+        });
 
-        tablaLocalidades.setModel(new ModeloTablaLocalidades());
-        jScrollPane1.setViewportView(tablaLocalidades);
+        tabla.setModel(new ModeloTablaLocalidades());
+        jScrollPane1.setViewportView(tabla);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,21 +119,24 @@ public class VEstadisticas extends javax.swing.JDialog {
     private void rbtnEdadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnEdadMouseClicked
        rbtnEdad.setSelected(true);
        rbtnLocalidad.setSelected(false);
-       tablaLocalidades.setVisible(false);
-      // tablaEdades.setVisible(false);
+       tabla.setModel(new ModeloTablaEdades());
+       actualizarDatosEdades();
     }//GEN-LAST:event_rbtnEdadMouseClicked
 
     private void rbtnLocalidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnLocalidadMouseClicked
        rbtnEdad.setSelected(false);
        rbtnLocalidad.setSelected(true);
-       tablaLocalidades.setVisible(true);
-      // tablaEdades.setVisible(false);
-      actualizarDatosLocalidad();
+       tabla.setModel(new ModeloTablaLocalidades());
+       actualizarDatosLocalidad();
     }//GEN-LAST:event_rbtnLocalidadMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void rbtnEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnEdadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnEdadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -137,7 +145,7 @@ public class VEstadisticas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbtnEdad;
     private javax.swing.JRadioButton rbtnLocalidad;
-    private javax.swing.JTable tablaLocalidades;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
     
@@ -145,7 +153,7 @@ public class VEstadisticas extends javax.swing.JDialog {
        rbtnEdad.setSelected(false);
        rbtnLocalidad.setSelected(true);
        ModeloTablaLocalidades mtl;
-       mtl=(ModeloTablaLocalidades) tablaLocalidades.getModel();
+       mtl=(ModeloTablaLocalidades) tabla.getModel();
        java.util.List<String> localidades=new java.util.ArrayList<>();
        localidades=fa.localidades();
        java.util.List<Integer> habitantes=new java.util.ArrayList<>();
@@ -157,5 +165,24 @@ public class VEstadisticas extends javax.swing.JDialog {
            puntuaciones.add(fa.puntuacionLocalidad(l));
        }
        mtl.setFilas(localidades, habitantes, puntuaciones);
+    }
+    
+    public void actualizarDatosEdades(){
+       rbtnEdad.setSelected(true);
+       rbtnLocalidad.setSelected(false);
+       ModeloTablaEdades mte;
+       mte=(ModeloTablaEdades) tabla.getModel();
+       java.util.List<String> edades=new java.util.ArrayList<>();
+       edades.add("<25");
+       edades.add("25-50");
+       edades.add("50-75");
+       edades.add(">75");
+       java.util.List<Integer> habitantes=new java.util.ArrayList<>();
+       java.util.List<Float> puntuaciones=new java.util.ArrayList<>();
+       for(int i=0;i<4;i++){
+           habitantes.add(fa.habitantesEdad(i));
+           puntuaciones.add(fa.puntuacionEdad(i));
+       }
+       mte.setFilas(edades, habitantes, puntuaciones);
     }
 }

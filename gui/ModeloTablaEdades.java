@@ -2,20 +2,20 @@ package gui;
 
 import javax.swing.table.*;
 
-public class ModeloTablaLocalidades extends AbstractTableModel {
- private java.util.List<String> localidades;
+public class ModeloTablaEdades extends AbstractTableModel {
+ private java.util.List<String> edades;
  private java.util.List<Integer> habitantes;
  private java.util.List<Float> puntuaciones;
  
-    public ModeloTablaLocalidades(){
-        this.localidades=new java.util.ArrayList<>();
+    public ModeloTablaEdades(){
+        this.edades=new java.util.ArrayList<>();
         this.habitantes=new java.util.ArrayList<>();
         this.puntuaciones=new java.util.ArrayList<>();
     }
 
     @Override
     public int getRowCount() {
-        return localidades.size();
+        return edades.size();
     }
 
     @Override
@@ -28,7 +28,7 @@ public class ModeloTablaLocalidades extends AbstractTableModel {
            Object resultado=null;
 
         switch (col){
-            case 0: resultado= localidades.get(row); break;
+            case 0: resultado= edades.get(row); break;
             case 1: resultado= habitantes.get(row); break;
             case 2: resultado= puntuaciones.get(row); break;
         }
@@ -39,7 +39,7 @@ public class ModeloTablaLocalidades extends AbstractTableModel {
         String nombre="";
 
         switch (col){
-            case 0: nombre= "Localidad"; break;
+            case 0: nombre= "Rangos de edad"; break;
             case 1: nombre= "Habitantes"; break;
             case 2: nombre= "Puntuación"; break;
         }
@@ -58,8 +58,8 @@ public class ModeloTablaLocalidades extends AbstractTableModel {
         return clase;
     }
     
-    public void setFilas(java.util.List<String> localidades,java.util.List<Integer> habitantes,java.util.List<Float> puntuaciones){
-        this.localidades=localidades;
+    public void setFilas(java.util.List<String> edades,java.util.List<Integer> habitantes,java.util.List<Float> puntuaciones){
+        this.edades=edades;
         this.habitantes=habitantes;
         this.puntuaciones=puntuaciones;
         fireTableDataChanged();
@@ -71,7 +71,7 @@ public class ModeloTablaLocalidades extends AbstractTableModel {
     }
 
     public void borrarElemento(int i){
-        this.localidades.remove(i);
+        this.edades.remove(i);
         this.habitantes.remove(i);
         this.puntuaciones.remove(i);
         fireTableDataChanged();
