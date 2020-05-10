@@ -1,0 +1,109 @@
+﻿Insert into tipoBA values (1,3.5,'Realizar voluntariado');
+Insert into tipoBA values (2,2.0,'Ayudar a una persona mayor');
+Insert into tipoBA values (3, 0.7,'Limpiar una playa');
+
+Insert into tipoPecado values (nextval('seq_pecado_tipo_pecado'),-2.0,'Mentir');
+Insert into tipoPecado values (nextval('seq_pecado_tipo_pecado'),-3.5,'Usar la violencia');
+Insert into tipoPecado values (nextval('seq_pecado_tipo_pecado'),-2.5,'Robar');
+Insert into tipoPecado values (nextval('seq_pecado_tipo_pecado'),-5.0,'Asesinar');
+
+Insert into venganza values (1,'Reducir fecha de muerte');
+Insert into venganza values (2,'Reducir puntuación');
+Insert into venganza values (3,'Limbo obligatorio');
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('yisus','Jesús de Nazaret','yis251201','Dios');
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('budalord','Siddharta Gautama','tibet123','Dios');
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('mikemike','Mike Philips','mk400','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('03/05/1935','11/11/2011','Infierno'); 
+Insert into demonio (id_demonio) values ((select id_usuario from usuario where nombre_usuario='mikemike'));
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('john122','John Naickel','jhn','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('14/08/1943','23/01/1999','Cielo');
+Insert into angel (id_angel) values ((select id_usuario from usuario where nombre_usuario='john122'));
+
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('neut23','Elneu Tral','nn00','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('16/07/1952','05/06/2003','Limbo');
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion,pendiente_juicio) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense',-1.8,TRUE);
+Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('16/05/1993',1,(select id_usuario from usuario where nombre_usuario='neut23'));
+Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/2000',(select tipo_pecado from tipoPecado where descrip_pecado like 'Robar'),(select id_usuario from usuario where nombre_usuario='neut23'));
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('casib40','Casib Ueno','cbcb','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('02/10/1964','28/08/2005','Tierra');
+insert into vivo (id_vivo, ang_asignado, dem_asignado, localidad) values (currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='john122'), (select id_usuario from usuario where nombre_usuario='mikemike'), 'Betanzos');
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('traps3','Elli Ante','ell333','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('01/12/1915','30/11/2015','Tierra');
+insert into vivo (id_vivo, ang_asignado, dem_asignado, localidad) values (currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='john122'), (select id_usuario from usuario where nombre_usuario='mikemike'), 'Ourense');
+insert into solicitar(fecha_solicitud, solicitante, victima, venganza, demonio) values (current_timestamp, currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='casib40'), 1, (select id_usuario from usuario where nombre_usuario='mikemike'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Robar'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Mentir'));
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('paclu','Paco de Lucia','pcl','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('21/12/1947','25/02/2014','Cielo');
+insert into vivo (id_vivo, ang_asignado, dem_asignado, localidad) values (currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='john122'), (select id_usuario from usuario where nombre_usuario='mikemike'), 'Andalusia');
+Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('16/05/1993',1,(select id_usuario from usuario where nombre_usuario='paclu'));
+Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('02/04/1999',2,(select id_usuario from usuario where nombre_usuario='paclu'));
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('untreh','Pino Prestanizzi','pp','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('20/04/1940','05/06/2010','Infierno');
+insert into vivo (id_vivo, ang_asignado, dem_asignado, localidad) values (currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='john122'), (select id_usuario from usuario where nombre_usuario='mikemike'), 'Barcelona');
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Mentir'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Robar'));
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('peterPan123','Peter Pan Lopez','fdrfef','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('04/11/1945','30/10/2024','Tierra');
+insert into vivo (id_vivo, ang_asignado, dem_asignado, localidad) values (currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='john122'), (select id_usuario from usuario where nombre_usuario='mikemike'), 'Ourense');
+insert into solicitar(fecha_solicitud, solicitante, victima, venganza, demonio) values (current_timestamp, currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='traps3'), 2, (select id_usuario from usuario where nombre_usuario='mikemike'));
+insert into solicitar(fecha_solicitud, solicitante, victima, venganza, demonio) values (current_timestamp, currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='casib40'), 1, (select id_usuario from usuario where nombre_usuario='mikemike'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Asesinar'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Mentir'));
+Insert into buenaAccion(fecha_hora, usuario, tipo_accion) values ('02/05/1998',currval('seq_us_id_usuario'), 1);
+
+
+Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('juanapgee','Juana Pita','3rwf','Mortal');
+Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('04/09/1945','04/7/2024','Tierra');
+insert into vivo (id_vivo, ang_asignado, dem_asignado, localidad) values (currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='john122'), (select id_usuario from usuario where nombre_usuario='mikemike'), 'Ourense');
+insert into solicitar(fecha_solicitud, solicitante, victima, venganza, demonio) values (current_timestamp, currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='casib40'), 2, (select id_usuario from usuario where nombre_usuario='mikemike'));
+insert into solicitar(fecha_solicitud, solicitante, victima, venganza, demonio) values (current_timestamp, currval('seq_us_id_usuario'), 
+(select id_usuario from usuario where nombre_usuario='peterPan123'), 2, (select id_usuario from usuario where nombre_usuario='mikemike'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'), 
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Mentir'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Usar la violencia'));
+insert into pecado(fecha_hora, usuario, tipo_pecado)values(current_timestamp, currval('seq_us_id_usuario'),
+(select tipo_pecado from tipoPecado where descrip_pecado like 'Robar'));
+Insert into buenaAccion(fecha_hora, usuario, tipo_accion) values ('02/05/1998',currval('seq_us_id_usuario'), 1);
+Insert into buenaAccion(fecha_hora, usuario, tipo_accion) values ('02/05/1998',currval('seq_us_id_usuario'), 2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
