@@ -198,4 +198,10 @@ public class GestionUsuarios {
     public void demonizar(){
         fbd.demonizar();
     }
+    public Float puntuacionEdad(Integer edad) {
+		return fbd.puntuacionEdad(edad);
+	}
+    public Integer habitantesEdad(Integer edad) {
+		return fbd.habitantesEdad(edad);
+	}
 }
