@@ -1,7 +1,6 @@
 package gui;
 
 import aplicacion.Vivo;
-import javax.swing.JOptionPane;
 
 public class VUsuarioVivo extends javax.swing.JFrame {
 
@@ -304,8 +303,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         // TODO add your handling code here:
         ModeloTablaPecados mp;
         mp = (ModeloTablaPecados) tablaPecados.getModel();
-        java.sql.Date f=new java.sql.Date(mp.getRow(tablaPecados.getSelectedRow()).getFecha().getTime());
-        fa.solicitarConfesion(usuario.getIdUsuario(), f);
+        fa.solicitarConfesion(usuario.getIdUsuario(), mp.getRow(tablaPecados.getSelectedRow()).getFecha());
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnConfesarActionPerformed
 
@@ -323,12 +321,7 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         if(tablaUsuarios.getSelectedRow()!=-1){
             if(tablaVenganzas.getSelectedRow()!=-1){
                 fa.solicitarVenganza(usuario.getIdUsuario(),mu.getRow(tablaUsuarios.getSelectedRow()).getIdUsuario(), mv.getRow(tablaVenganzas.getSelectedRow()).getNivel());
-                JOptionPane.showMessageDialog(this, "Venganza solicitada","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                fa.muestraExcepcion(this,true,"Seleccione una venganza, por favor");
             }
-        }else{
-            fa.muestraExcepcion(this,true,"Seleccione un usuario, por favor");
         }
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnSolicitarActionPerformed
