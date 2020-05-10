@@ -1,6 +1,7 @@
 package gui;
 
 import aplicacion.Vivo;
+import javax.swing.JOptionPane;
 
 public class VUsuarioVivo extends javax.swing.JFrame {
 
@@ -322,7 +323,12 @@ public class VUsuarioVivo extends javax.swing.JFrame {
         if(tablaUsuarios.getSelectedRow()!=-1){
             if(tablaVenganzas.getSelectedRow()!=-1){
                 fa.solicitarVenganza(usuario.getIdUsuario(),mu.getRow(tablaUsuarios.getSelectedRow()).getIdUsuario(), mv.getRow(tablaVenganzas.getSelectedRow()).getNivel());
+                JOptionPane.showMessageDialog(this, "Venganza solicitada","INFORMATION",JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                fa.muestraExcepcion(this,true,"Seleccione una venganza, por favor");
             }
+        }else{
+            fa.muestraExcepcion(this,true,"Seleccione un usuario, por favor");
         }
         inicializarDatos(usuario);
     }//GEN-LAST:event_btnSolicitarActionPerformed
