@@ -33,8 +33,11 @@ public class FachadaAplicacion {
     public Usuario comprobarAutentificacion(String user,String key){
         return cu.comprobarAutentificacion(user, key);
     }
-    public void RegistrarUsuarioVivo(Integer id_demonio, Integer id_angel, String nombre, String nombre_usuario, String localidad, String clave, java.sql.Date fecha_nacimiento, java.sql.Date fecha_muerte){
-        cu.RegistrarUsuarioVivo(id_demonio, id_angel, nombre, nombre_usuario, localidad, clave, fecha_nacimiento, fecha_muerte);
+    public java.util.List<Usuario> consultarUsuarios(Integer id_usuario, String nombre_usuario, String nombre){
+        return cu.consultarUsuarios(id_usuario, nombre_usuario, nombre);
+    }
+    public java.sql.Date RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, java.sql.Date fecha_nacimiento, java.sql.Date fecha_muerte){
+        return cu.RegistrarUsuarioVivo(nombre, nombre_usuario, localidad, fecha_muerte);
     }
     
     public void muestraVPrincipal(Usuario user){
@@ -50,11 +53,11 @@ public class FachadaAplicacion {
     }
     
     public void muestraVRegistrar(java.awt.Frame parent,boolean modal){
-        fgui.muestraVRegistrar(parent, modal);
+        fgui.muestraVRegistrar(parent, modal,this);
     }
     
     public void muestraVEstadisticas(java.awt.Frame parent,boolean modal){
-        fgui.muestraVEstadisticas(parent, modal);
+        fgui.muestraVEstadisticas(parent, modal,this);
     }
     public Vivo obtenerUsuarioVivo(int id_usuario){
         return cu.obtenerUsuarioVivo(id_usuario);
@@ -101,6 +104,18 @@ public class FachadaAplicacion {
     }
     public java.util.List<BuenaAccion> listaBuenasAcciones(int id_usuario){
         return cu.listaBuenasAcciones(id_usuario);
+    }
+    public void mandarACielo(int id_usuario){
+        cu.mandarACielo(id_usuario);
+    }
+    public void mandarALimbo(int id_usuario){
+        cu.mandarALimbo(id_usuario);
+    }
+    public void mandarAInfierno(int id_usuario){
+        cu.mandarAInfierno(id_usuario);
+    }
+    public java.util.List<Venganza> listaVenganzas(){
+        return cu.listaVenganzas();
     }
     
 }
