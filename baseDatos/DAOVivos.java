@@ -98,11 +98,11 @@ class DAOVivos extends AbstractDAO {
 	        try {
 	            stmUsuario = con.prepareStatement("update vivo "
 	                    + "set localidad = ? "
-	                    + "where id_vivo = ? "
+	                    + "where id_vivo = ? ;"
 	                    + "update usuario "
 	                    + "set nombre = ?, "
-	                    + "set clave= ? "
-	                    + "where id_usuario=?");
+	                    + "clave = ? "
+	                    + "where id_usuario = ?");
 	            stmUsuario.setString(1, localidad);
 	            stmUsuario.setInt(2, id);
 	            stmUsuario.setString(3, nombre);
