@@ -26,7 +26,7 @@ class DAOVivos extends AbstractDAO {
 
 		String consulta = "update vivo "
 				+ "set pendiente_juicio = 'FALSE' "
-				+ "where id_usuario = ? ";
+				+ "where id_vivo = ? ";
 
 		try {
 			stmJuzgado = con.prepareStatement(consulta);
@@ -371,7 +371,7 @@ class DAOVivos extends AbstractDAO {
 	        try {
 	            stmUsuario = con.prepareStatement("update mortal "
 	                    + "set lugar = ? "
-	                    + "where id_mortal= ?");
+	                    + "where id_mortal = ?");
 	            stmUsuario.setString(1, lugar);
 	            stmUsuario.setInt(2, id_usuario);
 	            stmUsuario.executeUpdate();

@@ -272,7 +272,7 @@ class DAOAcciones extends AbstractDAO{
 		try {
 			stmConfesar = con.prepareStatement(consulta);
 			stmConfesar.setInt(1, id_usuario);
-			stmConfesar.setDate(1, fecha_hora);
+			stmConfesar.setDate(2, fecha_hora);
 			stmConfesar.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
