@@ -143,7 +143,7 @@ public class VRegistrar extends javax.swing.JDialog {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
        if(camposCompletados()){
         textoFechaNacimiento.setText(String.valueOf(
-                fa.registrarUsuarioVivo(textoNombre.getText(),textoID.getText(),textoLocalidad.getText().isEmpty()?null:textoLocalidad.getText(),textoFechaMuerte.getText())));
+                fa.RegistrarUsuarioVivo(textoNombre.getText(),textoID.getText(),textoLocalidad.getText().isEmpty()?null:textoLocalidad.getText(),textoFechaMuerte.getText())));
        }else{
            fa.muestraExcepcion(parent,true,"Rellene todos los campos por favor");
        }

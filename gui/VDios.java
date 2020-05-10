@@ -668,7 +668,7 @@ public class VDios extends javax.swing.JFrame {
         if(mlstUsuariosLimbo.getSize()>0){
             java.util.List<Vivo> vivosLimbo;
             vivosLimbo=fa.listaVivosLimbo();
-            fa.enviarAlInfierno(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
+            fa.mandarAInfierno(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
         }
     }//GEN-LAST:event_btnEnviarInfiernoActionPerformed
 
@@ -719,7 +719,7 @@ public class VDios extends javax.swing.JFrame {
         if(mlstUsuariosLimbo.getSize()>0){
         java.util.List<Vivo> vivosLimbo;
         vivosLimbo=fa.listaVivosLimbo();
-        fa.enviarAlCielo(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
+        fa.mandarACielo(vivosLimbo.get(listaUsuariosLimbo.getSelectedIndex()).getIdUsuario());
         }
     }//GEN-LAST:event_btnEnviarCieloActionPerformed
 
