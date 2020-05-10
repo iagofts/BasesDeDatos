@@ -36,7 +36,10 @@ public class FachadaAplicacion {
     public java.util.List<Usuario> consultarUsuarios(Integer id_usuario, String nombre_usuario, String nombre){
         return cu.consultarUsuarios(id_usuario, nombre_usuario, nombre);
     }
-    public java.sql.Date RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, java.sql.Date fecha_nacimiento, java.sql.Date fecha_muerte){
+    public java.util.List<Usuario> consultarUsuariosMenos(Integer id, String nombre) {
+	return cu.consultarUsuariosMenos(id, nombre);
+    }
+    public java.sql.Date RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, String fecha_muerte){
         return cu.RegistrarUsuarioVivo(nombre, nombre_usuario, localidad, fecha_muerte);
     }
     
@@ -128,6 +131,9 @@ public class FachadaAplicacion {
     }
     public Float puntuacionLocalidad(String localidad) {
 	return cu.puntuacionLocalidad(localidad);
+    }
+    public void solicitarVenganza(Integer id_solicitante, Integer id_vengado, Integer id_venganza){
+        cu.solicitarVenganza(id_solicitante, id_vengado, id_venganza);
     }
     
 }

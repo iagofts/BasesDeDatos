@@ -21,10 +21,14 @@ public class GestionUsuarios {
     public java.util.List<Usuario> consultarUsuarios(Integer id_usuario, String nombre_usuario, String nombre){
         return fbd.consultarUsuarios(id_usuario, nombre_usuario, nombre);
     }
+    public java.util.List<Usuario> consultarUsuariosMenos(Integer id, String nombre) {
+	return fbd.consultarUsuariosMenos(id, nombre);
+    }
     
-    public java.sql.Date RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, java.sql.Date fecha_muerte){
+    public java.sql.Date RegistrarUsuarioVivo(String nombre, String nombre_usuario, String localidad, String fecha_muerte){
         java.sql.Date fecha_nacimiento=fbd.getFecha();
-        fbd.RegistrarUsuarioVivo(fbd.listaDemoniosInfierno().get(0).getIdUsuario(), fbd.listaAngelesCielo().get(0).getIdUsuario(), nombre, nombre_usuario, localidad, "0000", fecha_nacimiento, fecha_muerte);
+        java.sql.Date fMuerte=java.sql.Date.valueOf(fecha_muerte);
+        fbd.RegistrarUsuarioVivo(fbd.listaDemoniosInfierno().get(0).getIdUsuario(), fbd.listaAngelesCielo().get(0).getIdUsuario(), nombre, nombre_usuario, localidad, "0000", fecha_nacimiento, fMuerte);
         return fecha_nacimiento;
     }
     
@@ -148,7 +152,7 @@ public class GestionUsuarios {
     }
     public int juzgarUsuario(Vivo v){
         if(v.getPuntuacion()<-2.0){
-            fbd.demonizar(v.getIdUsuario());
+            fbd.demonizar();
             return 1;
         }
         else if(v.getPuntuacion()<-0.5){
@@ -164,7 +168,7 @@ public class GestionUsuarios {
             return 4;
         }
         else{
-            fbd.angelizar(v.getIdUsuario());
+            fbd.angelizar();
             return 5;
         }
     }
@@ -192,6 +196,9 @@ public class GestionUsuarios {
     }
     public Float puntuacionLocalidad(String localidad) {
 	return fbd.puntuacionLocalidad(localidad);
+    }
+    public void solicitarVenganza(Integer id_solicitante, Integer id_vengado, Integer id_venganza){
+        fbd.solicitarVenganza(id_solicitante, id_vengado, id_venganza);
     }
  
 }
