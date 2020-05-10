@@ -24,9 +24,9 @@ Insert into angel (id) values ((select id_usuario from usuario where nombre_usua
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('neut23','Elneu Tral','nn00','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('16/07/1952','05/06/2003','Limbo');
-Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense',1.8);
+Insert into vivo (ang_asignado,dem_asignado,localidad,puntuacion) values ((select id_usuario from usuario where nombre_usuario='john122'),(select id_usuario from usuario where nombre_usuario='mikemike'),'Ourense',-1.8);
 Insert into buenaAccion(fecha_hora,tipo_accion,usuario) values ('16/05/1993',1,(select id_usuario from usuario where nombre_usuario='neut23'));
-Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/2000',1,(select id_usuario from usuario where nombre_usuario='neut23'));
+Insert into pecado (fecha_hora,tipo_pecado,usuario) values ('24/12/2000',4,(select id_usuario from usuario where nombre_usuario='neut23'));
 
 Insert into usuario (nombre_usuario,nombre,clave,tipo) values ('casib40','Casib Ueno','cbcb','Mortal');
 Insert into mortal (fecha_nacimiento,fecha_muerte,lugar) values ('02/10/1964','28/08/2005','Cielo');
